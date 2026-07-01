@@ -1,0 +1,17 @@
+{
+  "setup": {
+    "prefix": [
+      "setup",
+      "notes"
+    ],
+    "body": [
+      "#import \"@local/notes:1.0.0\": *",
+      "",
+      "#show: setup.with(title: [$1])",
+      "#show: envs.with()",
+      "",
+      "$2"
+    ],
+    "description": "My setup for typst notes"
+  }
+}
