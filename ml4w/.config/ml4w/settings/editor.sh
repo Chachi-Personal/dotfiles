@@ -1,0 +1,1 @@
+nvim-xdg-wrapper.sh

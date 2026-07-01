@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "segments": [
+        {
+          "foreground": "#00C5C7",
+          "options": {
+            "time_format": "15:04:05"
+          },
+          "style": "plain",
+          "template": " {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        }
+      ],
+      "type": "rprompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "path",
+          "style": "powerline",
+          "foreground": "#77E4F7",
+          "options": {
+            "style": "fish",
+            "dir_length": 3,
+            "full_length_dirs": 2,
+            "max_width": 40,
+            "max_depth": 6,
+            "mixed_threshold": 3,
+            "mapped_locations": {
+              "~/obsidian-vault": " ",
+              "~/obsidian-vault/uni/": "󰑴 ",
+              "~/.config": " "
+            }
+          },
+          "template": "{{ .Path }} "
+        },
+        {
+          "foreground": "#FFE700",
+          "style": "plain",
+          "template": "{{ .HEAD }} ",
+          "type": "git"
+        },
+        {
+          "foreground": "#43D426",
+          "style": "plain",
+          "template": "\u276f ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 4
+}

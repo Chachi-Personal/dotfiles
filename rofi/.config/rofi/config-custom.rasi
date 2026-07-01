@@ -1,0 +1,12 @@
+configuration {
+	kb-cancel:                  "Control+c,Escape";
+	kb-secondary-copy:          "Control+Shift+c";
+	kb-accept-entry:            "Return,KP_Enter";
+	kb-remove-to-eol:           "";
+	kb-element-next:            "Tab,Control+j";
+	kb-element-prev:            "ISO_Left_Tab,Control+k";
+	kb-remove-char-back: 				"BackSpace,Shift+BackSpace";
+	kb-mode-previous:				 		"Control+h";
+	kb-mode-next: 							"Control+l";
+	kb-mode-complete: 					"Control+Tab";
+}

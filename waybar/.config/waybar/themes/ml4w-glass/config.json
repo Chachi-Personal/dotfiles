@@ -1,0 +1,93 @@
+[
+  {
+    // General Settings
+    "layer": "dock", // dock so it stays below fullscreen apps, alt: top
+    "output": [
+      "eDP-1",
+      "DP-1",
+      "DP-6",
+      "HDMI-A-1",
+      "DP-8"
+    ],
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 0,
+    // Load Modules
+    "include": [
+      "~/.config/ml4w/settings/waybar-quicklinks.json",
+      "~/.config/waybar/modules.json",
+    ],
+    // Modules Left
+    "modules-left": [
+      "custom/appmenu",
+      "hyprland/workspaces",
+      // "wlr/taskbar",
+      //"group/quicklinks",
+      // "custom/nowplaying",
+      "custom/empty",
+    ],
+    // Modules Center
+    "modules-center": [
+      "clock",
+      "custom/empty"
+    ],
+    // Modules Right
+    "modules-right": [
+      "custom/updates",
+      "pulseaudio",
+      // "backlight",
+      "bluetooth",
+      "network",
+      "battery",
+      "group/hardware",
+      "group/tools",
+      "tray",
+      "custom/notification",
+      "custom/exit",
+      // "custom/ml4w-welcome",
+      "custom/empty",
+    ],
+  },
+  {
+    // General Settings
+    "layer": "top", // dock so it stays below fullscreen apps, alt: top
+    "output": [
+      "DP-7",
+      "DP-9"
+    ],
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "spacing": 0,
+    // Load Modules
+    "include": [
+      "~/.config/ml4w/settings/waybar-quicklinks.json",
+      "~/.config/waybar/modules.json",
+    ],
+    // Modules Left
+    "modules-left": [
+      "custom/appmenu",
+      "hyprland/workspaces",
+      // "wlr/taskbar",
+      "custom/empty",
+    ],
+    // Modules Center
+    "modules-center": [
+      "clock",
+      "custom/empty"
+    ],
+    // Modules Right
+    "modules-right": [
+      "pulseaudio",
+      "bluetooth",
+      "battery",
+      "tray",
+      "custom/notification",
+      // "custom/exit",
+      "custom/empty",
+    ],
+  },
+]
