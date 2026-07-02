@@ -1,0 +1,24 @@
+#:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
+
+sort_order = ["config", "tmux", "zoxide", "tmuxinator"]
+
+[[session]]
+name = "main"
+path = "~/"
+
+[[session]]
+name = "obsidian"
+path = "~/Vault"
+startup_command = "nvim Home.md"
+preview_command = "/home/chachi/.config/sesh/obsidian-preview.sh {}"
+
+[[session]]
+name = "bambuk"
+path = "~/Documents/code/work/bambuk"
+# Startup (sail up -d + nvim). Teardown (sail down) is handled by the tmux
+# session-closed hook in ~/.tmux.conf -> scripts/bambuk-stop.sh.
+startup_command = "/home/chachi/.config/sesh/bambuk-start.sh"
+preview_command = "eza --all --git --icons --color=always {}"
+# windows = [ "editor", "other" ]
+
+# [[windows]]
