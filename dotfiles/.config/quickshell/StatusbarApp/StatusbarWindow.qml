@@ -28,7 +28,7 @@ PanelWindow {
     HyprlandFocusGrab {
         windows: [root]
         active: root.barExpanded
-        onCleared: root.barExpanded = false
+        onCleared: root.barExpanded = true
     }
 
     // --- USER SETTINGS ---
@@ -36,15 +36,36 @@ PanelWindow {
     // built-in defaults and is overwritten (key by key) whenever the file is
     // read, so a partial or missing file still leaves every value defined.
     property var settings: ({
-        "bar":    { "height": 40, "reservedHeight": 72, "enabled": true, "alwaysExpanded": false },
-        "pill":   { "collapsedWidth": 0, "expandedWidth": 680, "radius": 12, "animationDuration": 350 },
-        "modules":{ "left": ["terminal", "workspaces"],
-                    "center": ["launcher", "clock", "swaync"],
-                    "right": ["updates", "volume", "systemtray", "logo", "power"] },
-        "border": { "width": 2, "colorTop": "", "colorBottom": "" },
-        "opacity":{ "collapsed": 0.5, "expanded": 0.8 },
-        "clock":  { "format": "HH:mm" }
-    })
+            "bar": {
+                "height": 40,
+                "reservedHeight": 72,
+                "enabled": true,
+                "alwaysExpanded": false
+            },
+            "pill": {
+                "collapsedWidth": 0,
+                "expandedWidth": 680,
+                "radius": 12,
+                "animationDuration": 350
+            },
+            "modules": {
+                "left": ["terminal", "workspaces"],
+                "center": ["launcher", "clock", "swaync"],
+                "right": ["updates", "volume", "systemtray", "logo", "power"]
+            },
+            "border": {
+                "width": 2,
+                "colorTop": "",
+                "colorBottom": ""
+            },
+            "opacity": {
+                "collapsed": 0.5,
+                "expanded": 0.8
+            },
+            "clock": {
+                "format": "HH:mm"
+            }
+        })
 
     // Read the settings file synchronously at startup. Changes are not picked
     // up automatically; trigger a re-read explicitly with
@@ -59,8 +80,8 @@ PanelWindow {
     // Force a re-read of the settings file and re-apply it. reload() refreshes
     // the FileView from disk; applySettings parses and merges the result.
     function reloadSettings(): void {
-        settingsFile.reload()
-        applySettings()
+        settingsFile.reload();
+        applySettings();
     }
 
     // Merge the file contents over the defaults. The leading /* ... */ comment
@@ -69,18 +90,17 @@ PanelWindow {
     // merge does not depend on the FileView buffer having refreshed yet.
     function applySettings(text): void {
         try {
-            let src = (text !== undefined) ? text : settingsFile.text()
-            let raw = src.replace(/\/\*[\s\S]*?\*\//g, "")
-            let parsed = JSON.parse(raw)
-            let merged = JSON.parse(JSON.stringify(root.settings))
+            let src = (text !== undefined) ? text : settingsFile.text();
+            let raw = src.replace(/\/\*[\s\S]*?\*\//g, "");
+            let parsed = JSON.parse(raw);
+            let merged = JSON.parse(JSON.stringify(root.settings));
             for (let group in parsed)
                 for (let key in parsed[group])
                     if (merged[group] !== undefined)
-                        merged[group][key] = parsed[group][key]
-            root.settings = merged
+                        merged[group][key] = parsed[group][key];
+            root.settings = merged;
         } catch (e) {
-            console.warn("statusbar.json: could not parse settings,"
-                + " keeping previous values:", e)
+            console.warn("statusbar.json: could not parse settings," + " keeping previous values:", e);
         }
     }
 
@@ -106,11 +126,9 @@ PanelWindow {
     // updated text, which updates settings.bar.enabled and therefore the
     // barEnabled binding above.
     function setEnabled(on: bool): void {
-        let updated = settingsFile.text().replace(
-            /("enabled"\s*:\s*)(true|false)/,
-            "$1" + (on ? "true" : "false"))
-        settingsFile.setText(updated)
-        applySettings(updated)
+        let updated = settingsFile.text().replace(/("enabled"\s*:\s*)(true|false)/, "$1" + (on ? "true" : "false"));
+        settingsFile.setText(updated);
+        applySettings(updated);
     }
 
     // Keep the pill expanded regardless of hover. Set via IPC
@@ -130,19 +148,26 @@ PanelWindow {
     // the file's formatting is preserved, then re-parsed so the binding above
     // updates.
     function setAlwaysExpanded(on: bool): void {
-        let updated = settingsFile.text().replace(
-            /("alwaysExpanded"\s*:\s*)(true|false)/,
-            "$1" + (on ? "true" : "false"))
-        settingsFile.setText(updated)
-        applySettings(updated)
+        let updated = settingsFile.text().replace(/("alwaysExpanded"\s*:\s*)(true|false)/, "$1" + (on ? "true" : "false"));
+        settingsFile.setText(updated);
+        applySettings(updated);
     }
 
     // --- MODULE PLACEMENT ---
     // Each module name in the settings file maps to the component placed into
     // the left/center/right groups. Unknown names load nothing.
-    Component { id: cTerminal;   TerminalModule {} }
-    Component { id: cWorkspaces; WorkspacesModule {} }
-    Component { id: cLauncher;   LauncherModule {} }
+    Component {
+        id: cTerminal
+        TerminalModule {}
+    }
+    Component {
+        id: cWorkspaces
+        WorkspacesModule {}
+    }
+    Component {
+        id: cLauncher
+        LauncherModule {}
+    }
     Component {
         id: cClock
         ClockModule {
@@ -150,7 +175,10 @@ PanelWindow {
             timeFormat: root.settings.clock.format
         }
     }
-    Component { id: cSwaync;     SwayncModule {} }
+    Component {
+        id: cSwaync
+        SwayncModule {}
+    }
     // True while a system-tray context menu is open. Kept at window scope so
     // the pill can pin itself expanded while a menu is up (the tray lives in
     // the right area, which only exists while expanded).
@@ -170,9 +198,18 @@ PanelWindow {
             }
         }
     }
-    Component { id: cLogo;       Ml4wLogoModule {} }
-    Component { id: cPower;      PowerModule {} }
-    Component { id: cVolume;     VolumeModule {} }
+    Component {
+        id: cLogo
+        Ml4wLogoModule {}
+    }
+    Component {
+        id: cPower
+        PowerModule {}
+    }
+    Component {
+        id: cVolume
+        VolumeModule {}
+    }
     Component {
         id: cUpdates
         UpdatesModule {
@@ -183,17 +220,17 @@ PanelWindow {
     }
 
     readonly property var moduleComponents: ({
-        "terminal":   cTerminal,
-        "workspaces": cWorkspaces,
-        "launcher":   cLauncher,
-        "clock":      cClock,
-        "swaync":     cSwaync,
-        "systemtray": cSystemTray,
-        "logo":       cLogo,
-        "power":      cPower,
-        "updates":    cUpdates,
-        "volume":     cVolume
-    })
+            "terminal": cTerminal,
+            "workspaces": cWorkspaces,
+            "launcher": cLauncher,
+            "clock": cClock,
+            "swaync": cSwaync,
+            "systemtray": cSystemTray,
+            "logo": cLogo,
+            "power": cPower,
+            "updates": cUpdates,
+            "volume": cVolume
+        })
 
     // --- KEYBOARD NAVIGATION ---
     // Ordered left-to-right list of the navigable items, rebuilt from the
@@ -211,32 +248,34 @@ PanelWindow {
     Connections {
         target: root.workspacesRef
         ignoreUnknownSignals: true
-        function onNavButtonsChanged(): void { root.rebuildNavItems() }
+        function onNavButtonsChanged(): void {
+            root.rebuildNavItems();
+        }
     }
 
     function rebuildNavItems(): void {
-        let items = []
-        let ws = null
-        let groups = [leftRepeater, centerRepeater, rightRepeater]
+        let items = [];
+        let ws = null;
+        let groups = [leftRepeater, centerRepeater, rightRepeater];
         for (let g = 0; g < groups.length; g++) {
-            let rep = groups[g]
+            let rep = groups[g];
             for (let i = 0; i < rep.count; i++) {
-                let loader = rep.itemAt(i)
-                let m = loader ? loader.item : null
+                let loader = rep.itemAt(i);
+                let m = loader ? loader.item : null;
                 if (!m)
-                    continue
+                    continue;
                 if (m.collapsed === true)                // hidden (e.g. updates)
-                    continue
+                    continue;
                 if (m.navButtons !== undefined) {        // workspaces
-                    ws = m
-                    items = items.concat(m.navButtons)
+                    ws = m;
+                    items = items.concat(m.navButtons);
                 } else if (typeof m.activate === "function") {
-                    items.push(m)
+                    items.push(m);
                 }
             }
         }
-        root.workspacesRef = ws
-        root.navItems = items
+        root.workspacesRef = ws;
+        root.navItems = items;
     }
 
     Component.onCompleted: Qt.callLater(rebuildNavItems)
@@ -245,33 +284,33 @@ PanelWindow {
     // Highlight exactly the item at focusIndex and clear all others. Called
     // both when the selection moves and when navItems changes underneath it.
     function applyFocus(): void {
-        let items = root.navItems
+        let items = root.navItems;
         for (let i = 0; i < items.length; i++)
-            items[i].focused = (i === root.focusIndex)
+            items[i].focused = (i === root.focusIndex);
     }
 
     onFocusIndexChanged: applyFocus()
     onNavItemsChanged: {
         // Keep the selection in range when the workspace count changes.
         if (root.focusIndex >= root.navItems.length)
-            root.focusIndex = root.navItems.length - 1
-        applyFocus()
+            root.focusIndex = root.navItems.length - 1;
+        applyFocus();
     }
 
     onBarExpandedChanged: {
         if (barExpanded) {
-            focusIndex = 0
-            keyHandler.forceActiveFocus()
+            focusIndex = 0;
+            keyHandler.forceActiveFocus();
         } else {
-            focusIndex = -1
+            focusIndex = -1;
         }
     }
 
     function moveFocus(dir: int): void {
         if (!barExpanded)
-            return
-        let n = root.navItems.length
-        root.focusIndex = (root.focusIndex + dir + n) % n
+            return;
+        let n = root.navItems.length;
+        root.focusIndex = (root.focusIndex + dir + n) % n;
     }
 
     // Forward an Up/Down press to the keyboard-selected module if it exposes a
@@ -279,46 +318,64 @@ PanelWindow {
     // without leaving keyboard-navigation mode.
     function stepFocused(dir: int): void {
         if (root.focusIndex < 0 || root.focusIndex >= root.navItems.length)
-            return
-        let m = root.navItems[root.focusIndex]
+            return;
+        let m = root.navItems[root.focusIndex];
         if (typeof m.step === "function")
-            m.step(dir)
+            m.step(dir);
     }
 
     function activateFocused(): void {
         if (root.focusIndex >= 0 && root.focusIndex < root.navItems.length)
-            root.navItems[root.focusIndex].activate()
+            root.navItems[root.focusIndex].activate();
         // Collapse so the keyboard is handed back to the (possibly newly
         // launched) application instead of staying captured by the bar.
-        root.barExpanded = false
+        root.barExpanded = false;
     }
 
     IpcHandler {
         target: "statusbar"
-        function toggle(): void { root.setEnabled(!root.settings.bar.enabled) }
+        function toggle(): void {
+            root.setEnabled(!root.settings.bar.enabled);
+        }
         // Named enable/disable rather than show/hide: "show" is a reserved
         // subcommand of "qs ipc" and would never reach the function.
-        function enable(): void { root.setEnabled(true) }
-        function disable(): void { root.setEnabled(false) }
+        function enable(): void {
+            root.setEnabled(true);
+        }
+        function disable(): void {
+            root.setEnabled(false);
+        }
         // Persist and apply the alwaysExpanded (permanently expanded) mode,
         // toggled from the SidebarApp switch.
-        function alwaysExpand(): void { root.setAlwaysExpanded(true) }
-        function autoCollapse(): void { root.setAlwaysExpanded(false) }
+        function alwaysExpand(): void {
+            root.setAlwaysExpanded(true);
+        }
+        function autoCollapse(): void {
+            root.setAlwaysExpanded(false);
+        }
         // Re-read statusbar.json from disk (used by the SidebarApp switch).
-        function refresh(): void { root.reloadSettings() }
+        function refresh(): void {
+            root.reloadSettings();
+        }
         // Expand the bar (if needed) and grab the keyboard for navigation.
         // Bound to SUPER + SPACE. Idempotent: when the bar is already expanded
         // it only re-grabs keyboard focus instead of toggling back to collapsed,
         // so the keybinding always lands in keyboard-navigation mode.
         function focus(): void {
-            root.barExpanded = true
-            keyHandler.forceActiveFocus()
+            root.barExpanded = true;
+            keyHandler.forceActiveFocus();
         }
         // Toggle between collapsed and expanded mode.
-        function expand(): void { root.barExpanded = !root.barExpanded }
-        function collapse(): void { root.barExpanded = false }
+        function expand(): void {
+            root.barExpanded = !root.barExpanded;
+        }
+        function collapse(): void {
+            root.barExpanded = false;
+        }
         // Re-read statusbar.json and apply the changes.
-        function reload(): void { root.reloadSettings() }
+        function reload(): void {
+            root.reloadSettings();
+        }
     }
 
     color: "transparent"
@@ -348,12 +405,9 @@ PanelWindow {
         anchors.verticalCenterOffset: (root.reservedHeight / 2) - (root.implicitHeight / 2)
 
         // Collapsed = sized to content, Expanded = fixed width.
-        property bool expanded: hoverHandler.hovered || root.barExpanded
-            || root.alwaysExpanded || root.trayMenuOpen
+        property bool expanded: hoverHandler.hovered || root.barExpanded || root.alwaysExpanded || root.trayMenuOpen
         // 0 in the settings file means "hug the center content".
-        property real collapsedWidth: root.settings.pill.collapsedWidth > 0
-            ? root.settings.pill.collapsedWidth
-            : centerArea.implicitWidth + 32
+        property real collapsedWidth: root.settings.pill.collapsedWidth > 0 ? root.settings.pill.collapsedWidth : centerArea.implicitWidth + 32
 
         // Minimum width the content needs so the centered center area never
         // overlaps the left/right areas. The center stays centered, so each
@@ -362,13 +416,10 @@ PanelWindow {
         // would collide first), plus the 16px edge margins and some breathing
         // room. Computed live so adding workspaces (or any module growing)
         // pushes the bar wider instead of clipping.
-        property real contentWidth: centerArea.implicitWidth
-            + 2 * Math.max(leftArea.implicitWidth, rightArea.implicitWidth)
-            + 64
+        property real contentWidth: centerArea.implicitWidth + 2 * Math.max(leftArea.implicitWidth, rightArea.implicitWidth) + 64
         // expandedWidth from the settings file is treated as a minimum: the
         // pill grows past it when the content needs more room.
-        property real expandedWidth: Math.max(
-            root.settings.pill.expandedWidth, contentWidth)
+        property real expandedWidth: Math.max(root.settings.pill.expandedWidth, contentWidth)
 
         width: expanded ? expandedWidth : collapsedWidth
         height: expanded ? root.barHeight + 10 : root.barHeight
@@ -418,9 +469,7 @@ PanelWindow {
             id: pillBg
             anchors.fill: parent
             radius: root.settings.pill.radius
-            opacity: pill.expanded
-                ? root.settings.opacity.expanded
-                : root.settings.opacity.collapsed
+            opacity: pill.expanded ? root.settings.opacity.expanded : root.settings.opacity.collapsed
             Behavior on opacity {
                 NumberAnimation {
                     duration: root.settings.pill.animationDuration
@@ -434,15 +483,11 @@ PanelWindow {
                 orientation: Gradient.Vertical
                 GradientStop {
                     position: 0.0
-                    color: root.settings.border.colorTop !== ""
-                        ? root.settings.border.colorTop
-                        : Theme.primary
+                    color: root.settings.border.colorTop !== "" ? root.settings.border.colorTop : Theme.primary
                 }
                 GradientStop {
                     position: 1.0
-                    color: root.settings.border.colorBottom !== ""
-                        ? root.settings.border.colorBottom
-                        : Theme.on_primary
+                    color: root.settings.border.colorBottom !== "" ? root.settings.border.colorBottom : Theme.on_primary
                 }
             }
 
@@ -470,7 +515,10 @@ PanelWindow {
             enabled: pill.expanded
 
             Behavior on opacity {
-                NumberAnimation { duration: 250; easing.type: Easing.OutQuint }
+                NumberAnimation {
+                    duration: 250
+                    easing.type: Easing.OutQuint
+                }
             }
 
             Repeater {
@@ -518,7 +566,10 @@ PanelWindow {
             enabled: pill.expanded
 
             Behavior on opacity {
-                NumberAnimation { duration: 250; easing.type: Easing.OutQuint }
+                NumberAnimation {
+                    duration: 250
+                    easing.type: Easing.OutQuint
+                }
             }
 
             Repeater {

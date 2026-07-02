@@ -23,5 +23,16 @@ ShellRoot {
     SidebarWindow {}
     CalendarWindow {}
     WallpaperWindow {}
-    StatusbarWindow {}
+
+    // One status bar per connected monitor. Variants creates an instance of the
+    // delegate for every entry in the model and injects it as `modelData`; here
+    // the model is the live list of screens, so plugging/unplugging a monitor
+    // adds or removes its bar automatically.
+    Variants {
+        model: Quickshell.screens
+        StatusbarWindow {
+            required property var modelData
+            screen: modelData
+        }
+    }
 }

@@ -6,6 +6,7 @@ import Quickshell.Services.Mpris
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Effects
 import qs.CustomTheme
 
 PanelWindow {
@@ -15,7 +16,7 @@ PanelWindow {
     WlrLayershell.layer: WlrLayer.Overlay
     exclusionMode: WlrLayershell.Ignore
 
-    implicitWidth: 380
+    implicitWidth: 420 // 380 + 40
     color: "transparent"
 
     property bool isHyprlandSettingsInstalled: false
@@ -27,8 +28,8 @@ PanelWindow {
     }
 
     margins {
-        top: 87
-        bottom: 20
+        top: 67 // 87 - 20
+        bottom: 0 // 20 - 20
     }
 
     // --- CLICK OUTSIDE TO CLOSE (Native Hyprland) ---
@@ -57,7 +58,7 @@ PanelWindow {
     visible: isOpen || slideAnim.running
 
     margins { right: root.currentMargin }
-    property real currentMargin: isOpen ? 20 : -450
+    property real currentMargin: isOpen ? 0 : -470
 
     Behavior on currentMargin {
         NumberAnimation {
@@ -74,9 +75,8 @@ PanelWindow {
         function close(): void { root.isOpen = false }
     }
 
-    // --- Check if flatpak is installed when window opens ---
     Process {
-        command: ["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-flatpak-installed com.ml4w.hyprlandsettings"]
+        command: ["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-command-exists hyprmod"]
         running: root.visible
 
         stdout: StdioCollector {
@@ -150,25 +150,58 @@ PanelWindow {
     component SettingsWheel: Button {
         implicitWidth: 28
         implicitHeight: 28
-        text: ""
-        font.family: "monospace"
         background: Rectangle { color: "transparent" }
-        contentItem: Text {
-            text: parent.text; color: Theme.primary; font.pixelSize: 18;
-            verticalAlignment: Text.AlignVCenter; horizontalAlignment: Text.AlignHCenter
+        contentItem: Item {
+            Image {
+                anchors.centerIn: parent
+                source: "../shared/icons/settings.svg"
+                width: 18
+                height: 18
+                sourceSize.width: 18
+                sourceSize.height: 18
+                fillMode: Image.PreserveAspectFit
+                layer.enabled: true
+                layer.effect: MultiEffect {
+                    colorization: 1.0
+                    colorizationColor: Theme.primary
+                }
+            }
         }
     }
 
+    // Supports text glyphs (iconTxt) for MPRIS controls and SVG files (iconSrc) for sidebar icons
     component ActionIcon: Button {
         property string iconTxt: ""
+        property string iconSrc: ""
         implicitWidth: 28
         implicitHeight: 28
-        text: iconTxt
-        font.family: "monospace"
         background: Rectangle { color: "transparent" }
-        contentItem: Text {
-            text: parent.text; color: Theme.primary; font.pixelSize: 18;
-            verticalAlignment: Text.AlignVCenter; horizontalAlignment: Text.AlignHCenter
+        contentItem: Item {
+            Text {
+                anchors.centerIn: parent
+                text: iconTxt
+                visible: iconSrc === ""
+                color: Theme.primary
+                font.family: "monospace"
+                font.pixelSize: 18
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
+            }
+            Image {
+                anchors.centerIn: parent
+                source: iconSrc
+                width: 18
+                height: 18
+                sourceSize.width: 18
+                sourceSize.height: 18
+                visible: iconSrc !== ""
+                fillMode: Image.PreserveAspectFit
+                layer.enabled: iconSrc !== ""
+                layer.effect: MultiEffect {
+                    colorization: 1.0
+                    colorizationColor: Theme.primary
+                }
+            }
         }
     }
 
@@ -177,14 +210,36 @@ PanelWindow {
     // ==========================================
     Item {
         anchors.fill: parent
+        anchors.margins: 20
+
+        RectangularShadow {
+            id: shadow
+            anchors.fill: mainBgRect
+            radius: mainBgRect.radius
+            blur: 15
+            color: Qt.rgba(Theme.shadow.r, Theme.shadow.g, Theme.shadow.b, 0.4)
+        }
 
         Rectangle {
+            id: mainBgRect
             anchors.fill: parent
-            color: Theme.background
-            border.color: Theme.primary
-            border.width: 2
             radius: 10
             opacity: 0.95 // Only the background is transparent
+
+            // Gradient border (outer)
+            gradient: Gradient {
+                orientation: Gradient.Vertical
+                GradientStop { position: 0.0; color: Theme.primary }
+                GradientStop { position: 1.0; color: Theme.on_primary }
+            }
+
+            // Background fill (inner), inset by the border thickness
+            Rectangle {
+                anchors.fill: parent
+                anchors.margins: 2
+                radius: parent.radius - anchors.margins
+                color: Theme.background
+            }
         }
 
         ColumnLayout {
@@ -198,14 +253,14 @@ PanelWindow {
                 spacing: 10
 
                 ActionIcon {
-                    iconTxt: "󰔎"
+                    iconSrc: "../shared/icons/darklight.svg"
                     onClicked: {
                         Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-toggle-theme"])
                     }
                 }
 
                 ActionIcon {
-                    iconTxt: ""
+                    iconSrc: "../shared/icons/picker.svg"
                     onClicked: {
                         root.isOpen = false
                         Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/settings/hyprpicker.sh"])
@@ -213,7 +268,7 @@ PanelWindow {
                 }
 
                 ActionIcon {
-                    iconTxt: ""
+                    iconSrc: "../shared/icons/screenshot.svg"
                     onClicked: {
                         root.isOpen = false
                         Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/hypr/scripts/screenshot.sh"])
@@ -237,19 +292,20 @@ PanelWindow {
                         Quickshell.execDetached(["bash", "-c", "qs ipc call welcome toggle"])
                     }
                 }
-                // ML4WButton {
-                //     text: "Settings"
-                //     onClicked: {
-                //         root.isOpen = false
-                //         Quickshell.execDetached(["bash", "-c", "qs -p " + Quickshell.env("HOME") + "/.local/share/ml4w-dotfiles-settings/quickshell ipc call settings toggle"])
-                //     }
-                // }
                 ML4WButton {
-                    text: "Hyprland"
+                    text: "Settings"
+                    onClicked: {
+                        root.isOpen = false
+                        // Quickshell.execDetached(["kitty", "--class", "dotfiles-floating", "-e", "ml4w-dotfiles-settings", "com.ml4w.dotfiles"])
+                        Quickshell.execDetached(["bash", "-c", "qs -p " + Quickshell.env("HOME") + "/.local/share/ml4w-dotfiles-settings/quickshell ipc call settings toggle"])
+                    }
+                }
+                ML4WButton {
+                    text: "HyprMod"
                     visible: root.isHyprlandSettingsInstalled
                     onClicked: {
                         root.isOpen = false
-                        Quickshell.execDetached(["bash", "-c", "flatpak run com.ml4w.hyprlandsettings"])
+                        Quickshell.execDetached(["hyprmod"])
                     }
                 }
             }
@@ -288,12 +344,19 @@ PanelWindow {
                             Layout.fillWidth: true
                             spacing: 15
 
-                            Text {
-                                text: "" // Speaker icon
-                                color: Theme.primary
-                                font.family: "monospace"
-                                font.pixelSize: 18
+                            Image {
+                                source: "../shared/icons/volume.svg"
                                 Layout.alignment: Qt.AlignVCenter
+                                Layout.preferredWidth: 20
+                                Layout.preferredHeight: 20
+                                sourceSize.width: 20
+                                sourceSize.height: 20
+                                fillMode: Image.PreserveAspectFit
+                                layer.enabled: true
+                                layer.effect: MultiEffect {
+                                    colorization: 1.0
+                                    colorizationColor: Theme.primary
+                                }
                             }
 
                             Slider {
@@ -356,12 +419,19 @@ PanelWindow {
                             Layout.fillWidth: true
                             spacing: 15
 
-                            Text {
-                                text: "" // Sun/Brightness icon
-                                color: Theme.primary
-                                font.family: "monospace"
-                                font.pixelSize: 18
+                            Image {
+                                source: "../shared/icons/brightness.svg"
                                 Layout.alignment: Qt.AlignVCenter
+                                Layout.preferredWidth: 20
+                                Layout.preferredHeight: 20
+                                sourceSize.width: 20
+                                sourceSize.height: 20
+                                fillMode: Image.PreserveAspectFit
+                                layer.enabled: true
+                                layer.effect: MultiEffect {
+                                    colorization: 1.0
+                                    colorizationColor: Theme.primary
+                                }
                             }
 
                             Slider {
@@ -573,7 +643,7 @@ PanelWindow {
                     // --- WAYBAR ---
                     RowLayout {
                         Layout.fillWidth: true
-                        Text { text: "Waybar"; color: Theme.on_background; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Text { text: "Waybar"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
                         Item { Layout.fillWidth: true }
                         ML4WSwitch {
                             id: waybarSwitch
@@ -625,10 +695,103 @@ PanelWindow {
                         }
                     }
 
+                    // --- STATUSBAR (Quickshell) ---
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Text { text: "Statusbar"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Item { Layout.fillWidth: true }
+                        ML4WSwitch {
+                            id: statusbarSwitch
+                            property bool ready: false
+                            // Read the current state from the "enabled" flag in
+                            // statusbar.json (the single source of truth). A
+                            // missing file or a missing/true flag counts as on.
+                            Process {
+                                command: ["bash", "-c", "grep -q '\"enabled\"[[:space:]]*:[[:space:]]*false' ~/.config/ml4w/settings/statusbar.json && echo 0 || echo 1"]
+                                running: root.isOpen
+                                stdout: StdioCollector {
+                                    onStreamFinished: {
+                                        console.log("Test for Statusbar: " + this.text.trim())
+                                        statusbarSwitch.checked = (this.text.trim() === "1")
+                                        statusbarSwitch.ready = true
+                                    }
+                                }
+                            }
+                            onClicked: {
+                                if (!ready) return;
+                                // The statusbar owns the file write; just tell it
+                                // the new state via IPC. `checked` already
+                                // reflects the post-click position.
+                                let ipcCmd = checked
+                                ? "qs ipc call statusbar enable"
+                                : "qs ipc call statusbar disable"
+                                console.log("Statusbar cmd: " + ipcCmd)
+                                Quickshell.execDetached(["bash", "-c", ipcCmd])
+                            }
+                        }
+
+                        SettingsWheel {
+                            onClicked: statusbarMenu.open()
+                            Menu {
+                                id: statusbarMenu
+                                y: parent.height
+                                implicitWidth: 220
+                                padding: 8
+
+                                background: Rectangle { color: Theme.background; border.color: Theme.primary; border.width: 1; radius: 8 }
+                                ML4WMenuItem { text: "Reload Statusbar"; onClicked: {
+                                        Quickshell.execDetached(["bash", "-c", "qs ipc call statusbar reload"])
+                                    }
+                                }
+                                ML4WMenuItem { text: "Edit Settings"; onClicked: {
+                                        root.isOpen = false
+                                        Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/settings/editor.sh " + Quickshell.env("HOME") + "/.config/ml4w/settings/statusbar.json"])
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // --- STATUSBAR ALWAYS EXPANDED (Quickshell) ---
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Text { text: "Statusbar Expanded"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Item { Layout.fillWidth: true }
+                        ML4WSwitch {
+                            id: statusbarExpandedSwitch
+                            property bool ready: false
+                            // Read the current state from the "alwaysExpanded" flag
+                            // in statusbar.json. A missing file or flag counts as off.
+                            Process {
+                                command: ["bash", "-c", "grep -q '\"alwaysExpanded\"[[:space:]]*:[[:space:]]*true' ~/.config/ml4w/settings/statusbar.json && echo 1 || echo 0"]
+                                running: root.isOpen
+                                stdout: StdioCollector {
+                                    onStreamFinished: {
+                                        console.log("Test for Statusbar Expanded: " + this.text.trim())
+                                        statusbarExpandedSwitch.checked = (this.text.trim() === "1")
+                                        statusbarExpandedSwitch.ready = true
+                                    }
+                                }
+                            }
+                            onClicked: {
+                                if (!ready) return;
+                                // The statusbar owns the file write; just tell it
+                                // the new state via IPC. `checked` already
+                                // reflects the post-click position.
+                                let ipcCmd = checked
+                                ? "qs ipc call statusbar alwaysExpand"
+                                : "qs ipc call statusbar autoCollapse"
+                                console.log("Statusbar Expanded cmd: " + ipcCmd)
+                                Quickshell.execDetached(["bash", "-c", ipcCmd])
+                            }
+                        }
+                        Item { implicitWidth: 28 }
+                    }
+
                     // --- DOCK ---
                     RowLayout {
                         Layout.fillWidth: true
-                        Text { text: "Dock"; color: Theme.on_background; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Text { text: "Dock"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
                         Item { Layout.fillWidth: true }
                         ML4WSwitch {
                             id: dockSwitch
@@ -656,10 +819,41 @@ PanelWindow {
                         Item { implicitWidth: 28 }
                     }
 
+                    // --- DOCK AUTOHIDE ---
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Text { text: "Dock Autohide"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Item { Layout.fillWidth: true }
+                        ML4WSwitch {
+                            id: dockAutohideSwitch
+                            property bool ready: false
+                            Process {
+                                command: ["bash", "-c", "test -f ~/.config/ml4w/settings/dock-autohide && echo 1 || echo 0"]
+                                running: root.isOpen
+                                stdout: StdioCollector {
+                                    onStreamFinished: {
+                                        console.log("Test for Dock Autohide: " + this.text.trim())
+                                        dockAutohideSwitch.checked = (this.text.trim() === "1")
+                                        dockAutohideSwitch.ready = true
+                                    }
+                                }
+                            }
+                            onClicked: {
+                                if (!ready) return;
+                                let fileCmd = checked
+                                ? "mkdir -p ~/.config/ml4w/settings && touch ~/.config/ml4w/settings/dock-autohide"
+                                : "rm -f ~/.config/ml4w/settings/dock-autohide"
+                                console.log("Dock Autohide cmd: " + fileCmd)
+                                Quickshell.execDetached(["bash", "-c", fileCmd + "; " + Quickshell.env("HOME") + "/.config/nwg-dock-hyprland/launch.sh"])
+                            }
+                        }
+                        Item { implicitWidth: 28 }
+                    }
+
                     // --- GAMEMODE ---
                     RowLayout {
                         Layout.fillWidth: true
-                        Text { text: "Gamemode"; color: Theme.on_background; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Text { text: "Gamemode"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
                         Item { Layout.fillWidth: true }
                         ML4WSwitch {
                             id: gamemodeSwitch
@@ -677,7 +871,7 @@ PanelWindow {
                             }
                             onClicked: {
                                 if (!ready) return;
-                                Quickshell.execDetached(["hyprctl", "eval", "require('lib.game_mode').toggle()"])
+                                Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/hypr/scripts/gamemode.sh"])
                             }
                         }
                         Item { implicitWidth: 28 }
@@ -686,7 +880,7 @@ PanelWindow {
                     // --- FASTFETCH ---
                     RowLayout {
                         Layout.fillWidth: true
-                        Text { text: "Fastfetch"; color: Theme.on_background; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Text { text: "Fastfetch"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
                         Item { Layout.fillWidth: true }
                         ML4WSwitch {
                             id: fastfetchSwitch
@@ -710,54 +904,15 @@ PanelWindow {
                         Item { implicitWidth: 28 }
                     }
 
-                    // --- SIDEPAD ---
-                    RowLayout {
-                        Layout.fillWidth: true
-                        Text { text: "Sidepad"; color: Theme.on_background; font.family: Theme.fontFamily; font.pixelSize: 16 }
-                        Item { Layout.fillWidth: true }
-                        ML4WSwitch {
-                            id: sidepadSwitch
-                            onClicked: {
-                                if (checked) {
-                                    console.log("Launching sidebar...")
-                                    Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-sidepad --init"])
-                                } else {
-                                    console.log("Stopping sidebar...")
-                                    Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-sidepad --kill"])
-                                }
-                            }
-                        }
-                        SettingsWheel {
-                            onClicked: sidepadMenu.open()
-                            Menu {
-                                id: sidepadMenu
-                                y: parent.height
-
-                                implicitWidth: 220
-                                padding: 8
-
-                                background: Rectangle { color: Theme.background; border.color: Theme.primary; border.width: 1; radius: 8 }
-                                ML4WMenuItem { text: "Select Sidepad"; onClicked: {
-                                        Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-sidepad --select"])
-                                    }
-                                }
-                                ML4WMenuItem { text: "Open Sidepad Folder"; onClicked: {
-                                        Quickshell.execDetached(["nautilus", Quickshell.env("HOME") + "/.config/sidepad/pads"])
-                                    }
-                                }
-                            }
-                        }
-                    }
-
                     Rectangle { Layout.fillWidth: true; implicitHeight: 1; color: Theme.primary; opacity: 0.3; Layout.topMargin: 5; Layout.bottomMargin: 5 }
 
                     // --- WALLPAPER ---
                     RowLayout {
                         Layout.fillWidth: true
-                        Text { text: "Wallpaper"; color: Theme.on_background; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Text { text: "Wallpaper"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
                         Item { Layout.fillWidth: true }
                         ActionIcon {
-                            iconTxt: ""
+                            iconSrc: "../shared/icons/wallpaper.svg"
                             onClicked: {
                                 root.isOpen = false
                                 Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-wallpaper-app"])
@@ -768,10 +923,10 @@ PanelWindow {
                     // --- THEME ---
                     RowLayout {
                         Layout.fillWidth: true
-                        Text { text: "Theme"; color: Theme.on_background; font.family: Theme.fontFamily; font.pixelSize: 16 }
+                        Text { text: "Theme"; color: Theme.primary; font.family: Theme.fontFamily; font.pixelSize: 16 }
                         Item { Layout.fillWidth: true }
                         ActionIcon {
-                            iconTxt: ""
+                            iconSrc: "../shared/icons/theme.svg"
                             onClicked: {
                                 root.isOpen = false
                                 Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/themes/themes.sh"])
