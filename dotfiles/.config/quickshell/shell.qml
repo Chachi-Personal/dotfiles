@@ -5,7 +5,7 @@ import "PowerApp"
 import "SidebarApp"
 import "CalendarApp"
 import "WallpaperApp"
-import "StatusbarApp"
+import "WaybarApp"
 import "CustomTheme"
 
 ShellRoot {
@@ -30,7 +30,7 @@ ShellRoot {
     // adds or removes its bar automatically.
     Variants {
         model: Quickshell.screens
-        StatusbarWindow {
+        WaybarWindow {
             required property var modelData
             screen: modelData
         }
