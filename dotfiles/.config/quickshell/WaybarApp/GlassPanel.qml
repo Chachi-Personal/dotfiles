@@ -8,14 +8,40 @@ import qs.WaybarApp
 // border, a translucent dark gradient fill (brighter towards the bottom, like
 // the CSS radial-gradient anchored below the bar) and an inset top highlight
 // standing in for the CSS `box-shadow: inset 1px 2px 2px rgba(255,255,255,.2)`.
+//
+// The island can "melt" downwards: when `expanded` is set, the whole shape
+// stretches to make room for `expansionComponent` below the module row —
+// border and fill stay one continuous rounded rectangle, so the dropdown is
+// seamlessly connected to the bar.
 Item {
     id: panel
 
     default property alias content: row.data
 
+    // --- melting-glass expansion ---
+    property bool expanded: false
+    property Component expansionComponent: null
+
+    readonly property real expansionHeight: expansionLoader.item !== null ? expansionLoader.item.implicitHeight : 0
+    // Animated portion of the expansion currently visible.
+    property real revealed: expanded ? expansionHeight : 0
+    Behavior on revealed {
+        NumberAnimation {
+            duration: 350
+            easing.type: Easing.OutQuint
+        }
+    }
+
     implicitWidth: row.implicitWidth
-    implicitHeight: Waybar.moduleHeight
-    opacity: 0.8
+    implicitHeight: Waybar.moduleHeight + revealed
+    // Slightly less translucent while expanded so the dropdown stays readable
+    // over whatever is behind it.
+    opacity: expanded ? 0.92 : 0.8
+    Behavior on opacity {
+        NumberAnimation {
+            duration: 350
+        }
+    }
 
     // Border layer: the fill is inset 1px so the gradient shows as a rim.
     Rectangle {
@@ -75,8 +101,32 @@ Item {
 
     RowLayout {
         id: row
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.top: parent.top
+        height: Waybar.moduleHeight
         // waybar "spacing": 0 — modules bring their own 8px side margins.
         spacing: 0
+    }
+
+    // Dropdown content, revealed as the island stretches down.
+    Item {
+        anchors.top: parent.top
+        anchors.topMargin: Waybar.moduleHeight
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.leftMargin: 1
+        anchors.rightMargin: 1
+        anchors.bottomMargin: 1
+        clip: true
+
+        Loader {
+            id: expansionLoader
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            // Keep the content alive while the collapse animation runs.
+            active: panel.expanded || panel.revealed > 0.5
+            sourceComponent: panel.expansionComponent
+        }
     }
 }

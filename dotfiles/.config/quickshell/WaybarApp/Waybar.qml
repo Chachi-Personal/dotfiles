@@ -65,6 +65,10 @@ Singleton {
     // Emitted by the IPC refresh hook; the updates module re-runs its check.
     signal updatesRefreshRequested
 
+    // Emitted by the IPC panel hook; the focused monitor's bar toggles the
+    // named dropdown (audio | bluetooth | network).
+    signal panelRequested(string name)
+
     IpcHandler {
         target: "statusbar"
 
@@ -85,6 +89,11 @@ Singleton {
         }
         function refresh(): void {
             reload();
+        }
+        // Toggle a dropdown panel (audio | bluetooth | network) on the
+        // focused monitor's bar.
+        function panel(name: string): void {
+            root.panelRequested(name);
         }
         // Kept so existing SidebarApp switches / keybindings don't error. The
         // waybar-style bar has no collapsed pill mode, so these do nothing.

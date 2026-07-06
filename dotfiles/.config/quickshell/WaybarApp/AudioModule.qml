@@ -1,14 +1,18 @@
-import Quickshell
 import Quickshell.Services.Pipewire
 import QtQuick
 import qs.CustomTheme
 import qs.WaybarApp
 
 // pulseaudio: "{icon}  {volume}% {format_source}" — default sink volume plus
-// the mic volume while the default source is unmuted. Wheel steps ±2%
-// (scroll-step), left click opens pavucontrol, right click toggles mute.
+// the mic volume while the default source is unmuted. Left click opens the
+// audio dropdown panel, right click toggles mute, the wheel steps ±2%.
 Item {
     id: audio
+
+    // True while this module's dropdown panel is open (set by WaybarWindow).
+    property bool panelOpen: false
+    // Emitted on left click; WaybarWindow toggles the dropdown.
+    signal dropdownRequested
 
     readonly property PwNode sink: Pipewire.defaultAudioSink
     readonly property PwNode source: Pipewire.defaultAudioSource
@@ -20,8 +24,11 @@ Item {
     readonly property bool micLive: sourceReady && !source.audio.muted
     readonly property int micVolume: sourceReady ? Math.round(source.audio.volume * 100) : 0
 
-    // default icons ["","",""] by volume third; "" when muted.
+    // default icons ["","",""] by volume third; ""
+    // when muted.
     readonly property string icon: muted ? "" : volume < 34 ? "" : ""
+
+    readonly property color fg: panelOpen ? Theme.primary : Theme.on_surface
 
     PwObjectTracker {
         objects: [audio.sink, audio.source].filter(n => n !== null)
@@ -38,7 +45,7 @@ Item {
         Text {
             anchors.verticalCenter: parent.verticalCenter
             text: audio.icon
-            color: Theme.on_surface
+            color: audio.fg
             font.family: Waybar.iconFontFamily
             font.pixelSize: Waybar.fontSize
         }
@@ -46,7 +53,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             visible: !audio.muted
             text: audio.volume + "%"
-            color: Theme.on_surface
+            color: audio.fg
             font.family: Theme.fontFamily
             font.pixelSize: Waybar.fontSize
         }
@@ -54,7 +61,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             visible: audio.micLive
             text: audio.micVolume + "%"
-            color: Theme.on_surface
+            color: audio.fg
             font.family: Theme.fontFamily
             font.pixelSize: Waybar.fontSize
         }
@@ -62,7 +69,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             visible: audio.micLive
             text: ""
-            color: Theme.on_surface
+            color: audio.fg
             font.family: Waybar.iconFontFamily
             font.pixelSize: Waybar.fontSize
         }
@@ -77,7 +84,7 @@ Item {
                 if (audio.sinkReady)
                     audio.sink.audio.muted = !audio.sink.audio.muted;
             } else {
-                Quickshell.execDetached(["pavucontrol"]);
+                audio.dropdownRequested();
             }
         }
         onWheel: wheel => {
