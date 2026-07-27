@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Add Pinyin
+GenericName=Pinyin Annotator
+Comment=Annotate Chinese text with ToneOZ pinyin (IVS) and preview it
+Exec=uv run --directory /home/chachi/Documents/code/projects/add_pinyin gui.py
+Path=/home/chachi/Documents/code/projects/add_pinyin
+Icon=/home/chachi/Documents/code/projects/add_pinyin/public/add-pinyin.svg
+Terminal=false
+Categories=Education;Languages;
+Keywords=pinyin;chinese;chinese;ivs;toneoz;annotate;
+StartupNotify=true

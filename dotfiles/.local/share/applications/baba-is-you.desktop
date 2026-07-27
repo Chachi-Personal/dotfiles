@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Baba Is You
+Exec="/home/chachi/Programs/Baba Is You/start"
+Icon=/home/chachi/Programs/Baba Is You/game/icon.bmp
+Type=Application
+Categories=Game;
+StartupNotify=true

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Neovim
+Exec=/home/chachi/.local/bin/nvim-xdg-wrapper.sh $F
+Terminal=false
+Icon=nvim
+MimeType=text/plain;text/markdown;text/x-markdown;text/x-objective-c;

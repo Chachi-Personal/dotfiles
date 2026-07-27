@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Microsoft Teams (PWA)
+Exec=/opt/helium-browser-bin/helium-wrapper --profile-directory=Default --app-id=cifhbcnohmdccbgoicgdjpfamggdegmo
+Icon=chrome-cifhbcnohmdccbgoicgdjpfamggdegmo-Default
+StartupWMClass=crx_cifhbcnohmdccbgoicgdjpfamggdegmo

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Whatsapp
+GenericName=Whatsapp
+Comment=Messenger application
+TryExec=brave
+Exec=brave --app=https://web.whatsapp.com %F
+Terminal=false
+Type=Application
+Keywords=Messenger;Chat;Social;
+Icon=whatsapp
+Categories=Network;InstantMessaging;
+StartupNotify=true

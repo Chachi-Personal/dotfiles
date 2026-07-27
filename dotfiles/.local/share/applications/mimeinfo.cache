@@ -1,0 +1,11 @@
+[MIME Cache]
+text/markdown=nvim.desktop;
+text/plain=nvim.desktop;
+text/x-markdown=nvim.desktop;
+text/x-objective-c=nvim.desktop;
+x-scheme-handler/chromium=chrome-pkooggnaalmfkidjmlhoelhdllpphaga-Default.desktop;
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop;
+x-scheme-handler/mailto=chrome-pkooggnaalmfkidjmlhoelhdllpphaga-Default.desktop;
+x-scheme-handler/mw-matlab=mw-matlab.desktop;
+x-scheme-handler/mw-matlabconnector=mw-matlabconnector.desktop;
+x-scheme-handler/mw-simulink=mw-simulink.desktop;
