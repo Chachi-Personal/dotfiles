@@ -114,3 +114,23 @@ docs/.vitepress/cache
 
 # devicon
 docs/.vitepress/devicon
+/dotfiles/.config/btop/themes/matugen.theme
+/dotfiles/.config/gtk-3.0/colors.css
+/dotfiles/.config/gtk-4.0/colors.css
+/dotfiles/.config/hypr/colors.conf
+/dotfiles/.config/hypr/colors.lua
+/dotfiles/.config/kitty/colors-matugen.conf
+/dotfiles/.config/ml4w/colors/onprimary
+/dotfiles/.config/ml4w/colors/onsurface
+/dotfiles/.config/ml4w/colors/primary
+/dotfiles/.config/ml4w/colors/secondary
+/dotfiles/.config/nwg-dock-hyprland/colors.css
+/dotfiles/.config/ohmyposh/colors.json
+/dotfiles/.config/ohmyposh/EDM115-newline.omp.json
+/dotfiles/.config/ml4w/colors/colors.json
+/dotfiles/.config/quickshell/CustomTheme/Theme.qml
+/dotfiles/.config/quickshell/overview/common/Appearance.colors.qml
+/dotfiles/.config/rofi/colors.rasi
+/dotfiles/.config/swaync/colors.css
+/dotfiles/.config/walker/colors.css
+/dotfiles/.config/waybar/colors.css
