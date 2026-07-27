@@ -1,0 +1,1707 @@
+{
+  ".config/astro_nvim/.luarc.json": {
+    "mtime": 1782997213.9292448,
+    "ast_hash": "b455ff536bfeae8f54dfb259318bb9cb",
+    "semantic_hash": "b455ff536bfeae8f54dfb259318bb9cb"
+  },
+  ".config/astro_nvim/.neoconf.json": {
+    "mtime": 1782997213.9292448,
+    "ast_hash": "4e9be0068e31d3b1d9ace5ecb7d67d46",
+    "semantic_hash": "4e9be0068e31d3b1d9ace5ecb7d67d46"
+  },
+  ".config/astro_nvim/init.lua": {
+    "mtime": 1782997213.9292448,
+    "ast_hash": "4a4c3738bb0922f5bcae6172fb38123b",
+    "semantic_hash": "4a4c3738bb0922f5bcae6172fb38123b"
+  },
+  ".config/astro_nvim/lazy-lock.json": {
+    "mtime": 1782997213.9292448,
+    "ast_hash": "b7dc0482d2a6002f86eeaf2f9776322c",
+    "semantic_hash": "b7dc0482d2a6002f86eeaf2f9776322c"
+  },
+  ".config/astro_nvim/lua/community.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "93ae11c8c970c138848e4a0095b51cc4",
+    "semantic_hash": "93ae11c8c970c138848e4a0095b51cc4"
+  },
+  ".config/astro_nvim/lua/lazy_setup.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "2bd6b54b7d37a1eff8029c2981c60d93",
+    "semantic_hash": "2bd6b54b7d37a1eff8029c2981c60d93"
+  },
+  ".config/astro_nvim/lua/plugins/astrocore.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "000703e7b499672e188e185bd4b3627a",
+    "semantic_hash": "000703e7b499672e188e185bd4b3627a"
+  },
+  ".config/astro_nvim/lua/plugins/astrolsp.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "1e20b9c5d9323acf4e6d007f18b92732",
+    "semantic_hash": "1e20b9c5d9323acf4e6d007f18b92732"
+  },
+  ".config/astro_nvim/lua/plugins/astroui.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "d8911c7d9d3a9875bc228cec7f5ba22c",
+    "semantic_hash": "d8911c7d9d3a9875bc228cec7f5ba22c"
+  },
+  ".config/astro_nvim/lua/plugins/mason.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "272ea7d71944ae58cd4e79b4b1e3b7e4",
+    "semantic_hash": "272ea7d71944ae58cd4e79b4b1e3b7e4"
+  },
+  ".config/astro_nvim/lua/plugins/none-ls.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "ad7557a82d3704eb889ebc400248bb99",
+    "semantic_hash": "ad7557a82d3704eb889ebc400248bb99"
+  },
+  ".config/astro_nvim/lua/plugins/treesitter.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "18fe198094ead19021a8466703facaf8",
+    "semantic_hash": "18fe198094ead19021a8466703facaf8"
+  },
+  ".config/astro_nvim/lua/plugins/user.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "1baaa6563324fff31d0c5d9c8cb9b0c7",
+    "semantic_hash": "1baaa6563324fff31d0c5d9c8cb9b0c7"
+  },
+  ".config/astro_nvim/lua/polish.lua": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "cace30fa7681f89c03dd736316bda193",
+    "semantic_hash": "cace30fa7681f89c03dd736316bda193"
+  },
+  ".config/astro_nvim/snippets/package.json": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "0c08d57861d1f179fed559f01a18287d",
+    "semantic_hash": "0c08d57861d1f179fed559f01a18287d"
+  },
+  ".config/astro_nvim/snippets/python.json": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "dd590b2121095359c022d3c2f5f6135c",
+    "semantic_hash": "dd590b2121095359c022d3c2f5f6135c"
+  },
+  ".config/astro_nvim/snippets/typst.json": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "d6b2afd5e506a669cd69fdc32857878a",
+    "semantic_hash": "d6b2afd5e506a669cd69fdc32857878a"
+  },
+  ".config/hypr/.luarc.json": {
+    "mtime": 1782945462.4407964,
+    "ast_hash": "7da62ea54025e1a23093b496fe05c628",
+    "semantic_hash": "7da62ea54025e1a23093b496fe05c628"
+  },
+  ".config/hypr/conf/animation.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "348bcb60ef18da9dd85be8163f02b2ff",
+    "semantic_hash": "348bcb60ef18da9dd85be8163f02b2ff"
+  },
+  ".config/hypr/conf/autostart.lua": {
+    "mtime": 1783896437.723005,
+    "ast_hash": "7751ed7b51100dc8d4ccd1c6b61f06e5",
+    "semantic_hash": "7751ed7b51100dc8d4ccd1c6b61f06e5"
+  },
+  ".config/hypr/conf/decoration.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "97dc26f12fc3953457bae6c5a05a3100",
+    "semantic_hash": "97dc26f12fc3953457bae6c5a05a3100"
+  },
+  ".config/hypr/conf/decorations/gamemode.lua": {
+    "mtime": 1782945462.4351017,
+    "ast_hash": "6ab39af863f552633da7ceafbb524169",
+    "semantic_hash": "6ab39af863f552633da7ceafbb524169"
+  },
+  ".config/hypr/conf/environment.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "85dd6e8e5d64a244ad7c332a234b8b87",
+    "semantic_hash": "85dd6e8e5d64a244ad7c332a234b8b87"
+  },
+  ".config/hypr/conf/events.lua": {
+    "mtime": 1785123921.4378624,
+    "ast_hash": "681c14a8ed3a76a255798b725885ddbf",
+    "semantic_hash": "681c14a8ed3a76a255798b725885ddbf"
+  },
+  ".config/hypr/conf/gesture.lua": {
+    "mtime": 1783373250.9418383,
+    "ast_hash": "b0407749e595b73a1c136e90614777bf",
+    "semantic_hash": "b0407749e595b73a1c136e90614777bf"
+  },
+  ".config/hypr/conf/input.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "369b872778a99993fd31d7f062dff7a8",
+    "semantic_hash": "369b872778a99993fd31d7f062dff7a8"
+  },
+  ".config/hypr/conf/keybinding.lua": {
+    "mtime": 1785111910.1238565,
+    "ast_hash": "048da93f02bf64c368fbc29ecb448814",
+    "semantic_hash": "048da93f02bf64c368fbc29ecb448814"
+  },
+  ".config/hypr/conf/layout.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "440ec4648b8825951d47bf2e365b39dd",
+    "semantic_hash": "440ec4648b8825951d47bf2e365b39dd"
+  },
+  ".config/hypr/conf/misc.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "991c9a07fc7f2a8c59d94229a49660d6",
+    "semantic_hash": "991c9a07fc7f2a8c59d94229a49660d6"
+  },
+  ".config/hypr/conf/monitors.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "cc14f4b39a9f05036b2715ba839e70c8",
+    "semantic_hash": "cc14f4b39a9f05036b2715ba839e70c8"
+  },
+  ".config/hypr/conf/window.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "230f00f6b88d802044f5b84d55f3a07a",
+    "semantic_hash": "230f00f6b88d802044f5b84d55f3a07a"
+  },
+  ".config/hypr/conf/windowrule.lua": {
+    "mtime": 1783296336.1484861,
+    "ast_hash": "bb46f140d01c30186f791cd0fa062a8e",
+    "semantic_hash": "bb46f140d01c30186f791cd0fa062a8e"
+  },
+  ".config/hypr/conf/workspace.lua": {
+    "mtime": 1782945462.4381704,
+    "ast_hash": "9cd2683e823ad905dace9662d34c91f5",
+    "semantic_hash": "9cd2683e823ad905dace9662d34c91f5"
+  },
+  ".config/hypr/hyprland.lua": {
+    "mtime": 1782945462.4432623,
+    "ast_hash": "3efd6de04b2277ac0f1a39475ce5abd3",
+    "semantic_hash": "3efd6de04b2277ac0f1a39475ce5abd3"
+  },
+  ".config/hypr/lib/game_mode.lua": {
+    "mtime": 1783297464.8699718,
+    "ast_hash": "2445ea86dda416b233d16a2dd848a0bc",
+    "semantic_hash": "2445ea86dda416b233d16a2dd848a0bc"
+  },
+  ".config/hypr/lib/keybindings.lua": {
+    "mtime": 1782945462.4419212,
+    "ast_hash": "7207a9daa97c666d70e4a0b72f831656",
+    "semantic_hash": "7207a9daa97c666d70e4a0b72f831656"
+  },
+  ".config/hypr/lib/maximize.lua": {
+    "mtime": 1782945462.4419212,
+    "ast_hash": "49cea0fe62cc7c95f3d9520ee7a61689",
+    "semantic_hash": "49cea0fe62cc7c95f3d9520ee7a61689"
+  },
+  ".config/hypr/lib/notifications.lua": {
+    "mtime": 1782945462.4419212,
+    "ast_hash": "45e62cac74dcbd528a26506e3e0c4b49",
+    "semantic_hash": "45e62cac74dcbd528a26506e3e0c4b49"
+  },
+  ".config/hypr/lib/submap.lua": {
+    "mtime": 1782945462.4419212,
+    "ast_hash": "ed330f5c9f2a363f4db97d5355d37288",
+    "semantic_hash": "ed330f5c9f2a363f4db97d5355d37288"
+  },
+  ".config/hypr/lib/variant.lua": {
+    "mtime": 1783372878.9081647,
+    "ast_hash": "4f63a989e5634d7deb506087e81488b1",
+    "semantic_hash": "4f63a989e5634d7deb506087e81488b1"
+  },
+  ".config/hypr/monitors.lua": {
+    "mtime": 1784386809.402114,
+    "ast_hash": "2c0e4e4e2dc195bd23e425347df96176",
+    "semantic_hash": "2c0e4e4e2dc195bd23e425347df96176"
+  },
+  ".config/hypr/scripts/cleanup.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "0069ef911d0faf4d87b92bd50919d7fd",
+    "semantic_hash": "0069ef911d0faf4d87b92bd50919d7fd"
+  },
+  ".config/hypr/scripts/gtk.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "0f621e3e21561bab3558ef0f19db7c3c",
+    "semantic_hash": "0f621e3e21561bab3558ef0f19db7c3c"
+  },
+  ".config/hypr/scripts/hypridle.sh": {
+    "mtime": 1782945462.4396498,
+    "ast_hash": "578393955b30771114e9c09c006de009",
+    "semantic_hash": "578393955b30771114e9c09c006de009"
+  },
+  ".config/hypr/scripts/hyprshade.sh": {
+    "mtime": 1782945462.4396498,
+    "ast_hash": "d4b2e1658a99546f8d87181ff79e4258",
+    "semantic_hash": "d4b2e1658a99546f8d87181ff79e4258"
+  },
+  ".config/hypr/scripts/keybindings.sh": {
+    "mtime": 1782945462.4396498,
+    "ast_hash": "3c2e8f31f76799a9e9b10b80cd04b5a8",
+    "semantic_hash": "3c2e8f31f76799a9e9b10b80cd04b5a8"
+  },
+  ".config/hypr/scripts/launcher.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "915a4f401acb26ad043de3dfdd838f1b",
+    "semantic_hash": "915a4f401acb26ad043de3dfdd838f1b"
+  },
+  ".config/hypr/scripts/load-gamemode.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "389164d5922f7ea3b451cf88771d0842",
+    "semantic_hash": "389164d5922f7ea3b451cf88771d0842"
+  },
+  ".config/hypr/scripts/loadconfig.sh": {
+    "mtime": 1782945462.4396498,
+    "ast_hash": "e14d6c6647fcc68f904b6921cf9a0623",
+    "semantic_hash": "e14d6c6647fcc68f904b6921cf9a0623"
+  },
+  ".config/hypr/scripts/moveTo.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "d735bbb5074ec29582916790334ec6d3",
+    "semantic_hash": "d735bbb5074ec29582916790334ec6d3"
+  },
+  ".config/hypr/scripts/power.sh": {
+    "mtime": 1782945462.4396498,
+    "ast_hash": "b308d2534a304cf2d734e2d4d40b5703",
+    "semantic_hash": "b308d2534a304cf2d734e2d4d40b5703"
+  },
+  ".config/hypr/scripts/refresh-lock.sh": {
+    "mtime": 1782945462.4396498,
+    "ast_hash": "73d60f2257856a46c09c7d2c8960ccc8",
+    "semantic_hash": "73d60f2257856a46c09c7d2c8960ccc8"
+  },
+  ".config/hypr/scripts/restart-hypridle.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "1a2b271b6e21128757c9f5d09ed0fbb9",
+    "semantic_hash": "1a2b271b6e21128757c9f5d09ed0fbb9"
+  },
+  ".config/hypr/scripts/screenshot.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "306c092685cb74c414efe7138b965b12",
+    "semantic_hash": "306c092685cb74c414efe7138b965b12"
+  },
+  ".config/hypr/scripts/systeminfo.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "fed229956d70917d502bebc53b4934a3",
+    "semantic_hash": "fed229956d70917d502bebc53b4934a3"
+  },
+  ".config/hypr/scripts/text-extractor.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "5614ed5cb1b79b560862b7f5bc4ac0eb",
+    "semantic_hash": "5614ed5cb1b79b560862b7f5bc4ac0eb"
+  },
+  ".config/hypr/scripts/toggle-animations.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "f69143e79a6170f82123b9253efafc11",
+    "semantic_hash": "f69143e79a6170f82123b9253efafc11"
+  },
+  ".config/hypr/scripts/toggleallfloat.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "7d2c930850f98c554e84c9efa7275ece",
+    "semantic_hash": "7d2c930850f98c554e84c9efa7275ece"
+  },
+  ".config/hypr/scripts/workspace.sh": {
+    "mtime": 1782945462.4396498,
+    "ast_hash": "04b457626ee61060b53db1df34dee94d",
+    "semantic_hash": "04b457626ee61060b53db1df34dee94d"
+  },
+  ".config/hypr/scripts/xdg.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "c90803b19e1c04760563acb4960c229b",
+    "semantic_hash": "c90803b19e1c04760563acb4960c229b"
+  },
+  ".config/matugen/templates/colors.json": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "4fb296ca81d5a00aa722327192c00fcc",
+    "semantic_hash": "4fb296ca81d5a00aa722327192c00fcc"
+  },
+  ".config/matugen/templates/hyprland-colors.lua": {
+    "mtime": 1782945478.450823,
+    "ast_hash": "57d836b607d12fb8557434ef9d6f3cb0",
+    "semantic_hash": "57d836b607d12fb8557434ef9d6f3cb0"
+  },
+  ".config/matugen/templates/nmtui-colors.sh": {
+    "mtime": 1782945478.450823,
+    "ast_hash": "f92848835605eae46b862db17b7f723e",
+    "semantic_hash": "f92848835605eae46b862db17b7f723e"
+  },
+  ".config/matugen/templates/ohmyposh-colors.json": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "f2d918bca10c49a67486c7168f6894e6",
+    "semantic_hash": "f2d918bca10c49a67486c7168f6894e6"
+  },
+  ".config/matugen/templates/ohmyposh.json": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "1f36c8c80109e4a0baa3983de78eb9e1",
+    "semantic_hash": "1f36c8c80109e4a0baa3983de78eb9e1"
+  },
+  ".config/matugen/templates/pywalfox-colors.json": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "75ada5491386fdb7baed5a5a96af9eed",
+    "semantic_hash": "75ada5491386fdb7baed5a5a96af9eed"
+  },
+  ".config/ml4w/bin/ml4w-apps": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "d1e3a4a92196d53445b86a1998985759",
+    "semantic_hash": "d1e3a4a92196d53445b86a1998985759"
+  },
+  ".config/ml4w/bin/ml4w-finder": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "b122502a40a6b8f06f13fa2f9804e3ac",
+    "semantic_hash": "b122502a40a6b8f06f13fa2f9804e3ac"
+  },
+  ".config/ml4w/bin/ml4w-quicklinks": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "995b325572afc59e224be0dad6e917f7",
+    "semantic_hash": "995b325572afc59e224be0dad6e917f7"
+  },
+  ".config/ml4w/bin/ml4w-screenshot": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "518af6fe94f2ae6b7e6dfdfe318f7dea",
+    "semantic_hash": "518af6fe94f2ae6b7e6dfdfe318f7dea"
+  },
+  ".config/ml4w/bin/ml4w-wallpaper": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "ebe5496ea9bd541810b1ad5b3a1074f6",
+    "semantic_hash": "ebe5496ea9bd541810b1ad5b3a1074f6"
+  },
+  ".config/ml4w/library.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "4ad9c6be5bfb279958bbe3f08817ce96",
+    "semantic_hash": "4ad9c6be5bfb279958bbe3f08817ce96"
+  },
+  ".config/ml4w/listeners.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "a3dae95412a53b0f407b8656a1448d4f",
+    "semantic_hash": "a3dae95412a53b0f407b8656a1448d4f"
+  },
+  ".config/ml4w/listeners/gtk-theme-switcher.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "c6c28bc8234f01c70b84b9443cacdb9e",
+    "semantic_hash": "c6c28bc8234f01c70b84b9443cacdb9e"
+  },
+  ".config/ml4w/listeners/low-bat-notification.sh": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "447694a29c1231ebbad89ed803b3826e",
+    "semantic_hash": "447694a29c1231ebbad89ed803b3826e"
+  },
+  ".config/ml4w/scripts/ml4w-arch-cleanup": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "17c41172abf81f6ddbf48fee6ff372d7",
+    "semantic_hash": "17c41172abf81f6ddbf48fee6ff372d7"
+  },
+  ".config/ml4w/scripts/ml4w-ascii-header": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "7719e2372ef0c11ee6b29046df9831c5",
+    "semantic_hash": "7719e2372ef0c11ee6b29046df9831c5"
+  },
+  ".config/ml4w/scripts/ml4w-autostart": {
+    "mtime": 1783676431.9258099,
+    "ast_hash": "d882dcc668ec2d59045d7c37ebd6adb7",
+    "semantic_hash": "d882dcc668ec2d59045d7c37ebd6adb7"
+  },
+  ".config/ml4w/scripts/ml4w-change-shell": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "806ca796f726f0b46319801638c62212",
+    "semantic_hash": "806ca796f726f0b46319801638c62212"
+  },
+  ".config/ml4w/scripts/ml4w-check-dotfiles-update": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "ac489b269f3fa3dc52f17dfbfe086253",
+    "semantic_hash": "ac489b269f3fa3dc52f17dfbfe086253"
+  },
+  ".config/ml4w/scripts/ml4w-check-system-updates": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "987d619d4184373e3b5100042dc87230",
+    "semantic_hash": "987d619d4184373e3b5100042dc87230"
+  },
+  ".config/ml4w/scripts/ml4w-clear-wallpaper-cache": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "7285fb6a2db656cc59fd2e7a30639571",
+    "semantic_hash": "7285fb6a2db656cc59fd2e7a30639571"
+  },
+  ".config/ml4w/scripts/ml4w-cliphist": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "6d118324566fb52ceb06f2c5bc15495b",
+    "semantic_hash": "6d118324566fb52ceb06f2c5bc15495b"
+  },
+  ".config/ml4w/scripts/ml4w-command-exists": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "ed630de153ab063dc351ca844abff75e",
+    "semantic_hash": "ed630de153ab063dc351ca844abff75e"
+  },
+  ".config/ml4w/scripts/ml4w-dotfiles-id": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "8f010bcd8df0039acd6dfa60a701b69a",
+    "semantic_hash": "8f010bcd8df0039acd6dfa60a701b69a"
+  },
+  ".config/ml4w/scripts/ml4w-flatpak-installed": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "084f59a63c148d51f5c7dc45f7bd3642",
+    "semantic_hash": "084f59a63c148d51f5c7dc45f7bd3642"
+  },
+  ".config/ml4w/scripts/ml4w-hyprsysteminfo": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "010162401d7f283f5503094303052b53",
+    "semantic_hash": "010162401d7f283f5503094303052b53"
+  },
+  ".config/ml4w/scripts/ml4w-install-hyprlandsettings": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "972a5b6e0ba4445dc2a317801626930f",
+    "semantic_hash": "972a5b6e0ba4445dc2a317801626930f"
+  },
+  ".config/ml4w/scripts/ml4w-install-hyprmod": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f52a5129a1f480511af9b633fad79de3",
+    "semantic_hash": "f52a5129a1f480511af9b633fad79de3"
+  },
+  ".config/ml4w/scripts/ml4w-install-nvim": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "81fbcbef9c5ca7160f579441a637cad4",
+    "semantic_hash": "81fbcbef9c5ca7160f579441a637cad4"
+  },
+  ".config/ml4w/scripts/ml4w-install-sddm": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "6a5452e2a691256426fc3f4abdeb55ca",
+    "semantic_hash": "6a5452e2a691256426fc3f4abdeb55ca"
+  },
+  ".config/ml4w/scripts/ml4w-install-system-updates": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "7b2fee37b91383e3d922df3141e729d4",
+    "semantic_hash": "7b2fee37b91383e3d922df3141e729d4"
+  },
+  ".config/ml4w/scripts/ml4w-install-system-updates_v2": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "52f5aa5b90a4be62c4ddd9b126b12db8",
+    "semantic_hash": "52f5aa5b90a4be62c4ddd9b126b12db8"
+  },
+  ".config/ml4w/scripts/ml4w-network": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "9c21651a9b434766d74b1c345a7f8636",
+    "semantic_hash": "9c21651a9b434766d74b1c345a7f8636"
+  },
+  ".config/ml4w/scripts/ml4w-notification-handler": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "0e0afd2770e0e752a75dfdad7b54df6e",
+    "semantic_hash": "0e0afd2770e0e752a75dfdad7b54df6e"
+  },
+  ".config/ml4w/scripts/ml4w-nvidia": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "d0309b0ac98b6d6d34945846f3815ec7",
+    "semantic_hash": "d0309b0ac98b6d6d34945846f3815ec7"
+  },
+  ".config/ml4w/scripts/ml4w-pacman": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "1b8933469f84bc626b05eb3124c48a21",
+    "semantic_hash": "1b8933469f84bc626b05eb3124c48a21"
+  },
+  ".config/ml4w/scripts/ml4w-power": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "aec97f37d050bdba7238b6839798bb12",
+    "semantic_hash": "aec97f37d050bdba7238b6839798bb12"
+  },
+  ".config/ml4w/scripts/ml4w-remove-conf": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "ba312842f42b7b60e6b49633216adba6",
+    "semantic_hash": "ba312842f42b7b60e6b49633216adba6"
+  },
+  ".config/ml4w/scripts/ml4w-sidepad": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "3bbbeaa671cb7f354f74cb80487846ff",
+    "semantic_hash": "3bbbeaa671cb7f354f74cb80487846ff"
+  },
+  ".config/ml4w/scripts/ml4w-snapshot": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "9d06cc7ca0f59e7a21b6bd6fdc20fc81",
+    "semantic_hash": "9d06cc7ca0f59e7a21b6bd6fdc20fc81"
+  },
+  ".config/ml4w/scripts/ml4w-toggle-allfloat": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "74bcc258691cd96fc9c3899e92a64d00",
+    "semantic_hash": "74bcc258691cd96fc9c3899e92a64d00"
+  },
+  ".config/ml4w/scripts/ml4w-toggle-fastfetch": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "7271d8613e53ce6fd93cbdf5f4ddfc4c",
+    "semantic_hash": "7271d8613e53ce6fd93cbdf5f4ddfc4c"
+  },
+  ".config/ml4w/scripts/ml4w-toggle-float-pin": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "1a9c40856922c7b039d07d2f5d68d8ea",
+    "semantic_hash": "1a9c40856922c7b039d07d2f5d68d8ea"
+  },
+  ".config/ml4w/scripts/ml4w-toggle-hyprsunset": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "79e2cf235fb898f3e306eb584c265222",
+    "semantic_hash": "79e2cf235fb898f3e306eb584c265222"
+  },
+  ".config/ml4w/scripts/ml4w-toggle-nmapplet": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "c0d9bc839aedcae4211f1e738cd216a4",
+    "semantic_hash": "c0d9bc839aedcae4211f1e738cd216a4"
+  },
+  ".config/ml4w/scripts/ml4w-toggle-scratchpad-window": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "4880c4b95c60288a2d36f0b8740d17f3",
+    "semantic_hash": "4880c4b95c60288a2d36f0b8740d17f3"
+  },
+  ".config/ml4w/scripts/ml4w-toggle-theme": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "cc28e6086f0e681da8a6fcf454232c50",
+    "semantic_hash": "cc28e6086f0e681da8a6fcf454232c50"
+  },
+  ".config/ml4w/scripts/ml4w-unlock-pacman": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "eac07a43cb42743f429c8a14cd6dcce1",
+    "semantic_hash": "eac07a43cb42743f429c8a14cd6dcce1"
+  },
+  ".config/ml4w/scripts/ml4w-wallpaper": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "1d3985260a190cde87be760faf83f797",
+    "semantic_hash": "1d3985260a190cde87be760faf83f797"
+  },
+  ".config/ml4w/scripts/ml4w-wallpaper-app": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "4eb37a773bd35e9685d5b6e43318b23a",
+    "semantic_hash": "4eb37a773bd35e9685d5b6e43318b23a"
+  },
+  ".config/ml4w/scripts/ml4w-wallpaper-automation": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "426305f8f71935111558ada4bf469a32",
+    "semantic_hash": "426305f8f71935111558ada4bf469a32"
+  },
+  ".config/ml4w/scripts/ml4w-wallpaper-effects": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "a05685388394b19d777330b1978eace0",
+    "semantic_hash": "a05685388394b19d777330b1978eace0"
+  },
+  ".config/ml4w/scripts/ml4w-wallpaper_v2": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "79b3ab9506c4fa8e9abb7bcbeba654e2",
+    "semantic_hash": "79b3ab9506c4fa8e9abb7bcbeba654e2"
+  },
+  ".config/ml4w/scripts/nm-applet.sh": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "c0d9bc839aedcae4211f1e738cd216a4",
+    "semantic_hash": "c0d9bc839aedcae4211f1e738cd216a4"
+  },
+  ".config/ml4w/scripts/now-playing.sh": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "445308e08575d83b93f47190a05819a1",
+    "semantic_hash": "445308e08575d83b93f47190a05819a1"
+  },
+  ".config/ml4w/scripts/shell.sh": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "806ca796f726f0b46319801638c62212",
+    "semantic_hash": "806ca796f726f0b46319801638c62212"
+  },
+  ".config/ml4w/scripts/toggle-theme.sh": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "cc28e6086f0e681da8a6fcf454232c50",
+    "semantic_hash": "cc28e6086f0e681da8a6fcf454232c50"
+  },
+  ".config/ml4w/scripts/updates.sh": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "987d619d4184373e3b5100042dc87230",
+    "semantic_hash": "987d619d4184373e3b5100042dc87230"
+  },
+  ".config/ml4w/scripts/wlogout.sh": {
+    "mtime": 1782945486.855064,
+    "ast_hash": "e9692c93784771e32813e54c6fac5fd2",
+    "semantic_hash": "e9692c93784771e32813e54c6fac5fd2"
+  },
+  ".config/ml4w/settings/ai.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "06a84a0d10d4ab391007f0d203408de4",
+    "semantic_hash": "06a84a0d10d4ab391007f0d203408de4"
+  },
+  ".config/ml4w/settings/aur.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "6ed8bd2d2040e75f5f464ac4fa09cc09",
+    "semantic_hash": "6ed8bd2d2040e75f5f464ac4fa09cc09"
+  },
+  ".config/ml4w/settings/bluetooth.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "2d7e296ec28601a56a1ac66808fa2286",
+    "semantic_hash": "2d7e296ec28601a56a1ac66808fa2286"
+  },
+  ".config/ml4w/settings/blur.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "673733e9bbcacfe06286057e68879397",
+    "semantic_hash": "673733e9bbcacfe06286057e68879397"
+  },
+  ".config/ml4w/settings/browser-incognito.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "b2671324b3b696d2c407b71bc33d5639",
+    "semantic_hash": "b2671324b3b696d2c407b71bc33d5639"
+  },
+  ".config/ml4w/settings/browser-tor.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "ed1a6fb5f79e631973a5091d3936c7d2",
+    "semantic_hash": "ed1a6fb5f79e631973a5091d3936c7d2"
+  },
+  ".config/ml4w/settings/browser.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "556a5f62a8a51020daa9afb81b4db244",
+    "semantic_hash": "556a5f62a8a51020daa9afb81b4db244"
+  },
+  ".config/ml4w/settings/calculator.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "4e4217a8489fee2a46003d5f5e3e4543",
+    "semantic_hash": "4e4217a8489fee2a46003d5f5e3e4543"
+  },
+  ".config/ml4w/settings/calendar.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "e10aef4d4868e4f7ec22e07e08864542",
+    "semantic_hash": "e10aef4d4868e4f7ec22e07e08864542"
+  },
+  ".config/ml4w/settings/editor.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "74c528d19a3654bf76e7db4b6091642f",
+    "semantic_hash": "74c528d19a3654bf76e7db4b6091642f"
+  },
+  ".config/ml4w/settings/emojipicker.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "0a6d3034d4934bdbc2fdfdad6ba44b28",
+    "semantic_hash": "0a6d3034d4934bdbc2fdfdad6ba44b28"
+  },
+  ".config/ml4w/settings/hyprpicker.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "9014eddd2a82514f04a79bcf0d64c9eb",
+    "semantic_hash": "9014eddd2a82514f04a79bcf0d64c9eb"
+  },
+  ".config/ml4w/settings/installselectedupdates.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "227847bf970b2672c340acd19507232b",
+    "semantic_hash": "227847bf970b2672c340acd19507232b"
+  },
+  ".config/ml4w/settings/installupdates.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "db1d5b1d704a20e54496e137d745a6a0",
+    "semantic_hash": "db1d5b1d704a20e54496e137d745a6a0"
+  },
+  ".config/ml4w/settings/networkmanager.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "823a85699b568b8991fbe5f06d584a55",
+    "semantic_hash": "823a85699b568b8991fbe5f06d584a55"
+  },
+  ".config/ml4w/settings/rofi_bordersize.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "c4ca4238a0b923820dcc509a6f75849b",
+    "semantic_hash": "c4ca4238a0b923820dcc509a6f75849b"
+  },
+  ".config/ml4w/settings/software.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
+  },
+  ".config/ml4w/settings/statusbar.json": {
+    "mtime": 1783366275.9323304,
+    "ast_hash": "36c5598a0e7ddd54b305c0d3693bf33d",
+    "semantic_hash": "36c5598a0e7ddd54b305c0d3693bf33d"
+  },
+  ".config/ml4w/settings/system-monitor.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "2f83b671875b890f9d00d68296a72f4f",
+    "semantic_hash": "2f83b671875b890f9d00d68296a72f4f"
+  },
+  ".config/ml4w/settings/terminal.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "f6508f1df142b51d59dcbc111ebe8db5",
+    "semantic_hash": "f6508f1df142b51d59dcbc111ebe8db5"
+  },
+  ".config/ml4w/settings/waybar-quicklinks.json": {
+    "mtime": 1782945486.8564298,
+    "ast_hash": "bab96e7b5cbdedbaa757bddfbd67e243",
+    "semantic_hash": "bab96e7b5cbdedbaa757bddfbd67e243"
+  },
+  ".config/ml4w/settings/waybar-theme.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "7e6f1ea8d3dd5c80109738b959b08aea",
+    "semantic_hash": "7e6f1ea8d3dd5c80109738b959b08aea"
+  },
+  ".config/ml4w/settings/waybar_appmenu.sh": {
+    "mtime": 1782945486.8564298,
+    "ast_hash": "2367d0d41ba13117405dfa47fdff7b3b",
+    "semantic_hash": "2367d0d41ba13117405dfa47fdff7b3b"
+  },
+  ".config/ml4w/settings/waybar_backlight.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f8320b26d30ab433c5a54546d21f414c",
+    "semantic_hash": "f8320b26d30ab433c5a54546d21f414c"
+  },
+  ".config/ml4w/settings/waybar_chatgpt.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f827cf462f62848df37c5e1e94a4da74",
+    "semantic_hash": "f827cf462f62848df37c5e1e94a4da74"
+  },
+  ".config/ml4w/settings/waybar_custom_timedateformat.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "68b329da9893e34099c7d8ad5cb9c940",
+    "semantic_hash": "68b329da9893e34099c7d8ad5cb9c940"
+  },
+  ".config/ml4w/settings/waybar_dateformat.sh": {
+    "mtime": 1782945486.8560693,
+    "ast_hash": "b10a19a85b7f63ea9b80351f66f73094",
+    "semantic_hash": "b10a19a85b7f63ea9b80351f66f73094"
+  },
+  ".config/ml4w/settings/waybar_network.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f827cf462f62848df37c5e1e94a4da74",
+    "semantic_hash": "f827cf462f62848df37c5e1e94a4da74"
+  },
+  ".config/ml4w/settings/waybar_quicklinks.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f8320b26d30ab433c5a54546d21f414c",
+    "semantic_hash": "f8320b26d30ab433c5a54546d21f414c"
+  },
+  ".config/ml4w/settings/waybar_screenlock.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f827cf462f62848df37c5e1e94a4da74",
+    "semantic_hash": "f827cf462f62848df37c5e1e94a4da74"
+  },
+  ".config/ml4w/settings/waybar_settings.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f827cf462f62848df37c5e1e94a4da74",
+    "semantic_hash": "f827cf462f62848df37c5e1e94a4da74"
+  },
+  ".config/ml4w/settings/waybar_systray.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f827cf462f62848df37c5e1e94a4da74",
+    "semantic_hash": "f827cf462f62848df37c5e1e94a4da74"
+  },
+  ".config/ml4w/settings/waybar_taskbar.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f827cf462f62848df37c5e1e94a4da74",
+    "semantic_hash": "f827cf462f62848df37c5e1e94a4da74"
+  },
+  ".config/ml4w/settings/waybar_timeformat.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "eacc748a3f8bac0d1258c27ad43239ec",
+    "semantic_hash": "eacc748a3f8bac0d1258c27ad43239ec"
+  },
+  ".config/ml4w/settings/waybar_timezone.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "68b329da9893e34099c7d8ad5cb9c940",
+    "semantic_hash": "68b329da9893e34099c7d8ad5cb9c940"
+  },
+  ".config/ml4w/settings/waybar_toggle.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f827cf462f62848df37c5e1e94a4da74",
+    "semantic_hash": "f827cf462f62848df37c5e1e94a4da74"
+  },
+  ".config/ml4w/settings/waybar_window.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "f827cf462f62848df37c5e1e94a4da74",
+    "semantic_hash": "f827cf462f62848df37c5e1e94a4da74"
+  },
+  ".config/ml4w/settings/waybar_workspaces.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "e4da3b7fbbce2345d7772b0674a318d5",
+    "semantic_hash": "e4da3b7fbbce2345d7772b0674a318d5"
+  },
+  ".config/ml4w/themes/glass-walker/theme.sh": {
+    "mtime": 1782945486.8597605,
+    "ast_hash": "19bed7f89855fd3401300e2c07afe4d8",
+    "semantic_hash": "19bed7f89855fd3401300e2c07afe4d8"
+  },
+  ".config/ml4w/themes/glass/theme.sh": {
+    "mtime": 1782945486.8598359,
+    "ast_hash": "40a974d773855280f6b6fd5457193a42",
+    "semantic_hash": "40a974d773855280f6b6fd5457193a42"
+  },
+  ".config/ml4w/themes/modern-walker/theme.sh": {
+    "mtime": 1782945486.8598773,
+    "ast_hash": "db13f8bc9fa313f774bb46ca83c671bf",
+    "semantic_hash": "db13f8bc9fa313f774bb46ca83c671bf"
+  },
+  ".config/ml4w/themes/modern/theme.sh": {
+    "mtime": 1782945486.8599184,
+    "ast_hash": "80c847848a6ef85d8defdcbece04789b",
+    "semantic_hash": "80c847848a6ef85d8defdcbece04789b"
+  },
+  ".config/ml4w/themes/themes.sh": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "c0cacad4bda6641c25d772dc217a01e2",
+    "semantic_hash": "c0cacad4bda6641c25d772dc217a01e2"
+  },
+  ".config/ml4w/themes/transparent/theme.sh": {
+    "mtime": 1782945486.859961,
+    "ast_hash": "7d27fb2482a7d8a9a4eccfb987ce2b0b",
+    "semantic_hash": "7d27fb2482a7d8a9a4eccfb987ce2b0b"
+  },
+  ".config/ml4w/version.json": {
+    "mtime": 1782997213.9359114,
+    "ast_hash": "113f1139e7c4afd633b0bb58f5840a9b",
+    "semantic_hash": "113f1139e7c4afd633b0bb58f5840a9b"
+  },
+  ".config/ml4w/version/library.sh": {
+    "mtime": 1782945486.8600984,
+    "ast_hash": "67e1d7e6a098d6919a69b05110673cea",
+    "semantic_hash": "67e1d7e6a098d6919a69b05110673cea"
+  },
+  ".config/ml4w/version/update.sh": {
+    "mtime": 1782945486.8600984,
+    "ast_hash": "7ef14649e1a9be8656d77dba72645e55",
+    "semantic_hash": "7ef14649e1a9be8656d77dba72645e55"
+  },
+  ".config/nvim/after/ftplugin/c.lua": {
+    "mtime": 1782945502.601732,
+    "ast_hash": "dc1f960a662f7b14203d63e87ec4e8ce",
+    "semantic_hash": "dc1f960a662f7b14203d63e87ec4e8ce"
+  },
+  ".config/nvim/after/ftplugin/cpp.lua": {
+    "mtime": 1782945502.601732,
+    "ast_hash": "e11218207fd22b975456a332fb4910f0",
+    "semantic_hash": "e11218207fd22b975456a332fb4910f0"
+  },
+  ".config/nvim/after/ftplugin/markdown.lua": {
+    "mtime": 1782945502.601732,
+    "ast_hash": "28cd5bcdd8aa306cab7d6f56d4bc8670",
+    "semantic_hash": "28cd5bcdd8aa306cab7d6f56d4bc8670"
+  },
+  ".config/nvim/after/ftplugin/typst.lua": {
+    "mtime": 1782945502.601732,
+    "ast_hash": "5ae02f973575fa37489ba1b4ccf28639",
+    "semantic_hash": "5ae02f973575fa37489ba1b4ccf28639"
+  },
+  ".config/nvim/init.lua": {
+    "mtime": 1782945502.601732,
+    "ast_hash": "cfce7eeb0b14bee6b707a62107494d7a",
+    "semantic_hash": "cfce7eeb0b14bee6b707a62107494d7a"
+  },
+  ".config/nvim/lsp/basedpyright.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "695abab60a8441236e7bbf753434c3c1",
+    "semantic_hash": "695abab60a8441236e7bbf753434c3c1"
+  },
+  ".config/nvim/lsp/bashls.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "a1b6792c4c8178d8f34037eda55244a9",
+    "semantic_hash": "a1b6792c4c8178d8f34037eda55244a9"
+  },
+  ".config/nvim/lsp/clangd.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "ae3a39dee82f0a7190836b901b1dd76e",
+    "semantic_hash": "ae3a39dee82f0a7190836b901b1dd76e"
+  },
+  ".config/nvim/lsp/cssls.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "11101bdb5454249d6e69c27d2b7ce125",
+    "semantic_hash": "11101bdb5454249d6e69c27d2b7ce125"
+  },
+  ".config/nvim/lsp/eslint.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "7365b825119043f8ce0231fe270c1ef4",
+    "semantic_hash": "7365b825119043f8ce0231fe270c1ef4"
+  },
+  ".config/nvim/lsp/html.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "3f696b83309d2cc5a77efa6ec9ea37dd",
+    "semantic_hash": "3f696b83309d2cc5a77efa6ec9ea37dd"
+  },
+  ".config/nvim/lsp/hyprls.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "f4eaf9d454b3890a6e4c56034bd7b94f",
+    "semantic_hash": "f4eaf9d454b3890a6e4c56034bd7b94f"
+  },
+  ".config/nvim/lsp/intelephense.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "06d0004247817fe3ec3c0dc28a80f4e3",
+    "semantic_hash": "06d0004247817fe3ec3c0dc28a80f4e3"
+  },
+  ".config/nvim/lsp/lua_ls.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "2d27a0f4741ef8dfc3d02dda7638d09a",
+    "semantic_hash": "2d27a0f4741ef8dfc3d02dda7638d09a"
+  },
+  ".config/nvim/lsp/marksman.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "a4d353eb5e1a5d77b1b59059e239f93b",
+    "semantic_hash": "a4d353eb5e1a5d77b1b59059e239f93b"
+  },
+  ".config/nvim/lsp/nixd.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "6735cdc51b09ee679a281160e0f620ee",
+    "semantic_hash": "6735cdc51b09ee679a281160e0f620ee"
+  },
+  ".config/nvim/lsp/qmlls.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "b37b2669922cd04a0beecac48cb044af",
+    "semantic_hash": "b37b2669922cd04a0beecac48cb044af"
+  },
+  ".config/nvim/lsp/ruff.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "9cdef916b13bc497201c393ad4361238",
+    "semantic_hash": "9cdef916b13bc497201c393ad4361238"
+  },
+  ".config/nvim/lsp/taplo.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "d2aefbb76218ccb8aecc0c9eb3b2b4b2",
+    "semantic_hash": "d2aefbb76218ccb8aecc0c9eb3b2b4b2"
+  },
+  ".config/nvim/lsp/tinymist.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "0ce790db424a0104d95cbb1cc72a3086",
+    "semantic_hash": "0ce790db424a0104d95cbb1cc72a3086"
+  },
+  ".config/nvim/lsp/vtsls.lua": {
+    "mtime": 1782945502.599708,
+    "ast_hash": "a5e5b3713b3cc8b6570350764699c6e9",
+    "semantic_hash": "a5e5b3713b3cc8b6570350764699c6e9"
+  },
+  ".config/nvim/lua/core/autocmds.lua": {
+    "mtime": 1782945502.596587,
+    "ast_hash": "58586b6912a423cca896e94e75442614",
+    "semantic_hash": "58586b6912a423cca896e94e75442614"
+  },
+  ".config/nvim/lua/core/keymaps.lua": {
+    "mtime": 1782945502.596587,
+    "ast_hash": "a9a9e776e69a1bed9b1292f4791b0041",
+    "semantic_hash": "a9a9e776e69a1bed9b1292f4791b0041"
+  },
+  ".config/nvim/lua/core/options.lua": {
+    "mtime": 1782945502.596587,
+    "ast_hash": "c7af0bfa85beb4ca328e57184bbbfb02",
+    "semantic_hash": "c7af0bfa85beb4ca328e57184bbbfb02"
+  },
+  ".config/nvim/lua/core/snacks.lua": {
+    "mtime": 1782945502.596587,
+    "ast_hash": "e35a213a4bfb8021bf75b25482d643dc",
+    "semantic_hash": "e35a213a4bfb8021bf75b25482d643dc"
+  },
+  ".config/nvim/lua/core/ui.lua": {
+    "mtime": 1782945502.596587,
+    "ast_hash": "e6c98ecf578d63035ac151de8be01c2b",
+    "semantic_hash": "e6c98ecf578d63035ac151de8be01c2b"
+  },
+  ".config/nvim/lua/core/whichkey.lua": {
+    "mtime": 1782945502.596587,
+    "ast_hash": "a1ff74e3d0f4ab625e3e74b01805b345",
+    "semantic_hash": "a1ff74e3d0f4ab625e3e74b01805b345"
+  },
+  ".config/nvim/lua/lsp/completion.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "ced9ecfc902e49733f6491e0f0eaf64b",
+    "semantic_hash": "ced9ecfc902e49733f6491e0f0eaf64b"
+  },
+  ".config/nvim/lua/lsp/dap.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "4b96c18922b90a32e3e673af0f1253c2",
+    "semantic_hash": "4b96c18922b90a32e3e673af0f1253c2"
+  },
+  ".config/nvim/lua/lsp/init.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "929f82cddb72969f0598c8a4bed4baa4",
+    "semantic_hash": "929f82cddb72969f0598c8a4bed4baa4"
+  },
+  ".config/nvim/lua/lsp/langs/bash.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "8216148a63d3bd649d2c82e1f8db367f",
+    "semantic_hash": "8216148a63d3bd649d2c82e1f8db367f"
+  },
+  ".config/nvim/lua/lsp/langs/cpp.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "2bbf4bc8f422efe538e42e1396242104",
+    "semantic_hash": "2bbf4bc8f422efe538e42e1396242104"
+  },
+  ".config/nvim/lua/lsp/langs/eslint.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "c3dfb1334cdfaa299354ea2f7dfad529",
+    "semantic_hash": "c3dfb1334cdfaa299354ea2f7dfad529"
+  },
+  ".config/nvim/lua/lsp/langs/html_css.lua": {
+    "mtime": 1782945502.592205,
+    "ast_hash": "6e8d84c5202127833ecf6f0b875d7268",
+    "semantic_hash": "6e8d84c5202127833ecf6f0b875d7268"
+  },
+  ".config/nvim/lua/lsp/langs/hyprlang.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "22caf5252f372e5c37320b5f147631e2",
+    "semantic_hash": "22caf5252f372e5c37320b5f147631e2"
+  },
+  ".config/nvim/lua/lsp/langs/lua.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "e26627881af9d1e4b60de7cb7429a6dd",
+    "semantic_hash": "e26627881af9d1e4b60de7cb7429a6dd"
+  },
+  ".config/nvim/lua/lsp/langs/markdown.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "903eea91cec54b71469f6301cad4c80f",
+    "semantic_hash": "903eea91cec54b71469f6301cad4c80f"
+  },
+  ".config/nvim/lua/lsp/langs/nix.lua": {
+    "mtime": 1782945502.592205,
+    "ast_hash": "31d46418cda49d624d6309444ad4cc45",
+    "semantic_hash": "31d46418cda49d624d6309444ad4cc45"
+  },
+  ".config/nvim/lua/lsp/langs/php.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "71d0f0031b992b336fe8ea72e229e9b9",
+    "semantic_hash": "71d0f0031b992b336fe8ea72e229e9b9"
+  },
+  ".config/nvim/lua/lsp/langs/python.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "d7818eaaaf698c7747324f01cde42774",
+    "semantic_hash": "d7818eaaaf698c7747324f01cde42774"
+  },
+  ".config/nvim/lua/lsp/langs/qt.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "79ce001db01013561d93edcbe4703f41",
+    "semantic_hash": "79ce001db01013561d93edcbe4703f41"
+  },
+  ".config/nvim/lua/lsp/langs/rust.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "888b39236cce3fca08488f9dd2cfe76f",
+    "semantic_hash": "888b39236cce3fca08488f9dd2cfe76f"
+  },
+  ".config/nvim/lua/lsp/langs/taplo.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "4fb70ffef644121c77e7b579592d294f",
+    "semantic_hash": "4fb70ffef644121c77e7b579592d294f"
+  },
+  ".config/nvim/lua/lsp/langs/typescript.lua": {
+    "mtime": 1782945502.592205,
+    "ast_hash": "481b83f3d3cb637246546c879fb36478",
+    "semantic_hash": "481b83f3d3cb637246546c879fb36478"
+  },
+  ".config/nvim/lua/lsp/langs/typst.lua": {
+    "mtime": 1782945502.592205,
+    "ast_hash": "840650aca5714c950adaac086ebfdbd4",
+    "semantic_hash": "840650aca5714c950adaac086ebfdbd4"
+  },
+  ".config/nvim/lua/lsp/mason.lua": {
+    "mtime": 1782945502.5930414,
+    "ast_hash": "3cf1f475a29badd76528eaf398c87240",
+    "semantic_hash": "3cf1f475a29badd76528eaf398c87240"
+  },
+  ".config/nvim/lua/plugins/ai.lua": {
+    "mtime": 1782945502.5907853,
+    "ast_hash": "ef869c6fbbeae8430311e3a07f43efb4",
+    "semantic_hash": "ef869c6fbbeae8430311e3a07f43efb4"
+  },
+  ".config/nvim/lua/plugins/editor.lua": {
+    "mtime": 1782945502.5907853,
+    "ast_hash": "bcc3ddd94194609b0c9168c0868dc800",
+    "semantic_hash": "bcc3ddd94194609b0c9168c0868dc800"
+  },
+  ".config/nvim/lua/plugins/gitsigns.lua": {
+    "mtime": 1782945502.5907853,
+    "ast_hash": "747c69d85f5cd6c83fc72ea3e4ca68c4",
+    "semantic_hash": "747c69d85f5cd6c83fc72ea3e4ca68c4"
+  },
+  ".config/nvim/lua/plugins/init.lua": {
+    "mtime": 1782945502.5907853,
+    "ast_hash": "e508fb2cf2be3358cbf5b4ebfeb98106",
+    "semantic_hash": "e508fb2cf2be3358cbf5b4ebfeb98106"
+  },
+  ".config/nvim/lua/plugins/lazy_packages.lua": {
+    "mtime": 1782945502.5907853,
+    "ast_hash": "1fd6dbdf2ea6ad562860ba2393d045cc",
+    "semantic_hash": "1fd6dbdf2ea6ad562860ba2393d045cc"
+  },
+  ".config/nvim/lua/plugins/obsidian.lua": {
+    "mtime": 1782945502.5907853,
+    "ast_hash": "b2895ee91820c03c94a71c1de8ef8193",
+    "semantic_hash": "b2895ee91820c03c94a71c1de8ef8193"
+  },
+  ".config/nvim/lua/plugins/tools.lua": {
+    "mtime": 1782945502.5907853,
+    "ast_hash": "34af2e605a7e553a870468d472be95ef",
+    "semantic_hash": "34af2e605a7e553a870468d472be95ef"
+  },
+  ".config/nvim/nvim-pack-lock.json": {
+    "mtime": 1785123823.6408215,
+    "ast_hash": "b0cd11f90f173efab35788b003ebde9c",
+    "semantic_hash": "b0cd11f90f173efab35788b003ebde9c"
+  },
+  ".config/nvim/snippets/package.json": {
+    "mtime": 1782945502.6013963,
+    "ast_hash": "8cee2b345ccb2e5a15a39957d4125185",
+    "semantic_hash": "8cee2b345ccb2e5a15a39957d4125185"
+  },
+  ".config/nvim/snippets/typst.json": {
+    "mtime": 1782945502.6013963,
+    "ast_hash": "d6b2afd5e506a669cd69fdc32857878a",
+    "semantic_hash": "d6b2afd5e506a669cd69fdc32857878a"
+  },
+  ".config/nwg-dock-hyprland/launch.sh": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "2902b2d168bd88d860c380ab9abfb0dd",
+    "semantic_hash": "2902b2d168bd88d860c380ab9abfb0dd"
+  },
+  ".config/ohmyposh/powerlevel10k_lean.omp.json": {
+    "mtime": 1782945521.6718333,
+    "ast_hash": "650cdded9e9e97f4d32ccd5bbb8bde93",
+    "semantic_hash": "650cdded9e9e97f4d32ccd5bbb8bde93"
+  },
+  ".config/quickshell/overview/config.json": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "314055754be2b0d5f0afd67bf1ff204f",
+    "semantic_hash": "314055754be2b0d5f0afd67bf1ff204f"
+  },
+  ".config/sesh/obsidian-preview.sh": {
+    "mtime": 1782925281.3781626,
+    "ast_hash": "1373fb88546c2671ca780b0c4ba01ef1",
+    "semantic_hash": "1373fb88546c2671ca780b0c4ba01ef1"
+  },
+  ".config/sesh/scripts/bambuk-start.sh": {
+    "mtime": 1782928181.2146316,
+    "ast_hash": "caab4714b211277651f3055ab1cceb79",
+    "semantic_hash": "caab4714b211277651f3055ab1cceb79"
+  },
+  ".config/sesh/scripts/bambuk-stop.sh": {
+    "mtime": 1782926399.4115703,
+    "ast_hash": "23c6341a12a826d0fd5f4d0ee65768ab",
+    "semantic_hash": "23c6341a12a826d0fd5f4d0ee65768ab"
+  },
+  ".config/sesh/scripts/sesh-on-close.sh": {
+    "mtime": 1782926424.138178,
+    "ast_hash": "f6d5048d8e725d5ab0a1cd631911b882",
+    "semantic_hash": "f6d5048d8e725d5ab0a1cd631911b882"
+  },
+  ".config/sesh/scripts/sesh-snap.sh": {
+    "mtime": 1782926413.5215366,
+    "ast_hash": "88b6e7520b6f2b674ae70b03e229fb81",
+    "semantic_hash": "88b6e7520b6f2b674ae70b03e229fb81"
+  },
+  ".config/swaync/config.json": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "d7ebb8504bb85764d244628575457bde",
+    "semantic_hash": "d7ebb8504bb85764d244628575457bde"
+  },
+  ".config/walker/launch.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "532fa1213cfb4149598a30b872e0dcc7",
+    "semantic_hash": "532fa1213cfb4149598a30b872e0dcc7"
+  },
+  ".config/waybar/launch.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "d974ee4e1dde42a87fd97ecfe7ba2b16",
+    "semantic_hash": "d974ee4e1dde42a87fd97ecfe7ba2b16"
+  },
+  ".config/waybar/modules.json": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "f252cfeb608d58566a1eccbf13ea5f93",
+    "semantic_hash": "f252cfeb608d58566a1eccbf13ea5f93"
+  },
+  ".config/waybar/themes/default/config.json": {
+    "mtime": 1782945572.386138,
+    "ast_hash": "d5573d57601f4053f44ecb309131ebb4",
+    "semantic_hash": "d5573d57601f4053f44ecb309131ebb4"
+  },
+  ".config/waybar/themes/default/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "e0e22aec31dfcc1e4dbfb1762241021f",
+    "semantic_hash": "e0e22aec31dfcc1e4dbfb1762241021f"
+  },
+  ".config/waybar/themes/ml4w-glass-center/config.json": {
+    "mtime": 1782945572.3862486,
+    "ast_hash": "1f6238a022a97ab4937cbecd4f480685",
+    "semantic_hash": "1f6238a022a97ab4937cbecd4f480685"
+  },
+  ".config/waybar/themes/ml4w-glass-center/default/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "9dbcd24a8f8f1ce291772f87081d564b",
+    "semantic_hash": "9dbcd24a8f8f1ce291772f87081d564b"
+  },
+  ".config/waybar/themes/ml4w-glass/config.json": {
+    "mtime": 1782945572.3866484,
+    "ast_hash": "0959f1802c641536f3030b847d9e098f",
+    "semantic_hash": "0959f1802c641536f3030b847d9e098f"
+  },
+  ".config/waybar/themes/ml4w-glass/default/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "706870b693a773a7e31770620c5d4602",
+    "semantic_hash": "706870b693a773a7e31770620c5d4602"
+  },
+  ".config/waybar/themes/ml4w-minimal/config.json": {
+    "mtime": 1782945572.386919,
+    "ast_hash": "c4c041fc22320e33ec04bca1de6a0a67",
+    "semantic_hash": "c4c041fc22320e33ec04bca1de6a0a67"
+  },
+  ".config/waybar/themes/ml4w-minimal/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "1149a9c6b17a2cdf0bfa8e17bdaaa2a8",
+    "semantic_hash": "1149a9c6b17a2cdf0bfa8e17bdaaa2a8"
+  },
+  ".config/waybar/themes/ml4w-modern/black/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "8616c660d986ac762f211bf06e6e9c40",
+    "semantic_hash": "8616c660d986ac762f211bf06e6e9c40"
+  },
+  ".config/waybar/themes/ml4w-modern/colored/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "1282f6950d3202f0a14cfcce21861815",
+    "semantic_hash": "1282f6950d3202f0a14cfcce21861815"
+  },
+  ".config/waybar/themes/ml4w-modern/config.json": {
+    "mtime": 1782945572.3872154,
+    "ast_hash": "3b31367e3fb97f00bacacf46ea06e650",
+    "semantic_hash": "3b31367e3fb97f00bacacf46ea06e650"
+  },
+  ".config/waybar/themes/ml4w-modern/default/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "ebd89753699982e7fe90ed2fc835849c",
+    "semantic_hash": "ebd89753699982e7fe90ed2fc835849c"
+  },
+  ".config/waybar/themes/ml4w-modern/minimal/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "57a0d6c50cf114dc7995bf68993def17",
+    "semantic_hash": "57a0d6c50cf114dc7995bf68993def17"
+  },
+  ".config/waybar/themes/ml4w-modern/white/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "8f1f62c65d8e516e3888742c1b71438c",
+    "semantic_hash": "8f1f62c65d8e516e3888742c1b71438c"
+  },
+  ".config/waybar/themes/ml4w-transparent-centered/config.json": {
+    "mtime": 1782945572.387483,
+    "ast_hash": "1f6238a022a97ab4937cbecd4f480685",
+    "semantic_hash": "1f6238a022a97ab4937cbecd4f480685"
+  },
+  ".config/waybar/themes/ml4w-transparent-centered/default/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "426a7c9948ab6f7f742dfaf9fbcf53b9",
+    "semantic_hash": "426a7c9948ab6f7f742dfaf9fbcf53b9"
+  },
+  ".config/waybar/themes/ml4w-transparent/config.json": {
+    "mtime": 1782945572.3875546,
+    "ast_hash": "4c933e230ee39fa8b5119f30e06fafd2",
+    "semantic_hash": "4c933e230ee39fa8b5119f30e06fafd2"
+  },
+  ".config/waybar/themes/ml4w-transparent/default/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "ac85cf8338eaa845a4f06b51eecf6d38",
+    "semantic_hash": "ac85cf8338eaa845a4f06b51eecf6d38"
+  },
+  ".config/waybar/themes/ml4w/black/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "2e21e80e9a91160e1697a63aacef659b",
+    "semantic_hash": "2e21e80e9a91160e1697a63aacef659b"
+  },
+  ".config/waybar/themes/ml4w/config.json": {
+    "mtime": 1782945572.3876503,
+    "ast_hash": "6b18d998165c36e7ea7a0a410a2640a0",
+    "semantic_hash": "6b18d998165c36e7ea7a0a410a2640a0"
+  },
+  ".config/waybar/themes/ml4w/default/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "1f512011912d20068cafd2cfcc43439e",
+    "semantic_hash": "1f512011912d20068cafd2cfcc43439e"
+  },
+  ".config/waybar/themes/ml4w/white/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "bd48ce2309e9b72a7b5f4abd14fdf6e6",
+    "semantic_hash": "bd48ce2309e9b72a7b5f4abd14fdf6e6"
+  },
+  ".config/waybar/themes/starter/config.json": {
+    "mtime": 1782945572.3878458,
+    "ast_hash": "2efdb35f76b742542e82007c7567e527",
+    "semantic_hash": "2efdb35f76b742542e82007c7567e527"
+  },
+  ".config/waybar/themes/starter/config.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "2bbb159340d328fff9a761eb4d4a276d",
+    "semantic_hash": "2bbb159340d328fff9a761eb4d4a276d"
+  },
+  ".config/waybar/themes/starter/modules.json": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "541ea03a25480e8b18ae117fb12bd1c5",
+    "semantic_hash": "541ea03a25480e8b18ae117fb12bd1c5"
+  },
+  ".config/waybar/themeswitcher.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "1c084214e19e7ae5db00b0ab8e7cf5f2",
+    "semantic_hash": "1c084214e19e7ae5db00b0ab8e7cf5f2"
+  },
+  ".config/waybar/toggle.sh": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "1df21e75932b9ff7ee3a08907dce3b7f",
+    "semantic_hash": "1df21e75932b9ff7ee3a08907dce3b7f"
+  },
+  ".config/yazi/init.lua": {
+    "mtime": 1782946205.336686,
+    "ast_hash": "a211da693f570239a35fe7e0245eaa26",
+    "semantic_hash": "a211da693f570239a35fe7e0245eaa26"
+  },
+  ".config/yazi/plugins/bookmarks.yazi/main.lua": {
+    "mtime": 1782946205.3364544,
+    "ast_hash": "b05c22949d614c7524963bf62bd72c7b",
+    "semantic_hash": "b05c22949d614c7524963bf62bd72c7b"
+  },
+  ".config/yazi/plugins/chmod.yazi/main.lua": {
+    "mtime": 1782946205.3352802,
+    "ast_hash": "6df81d5d5474ec7a8b63219d95f8c6e0",
+    "semantic_hash": "6df81d5d5474ec7a8b63219d95f8c6e0"
+  },
+  ".config/yazi/plugins/full-border.yazi/main.lua": {
+    "mtime": 1782946205.3361487,
+    "ast_hash": "1b7e8c94ad1d9c9997ee20a56ba2c737",
+    "semantic_hash": "1b7e8c94ad1d9c9997ee20a56ba2c737"
+  },
+  ".config/yazi/plugins/git.yazi/main.lua": {
+    "mtime": 1782946205.336247,
+    "ast_hash": "2816f75555a5f72d2b45a018682f0bd4",
+    "semantic_hash": "2816f75555a5f72d2b45a018682f0bd4"
+  },
+  ".config/yazi/plugins/git.yazi/types.lua": {
+    "mtime": 1782946205.336247,
+    "ast_hash": "e62e6004bc90da359b994c577a78600b",
+    "semantic_hash": "e62e6004bc90da359b994c577a78600b"
+  },
+  ".config/yazi/plugins/mount.yazi/cross.lua": {
+    "mtime": 1782946205.3365633,
+    "ast_hash": "204800c4ebe4464407b736655a0b01f6",
+    "semantic_hash": "204800c4ebe4464407b736655a0b01f6"
+  },
+  ".config/yazi/plugins/mount.yazi/main.lua": {
+    "mtime": 1782946205.3365633,
+    "ast_hash": "715a0cc75b354cbb655cb53a6743547e",
+    "semantic_hash": "715a0cc75b354cbb655cb53a6743547e"
+  },
+  ".config/yazi/plugins/mount.yazi/sudo.lua": {
+    "mtime": 1782946205.3365633,
+    "ast_hash": "bb47b47a1d2be9db340cc56a52274a36",
+    "semantic_hash": "bb47b47a1d2be9db340cc56a52274a36"
+  },
+  ".config/yazi/plugins/restore.yazi/main.lua": {
+    "mtime": 1782946205.336637,
+    "ast_hash": "28cf7f24fa2a9508deace4ae43856a95",
+    "semantic_hash": "28cf7f24fa2a9508deace4ae43856a95"
+  },
+  ".config/yazi/plugins/simple-mtpfs.yazi/main.lua": {
+    "mtime": 1782946205.336686,
+    "ast_hash": "c2841cd2438012b1246bdac74fe0a379",
+    "semantic_hash": "c2841cd2438012b1246bdac74fe0a379"
+  },
+  ".config/yazi/plugins/smart-enter.yazi/main.lua": {
+    "mtime": 1782946205.3365047,
+    "ast_hash": "1eec6560008a5ed8678d6b221f6faf1a",
+    "semantic_hash": "1eec6560008a5ed8678d6b221f6faf1a"
+  },
+  ".config/astro_nvim/README.md": {
+    "mtime": 1782997213.9292448,
+    "ast_hash": "382e9a7642006198215283d4fc381a57",
+    "semantic_hash": "382e9a7642006198215283d4fc381a57"
+  },
+  ".config/astro_nvim/neovim.yml": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "e023ba6d8a2aefc66a8d1cd831951671",
+    "semantic_hash": "e023ba6d8a2aefc66a8d1cd831951671"
+  },
+  ".config/quickshell/README.md": {
+    "mtime": 1783367997.7243176,
+    "ast_hash": "b16bc347750d8553a6ce5fcebe730ca8",
+    "semantic_hash": "b16bc347750d8553a6ce5fcebe730ca8"
+  },
+  ".config/quickshell/overview/README.md": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "c3f8de0d2c77e19f82b9eae82f111d0c",
+    "semantic_hash": "c3f8de0d2c77e19f82b9eae82f111d0c"
+  },
+  ".config/waybar/themes/ml4w-minimal/README.md": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "06ce47b6afb6be8840164c4a1cc98c85",
+    "semantic_hash": "06ce47b6afb6be8840164c4a1cc98c85"
+  },
+  ".config/waybar/themes/starter/README.md": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "06ce47b6afb6be8840164c4a1cc98c85",
+    "semantic_hash": "06ce47b6afb6be8840164c4a1cc98c85"
+  },
+  ".config/wlogout/README.txt": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "64714eed0a26608714df90a6dfc165c6",
+    "semantic_hash": "64714eed0a26608714df90a6dfc165c6"
+  },
+  ".config/yazi/plugins/bookmarks.yazi/README.md": {
+    "mtime": 1782946205.3364544,
+    "ast_hash": "6f0de915ca66faeb4ea2102a487367db",
+    "semantic_hash": "6f0de915ca66faeb4ea2102a487367db"
+  },
+  ".config/yazi/plugins/chmod.yazi/README.md": {
+    "mtime": 1782946205.3352802,
+    "ast_hash": "c99bcaac1ff7cf14e92790914184b8bd",
+    "semantic_hash": "c99bcaac1ff7cf14e92790914184b8bd"
+  },
+  ".config/yazi/plugins/full-border.yazi/README.md": {
+    "mtime": 1782946205.3361487,
+    "ast_hash": "4c1d6fce1bb7958b96fd7714eb5871d0",
+    "semantic_hash": "4c1d6fce1bb7958b96fd7714eb5871d0"
+  },
+  ".config/yazi/plugins/git.yazi/README.md": {
+    "mtime": 1782946205.336247,
+    "ast_hash": "8ab7b8ddc9313f8110c62fd390f4bf08",
+    "semantic_hash": "8ab7b8ddc9313f8110c62fd390f4bf08"
+  },
+  ".config/yazi/plugins/mount.yazi/README.md": {
+    "mtime": 1782946205.3365633,
+    "ast_hash": "89bb44a8853436b28b1411741bfe5c1f",
+    "semantic_hash": "89bb44a8853436b28b1411741bfe5c1f"
+  },
+  ".config/yazi/plugins/restore.yazi/README.md": {
+    "mtime": 1782946205.336637,
+    "ast_hash": "0b2c5881e10090378772789abf7e197f",
+    "semantic_hash": "0b2c5881e10090378772789abf7e197f"
+  },
+  ".config/yazi/plugins/simple-mtpfs.yazi/README.md": {
+    "mtime": 1782946205.336686,
+    "ast_hash": "eb5849c2add9877b23eb235cfa3a30a4",
+    "semantic_hash": "eb5849c2add9877b23eb235cfa3a30a4"
+  },
+  ".config/yazi/plugins/smart-enter.yazi/README.md": {
+    "mtime": 1782946205.3365047,
+    "ast_hash": "d00d71c65a582d047417324312f51370",
+    "semantic_hash": "d00d71c65a582d047417324312f51370"
+  },
+  ".local/share/applications/kitty-icon/README.md": {
+    "mtime": 1785125093.4505262,
+    "ast_hash": "df5f6188ee3e3a4e0a353a7ea01a69ef",
+    "semantic_hash": "df5f6188ee3e3a4e0a353a7ea01a69ef"
+  },
+  ".config/hypr/assets/blank.png": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "9501904e49d8750f643229246a5e699d",
+    "semantic_hash": "9501904e49d8750f643229246a5e699d"
+  },
+  ".config/hypr/assets/hyprland.png": {
+    "mtime": 1782945462.4407964,
+    "ast_hash": "e082964c580d829c4b43c667422db2a0",
+    "semantic_hash": "e082964c580d829c4b43c667422db2a0"
+  },
+  ".config/ml4w/assets/blank.png": {
+    "mtime": 1782945486.8544466,
+    "ast_hash": "9501904e49d8750f643229246a5e699d",
+    "semantic_hash": "9501904e49d8750f643229246a5e699d"
+  },
+  ".config/ml4w/assets/ml4w.png": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "d2f11072c828ab8fbd6af0467ba26582",
+    "semantic_hash": "d2f11072c828ab8fbd6af0467ba26582"
+  },
+  ".config/ml4w/assets/ml4w.svg": {
+    "mtime": 1782997213.932578,
+    "ast_hash": "40ea4fb7c945d15c9a0a8ab9e4f3966d",
+    "semantic_hash": "40ea4fb7c945d15c9a0a8ab9e4f3966d"
+  },
+  ".config/quickshell/overview/assets/image.png": {
+    "mtime": 1782945537.3621128,
+    "ast_hash": "c20e55fb319a5f704dd409c13e158a64",
+    "semantic_hash": "c20e55fb319a5f704dd409c13e158a64"
+  },
+  ".config/quickshell/shared/icons/bell-filled.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "a2e65617e8e68dfece9d9129ca460445",
+    "semantic_hash": "a2e65617e8e68dfece9d9129ca460445"
+  },
+  ".config/quickshell/shared/icons/bell.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "716f3eb5290d6dcd341684e933fc7001",
+    "semantic_hash": "716f3eb5290d6dcd341684e933fc7001"
+  },
+  ".config/quickshell/shared/icons/brightness.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "2ee09fb0e44a2a7527ee426ddb14d46e",
+    "semantic_hash": "2ee09fb0e44a2a7527ee426ddb14d46e"
+  },
+  ".config/quickshell/shared/icons/chevron-left.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "a59195c4153e97e6c0d19c00ee933812",
+    "semantic_hash": "a59195c4153e97e6c0d19c00ee933812"
+  },
+  ".config/quickshell/shared/icons/chevron-right.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "2d13abea5d16bed00383ad3eaf612040",
+    "semantic_hash": "2d13abea5d16bed00383ad3eaf612040"
+  },
+  ".config/quickshell/shared/icons/darklight.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "c9b7c21a4845dfff5cdf419cb4c53e67",
+    "semantic_hash": "c9b7c21a4845dfff5cdf419cb4c53e67"
+  },
+  ".config/quickshell/shared/icons/launcher.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "7354537145f7e177fcfb058ecc7a59b3",
+    "semantic_hash": "7354537145f7e177fcfb058ecc7a59b3"
+  },
+  ".config/quickshell/shared/icons/lock.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "13d3f622c8be6ef273f787ce046a9ef0",
+    "semantic_hash": "13d3f622c8be6ef273f787ce046a9ef0"
+  },
+  ".config/quickshell/shared/icons/logout.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "ee5096f4aecddc837a4dec00a2bdec28",
+    "semantic_hash": "ee5096f4aecddc837a4dec00a2bdec28"
+  },
+  ".config/quickshell/shared/icons/package.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "6fd006c781bcc4a151be83562b34dabd",
+    "semantic_hash": "6fd006c781bcc4a151be83562b34dabd"
+  },
+  ".config/quickshell/shared/icons/picker.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "6e5b29c3cfa24abcb2b3781205354d1f",
+    "semantic_hash": "6e5b29c3cfa24abcb2b3781205354d1f"
+  },
+  ".config/quickshell/shared/icons/power.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "530d169a2c8b8783d48e68ca8d012571",
+    "semantic_hash": "530d169a2c8b8783d48e68ca8d012571"
+  },
+  ".config/quickshell/shared/icons/reboot.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "05b8cc175fb211b86ce42ca353856d14",
+    "semantic_hash": "05b8cc175fb211b86ce42ca353856d14"
+  },
+  ".config/quickshell/shared/icons/screenshot.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "a6610db947214a402f200de65e0bc79c",
+    "semantic_hash": "a6610db947214a402f200de65e0bc79c"
+  },
+  ".config/quickshell/shared/icons/settings.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "566626b267ad963e041b1718d4402a62",
+    "semantic_hash": "566626b267ad963e041b1718d4402a62"
+  },
+  ".config/quickshell/shared/icons/suspend.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "d4df9543e45420385b39dd8efcfe4dc9",
+    "semantic_hash": "d4df9543e45420385b39dd8efcfe4dc9"
+  },
+  ".config/quickshell/shared/icons/terminal.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "8662fce35756bc53b141689ff32859ac",
+    "semantic_hash": "8662fce35756bc53b141689ff32859ac"
+  },
+  ".config/quickshell/shared/icons/theme.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "7a28606f90f7d3dff9fd529405a26c12",
+    "semantic_hash": "7a28606f90f7d3dff9fd529405a26c12"
+  },
+  ".config/quickshell/shared/icons/volume-muted.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "4bb0b603bf688961b40278740ced0500",
+    "semantic_hash": "4bb0b603bf688961b40278740ced0500"
+  },
+  ".config/quickshell/shared/icons/volume.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "4845c88828ac55ad234cdce8da9559dd",
+    "semantic_hash": "4845c88828ac55ad234cdce8da9559dd"
+  },
+  ".config/quickshell/shared/icons/wallpaper.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "600c48ac621c3ec97557820dcdfbeab1",
+    "semantic_hash": "600c48ac621c3ec97557820dcdfbeab1"
+  },
+  ".config/quickshell/shared/ml4w.svg": {
+    "mtime": 1782997213.995912,
+    "ast_hash": "40ea4fb7c945d15c9a0a8ab9e4f3966d",
+    "semantic_hash": "40ea4fb7c945d15c9a0a8ab9e4f3966d"
+  },
+  ".config/waybar/themes/assets/ai-icon-20.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "a39881c28f19fe2ec4ff0228b646a6aa",
+    "semantic_hash": "a39881c28f19fe2ec4ff0228b646a6aa"
+  },
+  ".config/waybar/themes/assets/ai-icon.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "e1f6119bb343e5d4cf275662c31f6f5d",
+    "semantic_hash": "e1f6119bb343e5d4cf275662c31f6f5d"
+  },
+  ".config/waybar/themes/assets/hyprland-icon-20.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "91b57082b55f0125b67b06a1219e8b79",
+    "semantic_hash": "91b57082b55f0125b67b06a1219e8b79"
+  },
+  ".config/waybar/themes/assets/hyprland-icon.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "f415c26dc478e5a1b829c285f6cfa2ce",
+    "semantic_hash": "f415c26dc478e5a1b829c285f6cfa2ce"
+  },
+  ".config/waybar/themes/assets/ml4w-icon-20.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "a81afb5a8ae12b26cfc1332cfd39897f",
+    "semantic_hash": "a81afb5a8ae12b26cfc1332cfd39897f"
+  },
+  ".config/waybar/themes/assets/ml4w-icon-black.svg": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "59b2afd4d3eecd151e5628b7b811ec83",
+    "semantic_hash": "59b2afd4d3eecd151e5628b7b811ec83"
+  },
+  ".config/waybar/themes/assets/ml4w-icon-dark.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "43bfb1b6e0fe7502684c8464add6c7fd",
+    "semantic_hash": "43bfb1b6e0fe7502684c8464add6c7fd"
+  },
+  ".config/waybar/themes/assets/ml4w-icon-white.svg": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "7d8018c2840197496b1a9f442ba17cfe",
+    "semantic_hash": "7d8018c2840197496b1a9f442ba17cfe"
+  },
+  ".config/waybar/themes/assets/ml4w-icon.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "4892890ca89cca4fbdb5614ce1ba33d6",
+    "semantic_hash": "4892890ca89cca4fbdb5614ce1ba33d6"
+  },
+  ".config/waybar/themes/assets/ml4w-icon.svg": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "40ea4fb7c945d15c9a0a8ab9e4f3966d",
+    "semantic_hash": "40ea4fb7c945d15c9a0a8ab9e4f3966d"
+  },
+  ".config/waybar/themes/assets/openai-black.svg": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "20abca606d1a2d69bb6f830f502d24e7",
+    "semantic_hash": "20abca606d1a2d69bb6f830f502d24e7"
+  },
+  ".config/waybar/themes/assets/openai-white.svg": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "36f12152b8028e9b6ba2ac310def6f35",
+    "semantic_hash": "36f12152b8028e9b6ba2ac310def6f35"
+  },
+  ".config/waybar/themes/assets/openai.svg": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "36f12152b8028e9b6ba2ac310def6f35",
+    "semantic_hash": "36f12152b8028e9b6ba2ac310def6f35"
+  },
+  ".config/wlogout/icons/hibernate.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "929cabdc8b812cb689c079347b84c790",
+    "semantic_hash": "929cabdc8b812cb689c079347b84c790"
+  },
+  ".config/wlogout/icons/lock.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "b1f47bcac6a5da65ddd0601e3c7d8933",
+    "semantic_hash": "b1f47bcac6a5da65ddd0601e3c7d8933"
+  },
+  ".config/wlogout/icons/logout.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "8f671ce7ba6ed0137152b4fb016cc878",
+    "semantic_hash": "8f671ce7ba6ed0137152b4fb016cc878"
+  },
+  ".config/wlogout/icons/reboot.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "30c71f9042f7a1f1115d894cb824d3cd",
+    "semantic_hash": "30c71f9042f7a1f1115d894cb824d3cd"
+  },
+  ".config/wlogout/icons/shutdown.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "93edab3bd6cb00fc56f1d02c741364ee",
+    "semantic_hash": "93edab3bd6cb00fc56f1d02c741364ee"
+  },
+  ".config/wlogout/icons/suspend.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "f8bb74095aea9c90d45fabacead50d54",
+    "semantic_hash": "f8bb74095aea9c90d45fabacead50d54"
+  },
+  ".config/wlogout/noise.png": {
+    "mtime": 1782997213.9992454,
+    "ast_hash": "3d4fc7b8750f3f634bd7362db65c35ab",
+    "semantic_hash": "3d4fc7b8750f3f634bd7362db65c35ab"
+  },
+  ".local/share/applications/kitty-icon/kitty-dark.png": {
+    "mtime": 1759007084.2753503,
+    "ast_hash": "09f4c19ee0900cdbd50e1f58df95ad68",
+    "semantic_hash": "09f4c19ee0900cdbd50e1f58df95ad68"
+  },
+  ".local/share/applications/kitty-icon/kitty-light.png": {
+    "mtime": 1759007084.2843504,
+    "ast_hash": "5ea817830b0ad2159968c7b852f36f91",
+    "semantic_hash": "5ea817830b0ad2159968c7b852f36f91"
+  },
+  ".config/ml4w/wallpapers/landscape/\u3010\u54f2\u98ce\u58c1\u7eb8\u3011\u4ed9\u4fa0-\u5251\u5ba2-\u5251\u6765.mp4": {
+    "mtime": 1782945486.8621933,
+    "ast_hash": "cbc9e74c255c96da8e290e8d2baa97c6",
+    "semantic_hash": "cbc9e74c255c96da8e290e8d2baa97c6"
+  }
+}
