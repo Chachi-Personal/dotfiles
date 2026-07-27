@@ -178,7 +178,8 @@ hl.window_rule({
 	match = { class = "org.gnome.Calendar" },
 	float = true,
 	center = true,
-	size = "900 600",
+	size = "360 600",
+	move = { "(monitor_w+window_w)/2", "20" },
 })
 
 -- ML4W Floating

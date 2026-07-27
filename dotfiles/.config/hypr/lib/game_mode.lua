@@ -69,4 +69,11 @@ M.toggle = function()
 	end
 end
 
+M.cleanup = function()
+	local game_mode_cache = os.getenv("HOME") .. "/.cache/gamemode"
+	if file_exists(game_mode_cache) then
+		os.remove(game_mode_cache)
+	end
+end
+
 return M

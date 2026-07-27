@@ -55,12 +55,16 @@ PanelWindow {
         }
     }
 
-    function activateSelected() {
+    function activateIndex(index) {
         var commands = [Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-power -l", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-power -s", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-power -e", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-power -r", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-power -p"];
-        if (selectedIndex >= 0 && selectedIndex < commands.length) {
-            Quickshell.execDetached(["bash", "-c", commands[selectedIndex]]);
+        if (index >= 0 && index < commands.length) {
+            Quickshell.execDetached(["bash", "-c", commands[index]]);
             isOpen = false;
         }
+    }
+
+    function activateSelected() {
+        activateIndex(selectedIndex);
     }
 
     // Keep the window mapped to the screen while the animation is playing
@@ -125,6 +129,30 @@ PanelWindow {
         }
         Keys.onReturnPressed: root.activateSelected()
         Keys.onEnterPressed: root.activateSelected()
+
+        // Direct shortcuts: l=lock, u=suspend, e=logout, r=reboot, s=shutdown
+        Keys.onPressed: event => {
+            switch (event.key) {
+            case Qt.Key_L:
+                root.activateIndex(0);
+                break;
+            case Qt.Key_U:
+                root.activateIndex(1);
+                break;
+            case Qt.Key_E:
+                root.activateIndex(2);
+                break;
+            case Qt.Key_R:
+                root.activateIndex(3);
+                break;
+            case Qt.Key_S:
+                root.activateIndex(4);
+                break;
+            default:
+                return;
+            }
+            event.accepted = true;
+        }
 
         RectangularShadow {
             id: shadow

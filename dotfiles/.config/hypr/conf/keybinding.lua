@@ -95,17 +95,8 @@ end
 bind(mod("Q"), hl.dsp.window.close(), { description = "Quit window" })
 
 bind(modShift("Q"), hl.dsp.window.kill(), { description = "Quit active window and all open instances" })
-bind(
-	mod("F"),
-	hl.dsp.window.fullscreen({ mode = "fullscreen" }),
-	{ description = "Toggle active window to fullscreen" }
-)
-bind(mod("M"), function()
-	-- hl.dispatch(hl.dsp.window.fullscreen({ mode = "maximized" }))
-	hl.dispatch(hl.dsp.layout("colresize +conf"))
-	hl.dispatch(hl.dsp.layout("focus l"))
-	hl.dispatch(hl.dsp.layout("focus r"))
-end, { description = "Toggle monocle layout" })
+bind(mod("F"), hl.dsp.window.fullscreen({ mode = "fullscreen" }), { description = "Toggle fullscreen window" })
+bind(mod("M"), hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Toggle maximized window" })
 
 bind(mod("T"), hl.dsp.window.float(), { description = "Toggle active window floating" })
 local move_or_cycle = function(direction)
@@ -154,8 +145,8 @@ bind("PRINT", exec(HYPRSCRIPTS .. "/screenshot.sh"), { description = "Take a scr
 bind(modShift("S"), exec("grimblast --notify copy area"), { description = "Copy area to clipboard" })
 bind(altShift("S"), hl.dsp.exec_cmd('grim -g "$(slurp)" - | tesseract stdin stdout -l chi_sim | wl-copy'))
 
-bind(mod("S"), hl.dsp.exec_cmd("/usr/bin/env -C /home/chachi/Videos/tools/sub_extract uv run speak.py"))
-bind(alt("S"), hl.dsp.exec_cmd("/usr/bin/env -C /home/chachi/Videos/tools/sub_extract uv run ocr-screenshot.py --tts"))
+bind(mod("S"), hl.dsp.exec_cmd("/usr/bin/env -C /home/chachi/Videos/tools/ocr uv run lib/speak.py"))
+bind(alt("S"), hl.dsp.exec_cmd("/usr/bin/env -C /home/chachi/Videos/tools/ocr uv run lib/ocr-screenshot.py --tts"))
 bind(
 	modAlt("F"),
 	exec(HYPRSCRIPTS .. "/screenshot.sh --instant"),
@@ -180,20 +171,14 @@ end)
 bind(modControl("S"), exec("qs ipc call sidebar toggle"), { description = "Open ML4W Sidebar widget" })
 
 -- # Fn keys
-bind("XF86MonBrightnessUp", exec("brightnessctl -e4 -n2 set 5%+"), { description = "Increase brightness by 5%" })
-bind("XF86MonBrightnessDown", exec("brightnessctl -e4 -n2 set 5%-"), { description = "Reduce brightness by 5%" })
-bind("XF86AudioLowerVolume", exec("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { description = "Reduce volume by 5%" })
-bind(
-	"XF86AudioRaiseVolume",
-	exec("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ description = "Increase volume by 5%" }
-)
-bind("XF86AudioMute", exec("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { description = "Toggle mute" })
-bind(
-	"XF86AudioMicMute",
-	exec("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ description = "Toggle microphone mute" }
-)
+-- bind("XF86MonBrightnessUp", exec("brightnessctl -e4 -n2 set 5%+"), { description = "Increase brightness by 5%" })
+-- bind("XF86MonBrightnessDown", exec("brightnessctl -e4 -n2 set 5%-"), { description = "Reduce brightness by 5%" })
+bind("XF86MonBrightnessUp", exec("swayosd-client --brightness raise"), { description = "Increase brightness by 5%" })
+bind("XF86MonBrightnessDown", exec("swayosd-client --brightness lower"), { description = "Reduce brightness by 5%" })
+bind("XF86AudioLowerVolume", exec("swayosd-client --output-volume lower"), { description = "Reduce volume by 5%" })
+bind("XF86AudioRaiseVolume", exec("swayosd-client --output-volume raise"), { description = "Increase volume by 5%" })
+bind("XF86AudioMute", exec("swayosd-client --output-volume mute-toggle"), { description = "Toggle mute" })
+bind("XF86AudioMicMute", exec("swayosd-client --input-volume mute-toggle"), { description = "Toggle microphone mute" })
 bind("XF86AudioPlay", exec("playerctl play-pause"), { description = "Toggle play/pause" })
 bind("XF86AudioPause", exec("playerctl pause"), { description = "Toggle play/pause" })
 bind("XF86AudioNext", exec("playerctl next"), { description = "Play next track" })
