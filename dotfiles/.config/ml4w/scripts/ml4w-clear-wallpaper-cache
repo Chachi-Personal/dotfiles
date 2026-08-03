@@ -15,6 +15,11 @@ error() { echo -e "${RED}[ERROR]${NC} $1" >&2; }
 if [ -d $CACHE_FOLDER ]; then
     rm  -rf $CACHE_FOLDER
     mkdir -p $CACHE_FOLDER
-    info "Restore Default Wallpaper"
-    $HOME/.config/ml4w/scripts/ml4w-wallpaper $HOME/.config/ml4w/wallpapers/default.jpg
+    if [ -f $HOME/.config/ml4w/wallpapers/default.jpg ]; then
+        info "Restore Default Wallpaper"
+        $HOME/.config/ml4w/scripts/ml4w-wallpaper $HOME/.config/ml4w/wallpapers/default.jpg
+    else
+        info "No default.jpg found; picking a random wallpaper instead"
+        $HOME/.config/ml4w/scripts/ml4w-wallpaper --random
+    fi
 fi
