@@ -164,7 +164,9 @@ PanelWindow {
         ToolsModule {
             show: !root.compact
         }
-        TrayModule {}
+        TrayModule {
+            maxWidth: root.compact ? Waybar.trayMaxWidth : -1
+        }
         NotificationModule {}
         ExitModule {
             show: !root.compact

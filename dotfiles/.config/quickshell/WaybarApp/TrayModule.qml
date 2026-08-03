@@ -10,54 +10,69 @@ Item {
     id: tray
 
     property bool show: true
+    // -1 = uncapped (default). When set (e.g. on compact/vertical outputs),
+    // caps the module's width and makes overflow icons reachable by
+    // scrolling instead of letting the island grow past this width.
+    property int maxWidth: -1
+
+    readonly property int contentWidth: row.implicitWidth + 15
 
     visible: show && SystemTray.items.values.length > 0
-    implicitWidth: row.implicitWidth + 15
+    implicitWidth: maxWidth > 0 ? Math.min(contentWidth, maxWidth) : contentWidth
     implicitHeight: Waybar.moduleHeight
 
-    RowLayout {
-        id: row
-        x: 10
-        anchors.verticalCenter: parent.verticalCenter
-        spacing: 10
+    Flickable {
+        anchors.fill: parent
+        contentWidth: tray.contentWidth
+        contentHeight: height
+        clip: true
+        boundsBehavior: Flickable.StopAtBounds
+        flickableDirection: Flickable.HorizontalFlick
 
-        Repeater {
-            model: SystemTray.items
+        RowLayout {
+            id: row
+            x: 10
+            anchors.verticalCenter: parent.verticalCenter
+            spacing: 10
 
-            delegate: MouseArea {
-                id: trayItem
-                required property var modelData
+            Repeater {
+                model: SystemTray.items
 
-                implicitWidth: 21
-                implicitHeight: 21
-                Layout.alignment: Qt.AlignVCenter
-                hoverEnabled: true
-                cursorShape: Qt.PointingHandCursor
-                acceptedButtons: Qt.LeftButton | Qt.RightButton
+                delegate: MouseArea {
+                    id: trayItem
+                    required property var modelData
 
-                Image {
-                    anchors.centerIn: parent
-                    source: trayItem.modelData.icon
-                    width: 21
-                    height: 21
-                    sourceSize.width: 21
-                    sourceSize.height: 21
-                    fillMode: Image.PreserveAspectFit
-                }
+                    implicitWidth: 21
+                    implicitHeight: 21
+                    Layout.alignment: Qt.AlignVCenter
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    acceptedButtons: Qt.LeftButton | Qt.RightButton
 
-                onClicked: mouse => {
-                    if (mouse.button === Qt.LeftButton && !modelData.onlyMenu)
-                        modelData.activate();
-                    else if (modelData.hasMenu)
-                        trayMenu.open();
-                }
+                    Image {
+                        anchors.centerIn: parent
+                        source: trayItem.modelData.icon
+                        width: 21
+                        height: 21
+                        sourceSize.width: 21
+                        sourceSize.height: 21
+                        fillMode: Image.PreserveAspectFit
+                    }
 
-                QsMenuAnchor {
-                    id: trayMenu
-                    menu: trayItem.modelData.menu
-                    anchor.item: trayItem
-                    anchor.edges: Edges.Bottom
-                    anchor.gravity: Edges.Bottom
+                    onClicked: mouse => {
+                        if (mouse.button === Qt.LeftButton && !modelData.onlyMenu)
+                            modelData.activate();
+                        else if (modelData.hasMenu)
+                            trayMenu.open();
+                    }
+
+                    QsMenuAnchor {
+                        id: trayMenu
+                        menu: trayItem.modelData.menu
+                        anchor.item: trayItem
+                        anchor.edges: Edges.Bottom
+                        anchor.gravity: Edges.Bottom
+                    }
                 }
             }
         }

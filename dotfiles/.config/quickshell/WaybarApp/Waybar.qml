@@ -32,6 +32,11 @@ Singleton {
     // waybar config). Every other output gets the full bar.
     readonly property var compactOutputs: ["DP-7", "DP-9"]
 
+    // Cap on TrayModule's width on compact outputs, so an unbounded number of
+    // live tray icons can't grow the right island into the center clock
+    // island on a narrow (vertical) monitor. Overflow scrolls instead.
+    readonly property int trayMaxWidth: 180
+
     // --- Enabled state ------------------------------------------------------
 
     property bool enabled: true
