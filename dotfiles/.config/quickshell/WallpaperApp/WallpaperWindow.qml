@@ -144,6 +144,104 @@ PanelWindow {
         }
     }
 
+    // --- FAVORITES ---
+    // One absolute image path per line. Plain text rather than JSON so
+    // ml4w-wallpaper --favorites can shuf the file directly, without jq.
+    // Only this app writes it, so it is not watched: watchChanges would
+    // re-fire on our own setText().
+    property string favoritesFile: Quickshell.env("HOME") + "/.config/ml4w/settings/wallpaper-favorites"
+
+    // Path -> true. Reassigned wholesale on every change; QML does not deep
+    // watch var objects and the grid delegates bind to the change signal.
+    property var favoriteSet: ({})
+
+    function isFavorite(path): bool {
+        return root.favoriteSet[path] === true;
+    }
+
+    function toggleFavorite(path): void {
+        let next = {};
+        for (let key in root.favoriteSet)
+            next[key] = true;
+        if (next[path] === true)
+            delete next[path];
+        else
+            next[path] = true;
+        root.favoriteSet = next;
+        favoritesFileHandler.setText(Object.keys(next).join("\n") + "\n");
+        root.filterWallpapers();
+    }
+
+    FileView {
+        id: favoritesFileHandler
+        path: Qt.url(root.favoritesFile)
+        blockLoading: true
+        printErrors: false
+        onLoaded: {
+            let set = {};
+            for (let line of this.text().split("\n")) {
+                const path = line.trim();
+                if (path !== "")
+                    set[path] = true;
+            }
+            root.favoriteSet = set;
+        }
+    }
+
+    // --- FILTER STATE (persisted across restarts) ---
+    property string filtersFile: Quickshell.env("HOME") + "/.config/ml4w/settings/wallpaper-filters.json"
+
+    property bool favoritesOnly: false
+    // "" means "All Folders". Otherwise a directory path relative to
+    // wallpaperFolder, or rootFolderLabel for images sitting at its top level.
+    property string folderFilter: ""
+
+    readonly property string allFoldersLabel: "All Folders"
+    readonly property string rootFolderLabel: "(root)"
+
+    FileView {
+        id: filtersFileHandler
+        path: Qt.url(root.filtersFile)
+        blockLoading: true
+        printErrors: false
+        onLoaded: {
+            try {
+                const parsed = JSON.parse(this.text());
+                if (parsed.favoritesOnly !== undefined)
+                    root.favoritesOnly = parsed.favoritesOnly === true;
+                if (parsed.folder !== undefined)
+                    root.folderFilter = String(parsed.folder);
+            } catch (e) {
+                console.warn("wallpaper-filters.json: could not parse, using defaults", e);
+            }
+        }
+    }
+
+    function saveFilters(): void {
+        filtersFileHandler.setText(JSON.stringify({
+            favoritesOnly: root.favoritesOnly,
+            folder: root.folderFilter
+        }));
+    }
+
+    // The automation-favorites setting is a 0-byte marker file (the ml4w idiom
+    // for booleans), so it is probed rather than read through a FileView.
+    Process {
+        id: automationFavoritesProbe
+        command: ["bash", "-c", "test -f \"$HOME/.config/ml4w/settings/wallpaper-automation-favorites\" && echo 1 || echo 0"]
+        stdout: StdioCollector {
+            onStreamFinished: {
+                automationFavoritesOnly.checked = this.text.trim() === "1";
+            }
+        }
+    }
+
+    Component.onCompleted: automationFavoritesProbe.running = true
+    onIsOpenChanged: {
+        if (root.isOpen)
+            automationFavoritesProbe.running = true;
+    }
+
     function advancedSettingsLabel(): string {
         const actionText = advancedOptions.visible ? "Hide" : "Show";
         return actionText + " Advanced Options";
@@ -177,15 +275,35 @@ PanelWindow {
         }
     }
 
+    // "All Folders" plus every subfolder that actually holds an image, so an
+    // empty category directory never shows up as a dead entry.
+    property var folderList: [allFoldersLabel]
+
     function filterWallpapers() {
         displayModel.clear();
         let query = searchInput.text.trim().toLowerCase();
         for (let i = 0; i < wallpaperModel.count; i++) {
             let item = wallpaperModel.get(i);
-            if (query === "" || item.fileName.toLowerCase().includes(query)) {
-                displayModel.append(item);
-            }
+            if (query !== "" && !item.fileName.toLowerCase().includes(query))
+                continue;
+            if (root.favoritesOnly && !root.isFavorite(item.filePath))
+                continue;
+            if (root.folderFilter !== "" && item.folder !== root.folderFilter)
+                continue;
+            displayModel.append(item);
         }
+    }
+
+    // Directory of an image relative to wallpaperFolder. Uses the whole
+    // relative path rather than just the first segment so deeper nesting keeps
+    // working; top-level images get rootFolderLabel.
+    function folderOf(path): string {
+        const base = root.wallpaperFolder.replace(/\/+$/, "") + "/";
+        if (!path.startsWith(base))
+            return root.rootFolderLabel;
+        const rest = path.substring(base.length);
+        const cut = rest.lastIndexOf("/");
+        return cut === -1 ? root.rootFolderLabel : rest.substring(0, cut);
     }
 
     function rescanWallpapers() {
@@ -199,19 +317,36 @@ PanelWindow {
         stdout: StdioCollector {
             onStreamFinished: {
                 wallpaperModel.clear();
+                let folders = {};
                 let lines = this.text.trim().split("\n");
                 for (let line of lines) {
                     let path = line.trim();
                     if (path !== "") {
                         let fileName = path.split("/").pop();
+                        let folder = root.folderOf(path);
+                        folders[folder] = true;
                         wallpaperModel.append({
                             filePath: path,
-                            fileName: fileName
+                            fileName: fileName,
+                            folder: folder
                         });
                     }
                 }
+
+                // Rebuild the dropdown model, then re-apply the persisted
+                // selection: replacing the model resets currentIndex, and the
+                // saved folder may no longer exist after a rescan.
+                let names = Object.keys(folders).filter(f => f !== root.rootFolderLabel).sort();
+                if (folders[root.rootFolderLabel] === true)
+                    names.unshift(root.rootFolderLabel);
+                root.folderList = [root.allFoldersLabel].concat(names);
+                if (root.folderFilter !== "" && names.indexOf(root.folderFilter) === -1) {
+                    root.folderFilter = "";
+                    root.saveFilters();
+                }
+                folderSelector.currentIndex = root.folderFilter === "" ? 0 : root.folderList.indexOf(root.folderFilter);
+
                 root.filterWallpapers();
-                emptyWallpaperDirectoryMsg.visible = (wallpaperModel.count === 0);
             }
         }
     }
@@ -248,6 +383,30 @@ PanelWindow {
             font.pixelSize: 18
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
+        }
+    }
+
+    // Filled star when the favorites-only filter is on, dimmed outline when off.
+    component StarToggle: Button {
+        id: starToggle
+        required property bool active
+        implicitWidth: 28
+        implicitHeight: 28
+        background: Rectangle {
+            color: "transparent"
+        }
+        contentItem: Text {
+            text: starToggle.active ? "★" : "☆"
+            color: Theme.primary
+            opacity: starToggle.active ? 1.0 : 0.45
+            font.pixelSize: 20
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 150
+                }
+            }
         }
     }
 
@@ -443,6 +602,20 @@ PanelWindow {
                         }
                     }
 
+                    // Favorites-only filter
+                    StarToggle {
+                        active: root.favoritesOnly
+                        onClicked: {
+                            root.favoritesOnly = !root.favoritesOnly;
+                            root.saveFilters();
+                            root.filterWallpapers();
+                        }
+
+                        Accessible.name: "Favorites only"
+                        Accessible.description: qsTr("Show only wallpapers marked as favorite")
+                        Accessible.role: Accessible.CheckBox
+                    }
+
                     // Settings Wheel & Menu
                     SettingsWheel {
                         onClicked: wallpaperMenu.open()
@@ -465,7 +638,16 @@ PanelWindow {
                                 text: "Random Wallpaper"
                                 onClicked: {
                                     root.isOpen = false;
-                                    Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-wallpaper --random"]);
+                                    const script = Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-wallpaper";
+                                    // Draw from what is actually on screen, so the
+                                    // active filters apply. Fall back to the script's
+                                    // own folder-wide pick when nothing is shown.
+                                    if (displayModel.count > 0) {
+                                        const pick = displayModel.get(Math.floor(Math.random() * displayModel.count));
+                                        Quickshell.execDetached(["bash", "-c", script + " '" + pick.filePath + "'"]);
+                                    } else {
+                                        Quickshell.execDetached(["bash", "-c", script + " --random"]);
+                                    }
                                 }
                             }
 
@@ -504,6 +686,26 @@ PanelWindow {
                                 }
                             }
                         }
+                    }
+                }
+
+                // --- SUBFOLDER FILTER ---
+                // Hidden when the wallpaper folder is flat, so there is no
+                // dead control with nothing to pick.
+                ML4WComboBox {
+                    id: folderSelector
+                    model: root.folderList
+                    Layout.fillWidth: true
+                    visible: root.folderList.length > 1
+
+                    Accessible.name: "Wallpaper Folder Filter"
+                    Accessible.description: qsTr("Show only wallpapers from one subfolder")
+                    Accessible.role: Accessible.ComboBox
+
+                    onActivated: {
+                        root.folderFilter = index === 0 ? "" : root.folderList[index];
+                        root.saveFilters();
+                        root.filterWallpapers();
                     }
                 }
 
@@ -658,6 +860,26 @@ PanelWindow {
                         Accessible.description: qsTr("Choose whether to update theming based on the new wallpaper selector")
                         Accessible.role: Accessible.CheckBox
                     }
+
+                    // Marker-file setting (existence = on) read by
+                    // ml4w-wallpaper-automation. Unlike the controls above this
+                    // mirrors on-disk state, so it is not reset when the
+                    // advanced section is hidden.
+                    ML4WCheckBox {
+                        id: automationFavoritesOnly
+                        checked: false
+                        text: "Rotate only through favorites"
+
+                        Accessible.name: text
+                        Accessible.description: qsTr("Restrict the background wallpaper rotation to favorites")
+                        Accessible.role: Accessible.CheckBox
+
+                        onToggled: {
+                            const marker = Quickshell.env("HOME") + "/.config/ml4w/settings/wallpaper-automation-favorites";
+                            const cmd = checked ? "touch '" + marker + "'" : "rm -f '" + marker + "'";
+                            Quickshell.execDetached(["bash", "-c", cmd]);
+                        }
+                    }
                 }
 
                 Rectangle {
@@ -667,10 +889,10 @@ PanelWindow {
                     opacity: 0.3
                 }
 
-                // --- ERROR MSG FOR EMPTY OR INVALID DIRECTORY ---
+                // --- EMPTY STATE: invalid/empty directory, or filters matching nothing ---
                 Text {
                     id: emptyWallpaperDirectoryMsg
-                    visible: true
+                    visible: displayModel.count === 0
 
                     Layout.fillWidth: true
                     color: Theme.primary
@@ -679,7 +901,7 @@ PanelWindow {
                     Layout.alignment: Qt.AlignHCenter
                     horizontalAlignment: Text.AlignHCenter
 
-                    text: "Wallpaper folder is either empty or invalid."
+                    text: wallpaperModel.count === 0 ? "Wallpaper folder is either empty or invalid." : "No wallpapers match the current filters."
                 }
 
                 // --- IMAGE GRID ---
@@ -703,10 +925,15 @@ PanelWindow {
                     model: displayModel
 
                     delegate: Item {
+                        id: tile
                         width: grid.cellWidth
                         height: grid.cellHeight
                         required property string filePath
                         required property string fileName
+
+                        // Read favoriteSet directly so the binding captures it:
+                        // the set is reassigned wholesale on every toggle.
+                        readonly property bool isFav: root.favoriteSet[filePath] === true
 
                         Rectangle {
                             anchors.fill: parent
@@ -804,6 +1031,41 @@ PanelWindow {
                                         options = `${outputParams}${positioningParams}${themingParams}`;
                                     }
                                     Quickshell.execDetached(["bash", "-c", scriptPath + " '" + filePath + "'" + options]);
+                                }
+                            }
+
+                            // Favorite star. Declared after mouseArea so it sits
+                            // on top and swallows the click; hoverEnabled stays
+                            // off so hover still reaches the tile underneath and
+                            // the border/star don't flicker when pointing at it.
+                            Rectangle {
+                                anchors.top: parent.top
+                                anchors.right: parent.right
+                                anchors.margins: 6
+                                width: 24
+                                height: 24
+                                radius: 12
+                                color: "#66000000"
+
+                                visible: tile.isFav || mouseArea.containsMouse
+                                opacity: visible ? 1.0 : 0.0
+                                Behavior on opacity {
+                                    NumberAnimation {
+                                        duration: 150
+                                    }
+                                }
+
+                                Text {
+                                    anchors.centerIn: parent
+                                    text: tile.isFav ? "★" : "☆"
+                                    color: "white"
+                                    font.pixelSize: 15
+                                }
+
+                                MouseArea {
+                                    anchors.fill: parent
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: root.toggleFavorite(tile.filePath)
                                 }
                             }
                         }
