@@ -140,7 +140,11 @@ Scope {
                     }
 
                     if (targetId !== null) {
-                        Hyprland.dispatch("workspace " + targetId);
+                        if (Hyprland.usingLua) {
+                            Hyprland.dispatch(`hl.dsp.focus({workspace = '${targetId}'})`);
+                        } else {
+                            Hyprland.dispatch("workspace " + targetId);
+                        }
                         event.accepted = true;
                     }
                 }

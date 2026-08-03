@@ -127,6 +127,7 @@ Singleton {
 
         property QtObject hacks: QtObject {
             property int arbitraryRaceConditionDelay: root.readInt("hacks.arbitraryRaceConditionDelay", 150)
+            property int hyprlandEventDebounceMs: root.readInt("hacks.hyprlandEventDebounceMs", 40)
         }
     }
 

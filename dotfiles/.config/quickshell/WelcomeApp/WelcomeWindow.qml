@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import Quickshell.Io
+import Quickshell.Hyprland
 import qs.CustomTheme
 
 FloatingWindow {
@@ -482,7 +483,12 @@ FloatingWindow {
                         }
                         
                         onClicked: {
-                            Quickshell.execDetached(["hyprctl", "dispatch", "togglefloating"])
+                            // Hyprland with Lua dispatchers ignores the plain
+                            // "togglefloating" string, so branch on usingLua
+                            if (Hyprland.usingLua)
+                                Hyprland.dispatch("hl.dsp.window.float({ action = 'toggle' })")
+                            else
+                                Hyprland.dispatch("togglefloating")
                         }
                     }
 

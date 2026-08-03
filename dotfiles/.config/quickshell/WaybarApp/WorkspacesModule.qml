@@ -20,7 +20,13 @@ Item {
     // on-scroll-up/down: hyprctl dispatch workspace r±1 (anywhere on the module)
     WheelHandler {
         target: wsRoot
-        onWheel: event => Hyprland.dispatch("workspace " + (event.angleDelta.y > 0 ? "r+1" : "r-1"))
+        onWheel: event => {
+            const rel = event.angleDelta.y > 0 ? "r+1" : "r-1"
+            if (Hyprland.usingLua)
+                Hyprland.dispatch(`hl.dsp.focus({workspace = '${rel}'})`)
+            else
+                Hyprland.dispatch("workspace " + rel)
+        }
     }
 
     RowLayout {
