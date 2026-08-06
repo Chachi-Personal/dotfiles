@@ -85,6 +85,9 @@ PanelWindow {
         function isOpen(): bool {
             return root.isOpen;
         }
+        function rescan(): void {
+            root.rescanWallpapers();
+        }
     }
 
     property string defaultWallpaperFolder: Quickshell.env("HOME") + "/.config/ml4w/wallpapers"
@@ -237,9 +240,14 @@ PanelWindow {
     }
 
     Component.onCompleted: automationFavoritesProbe.running = true
+    // Nothing watches the wallpaper folder, so opening the panel is when we
+    // pick up files added or removed since the last scan. The scan short
+    // circuits when the tree is unchanged, so this is free in the common case.
     onIsOpenChanged: {
-        if (root.isOpen)
+        if (root.isOpen) {
             automationFavoritesProbe.running = true;
+            rescanWallpapers();
+        }
     }
 
     function advancedSettingsLabel(): string {
@@ -279,6 +287,13 @@ PanelWindow {
     // empty category directory never shows up as a dead entry.
     property var folderList: [allFoldersLabel]
 
+    // Raw output of the last scan that actually rebuilt the model. A rescan
+    // whose result matches it is dropped, so opening the panel does not reset
+    // the grid scroll position when nothing changed on disk. Set hasScanned
+    // back to false to force the next scan through.
+    property string lastScanSignature: ""
+    property bool hasScanned: false
+
     function filterWallpapers() {
         displayModel.clear();
         let query = searchInput.text.trim().toLowerCase();
@@ -316,9 +331,15 @@ PanelWindow {
         id: wallpaperScanner
         stdout: StdioCollector {
             onStreamFinished: {
+                const raw = this.text.trim();
+                if (root.hasScanned && raw === root.lastScanSignature)
+                    return;
+                root.hasScanned = true;
+                root.lastScanSignature = raw;
+
                 wallpaperModel.clear();
                 let folders = {};
-                let lines = this.text.trim().split("\n");
+                let lines = raw.split("\n");
                 for (let line of lines) {
                     let path = line.trim();
                     if (path !== "") {
@@ -670,6 +691,9 @@ PanelWindow {
                             ML4WMenuItem {
                                 text: "Reload Images"
                                 onClicked: {
+                                    // Manual escape hatch: rebuild even if the
+                                    // scan comes back byte-identical.
+                                    root.hasScanned = false;
                                     rescanWallpapers();
                                 }
                             }
