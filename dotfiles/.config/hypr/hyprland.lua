@@ -23,3 +23,6 @@ require("conf.keybinding")
 require("conf.windowrule")
 require("conf.animation")
 require("conf.misc")
+
+-- Custom fullscreen on scrolling layout
+require("lib.fullscreen").setup() -- setup the fullscreen workspace functionality

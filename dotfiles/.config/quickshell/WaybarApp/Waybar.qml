@@ -35,7 +35,7 @@ Singleton {
     // Cap on TrayModule's width on compact outputs, so an unbounded number of
     // live tray icons can't grow the right island into the center clock
     // island on a narrow (vertical) monitor. Overflow scrolls instead.
-    readonly property int trayMaxWidth: 180
+    readonly property int trayMaxWidth: 150
 
     // --- Enabled state ------------------------------------------------------
 

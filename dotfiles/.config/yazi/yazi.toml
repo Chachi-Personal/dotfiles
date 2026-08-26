@@ -153,8 +153,19 @@ for = "unix"
 # 	{ id = "git", name = "*", run = "git" },
 # 	{ id = "git", name = "*/", run = "git" },
 # ]
-[plugin]
-prepend_previewers = [{ mime = "text/csv", run = "miller" }]
+[[plugin.prepend_fetchers]]
+url = "*"
+run = "git"
+group = "git"
+
+[[plugin.prepend_fetchers]]
+url = "*/"
+run = "git"
+group = "git"
+
+[[plugin.prepend_previewers]]
+mime = "text/csv"
+run = "miller"
 #
 # preloaders = [
 # 	# { name = "*", cond = "!mime", run = "mime", multi = true, prio = "high" },

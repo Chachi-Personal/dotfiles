@@ -1,9 +1,6 @@
 hl.on("window.fullscreen", function()
-	if hl.get_config("general.layout") == "monocle" then
-		return
-	end
-	hl.dispatch(hl.dsp.layout("focus r"))
-	hl.dispatch(hl.dsp.layout("focus l"))
+	-- hl.dispatch(hl.dsp.layout("focus r"))
+	-- hl.dispatch(hl.dsp.layout("focus l"))
 end)
 
 hl.on("window.urgent", function(win)

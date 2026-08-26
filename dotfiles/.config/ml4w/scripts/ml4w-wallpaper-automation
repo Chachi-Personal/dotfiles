@@ -16,7 +16,11 @@ NOTIFICATION_ICON="preferences-desktop-wallpaper-symbolic"
 sec=$(cat ~/.config/ml4w/settings/wallpaper-automation)
 _setWallpaperRandomly() {
     while true; do
-        $HOME/.config/ml4w/scripts/ml4w-wallpaper --random
+        # Re-checked every tick so toggling "Rotate only through favorites" in
+        # the wallpaper app takes effect without restarting this daemon.
+        fav_flag=""
+        [ -f "$HOME/.config/ml4w/settings/wallpaper-automation-favorites" ] && fav_flag="--favorites"
+        $HOME/.config/ml4w/scripts/ml4w-wallpaper --random $fav_flag
         echo ":: Next wallpaper in $sec seconds..."
         sleep $sec
     done

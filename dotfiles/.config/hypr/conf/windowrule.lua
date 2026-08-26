@@ -248,3 +248,33 @@ hl.window_rule({
 	float = true,
 	center = true,
 })
+
+hl.window_rule({
+	name = "thunderbird-dialogs",
+	match = {
+		class = [[^org\.mozilla\.[Tt]hunderbird$]],
+		initial_title = [[negative:^Mozilla Thunderbird$]],
+	},
+	float = true,
+	center = true,
+})
+
+hl.window_rule({
+	name = "claude",
+	match = { class = [[^[Cc]laude[-_]?[Dd]esktop$]] },
+	workspace = "special:ai",
+})
+
+-- Everything except the main vault window. Rule regexes are *full*-match, so
+-- the pattern has to cover the whole title (hence the trailing `.*` — it is
+-- what lets `Vault - Obsidian` also match `Vault - Obsidian 1.13.4`).
+hl.window_rule({
+	name = "obsidian-popouts",
+	match = {
+		class = [[^md\.Obsidian$]],
+		initial_title = [[negative:Vault - Obsidian.*]],
+	},
+	float = true,
+	center = true,
+	-- size = "1100 800",
+})

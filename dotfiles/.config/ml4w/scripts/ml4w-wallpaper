@@ -10,6 +10,10 @@ SKIP_WALLPAPER=false
 SKIP_THEMING=false
 MONITOR_OUTPUT=""
 AWWW_CROP_GRAVITY="center"
+RANDOM_MODE=false
+RANDOM_FOLDER=""
+USE_FAVORITES=false
+FAVORITE_CANDIDATES=()
 CACHE_FOLDER="$HOME/.cache/ml4w/hyprland-dotfiles"
 CACHE_FILE="$CACHE_FOLDER/current_wallpaper"
 DEFAULT_WALLPAPER="$HOME/.config/ml4w/wallpapers/default.jpg"
@@ -19,6 +23,8 @@ RASI_FILE="$CACHE_FOLDER/current_wallpaper.rasi"
 SETTINGS_BLUR="$HOME/.config/ml4w/settings/blur.sh"
 SETTINGS_WALLPAPER_FOLDER="$HOME/.config/ml4w/settings/wallpaper-folder"
 SETTINGS_WALLPAPER_EFFECT="$HOME/.config/ml4w/settings/wallpaper-effect"
+# One absolute image path per line, written by the Quickshell WallpaperApp.
+SETTINGS_WALLPAPER_FAVORITES="$HOME/.config/ml4w/settings/wallpaper-favorites"
 SETTINGS_TRANSITION_EFFECT=$(cat "$HOME/.config/ml4w/settings/wallpaper-transition-effect")
 BLUR=$(cat "$SETTINGS_BLUR")
 
@@ -47,6 +53,7 @@ show_help() {
     echo "Optional Parameters:"
     echo "  --effect NAME          Apply a specific wallpaper effect."
     echo "  --random [FOLDER]      Select a random image from FOLDER."
+    echo "  --favorites            With --random, pick only from $SETTINGS_WALLPAPER_FAVORITES."
     echo "  --notifications        Enable desktop notifications."
     echo "  --skip-wallpaper       Will skip setting the wallpaper with awww."
     echo "  --skip-theming         Will skip updating OS themes based on new wallpaper."
@@ -194,6 +201,9 @@ while [[ $# -gt 0 ]]; do
         --effect)
             EFFECT="$2"; shift 2 ;;
         --random)
+            # Only record the request here; the image is picked after the loop
+            # so a later --favorites still applies.
+            RANDOM_MODE=true
             if [[ -n "$2" && "$2" != -* ]]; then
                 RANDOM_FOLDER="$2"; shift 2
             else
@@ -201,14 +211,9 @@ while [[ $# -gt 0 ]]; do
                 RANDOM_FOLDER="${RAW_FOLDER//\$HOME/$HOME}"
                 RANDOM_FOLDER="${RANDOM_FOLDER//\~/$HOME}"
                 shift 1
-            fi
-            if [[ ! -d "$RANDOM_FOLDER" ]]; then
-                error "Directory does not exist -> $RANDOM_FOLDER"; exit 1
-            fi
-            IMAGE_PATH=$(find "$RANDOM_FOLDER" -type f \
-                \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | shuf -n 1)
-            [[ -z "$IMAGE_PATH" ]] && { error "No valid images found in -> $RANDOM_FOLDER"; exit 1; }
-            info "Random wallpaper selected: $IMAGE_PATH" ;;
+            fi ;;
+        --favorites)
+            USE_FAVORITES=true; shift ;;
         --notifications)
             NOTIFICATIONS=true; shift ;;
         --monitor)
@@ -228,6 +233,43 @@ while [[ $# -gt 0 ]]; do
             shift ;;
     esac
 done
+
+# ============================================================
+# Random Selection
+# ============================================================
+if [[ "$RANDOM_MODE" = true ]]; then
+    RANDOM_FOLDER="${RANDOM_FOLDER%/}"
+    if [[ ! -d "$RANDOM_FOLDER" ]]; then
+        error "Directory does not exist -> $RANDOM_FOLDER"; exit 1
+    fi
+
+    if [[ "$USE_FAVORITES" = true ]]; then
+        if [[ -f "$SETTINGS_WALLPAPER_FAVORITES" ]]; then
+            # Keep only favorites that still exist and, when a folder was given,
+            # that live under it.
+            while IFS= read -r fav; do
+                [[ -z "$fav" ]] && continue
+                [[ -f "$fav" ]] || continue
+                [[ "$fav" == "$RANDOM_FOLDER"/* ]] || continue
+                FAVORITE_CANDIDATES+=("$fav")
+            done < "$SETTINGS_WALLPAPER_FAVORITES"
+        fi
+
+        if [[ ${#FAVORITE_CANDIDATES[@]} -gt 0 ]]; then
+            IMAGE_PATH=$(printf '%s\n' "${FAVORITE_CANDIDATES[@]}" | shuf -n 1)
+        else
+            warn "No usable favorites in $SETTINGS_WALLPAPER_FAVORITES -> falling back to $RANDOM_FOLDER"
+        fi
+    fi
+
+    if [[ -z "$IMAGE_PATH" ]]; then
+        IMAGE_PATH=$(find "$RANDOM_FOLDER" -type f \
+            \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.webp" -o -iname "*.png" \) | shuf -n 1)
+    fi
+
+    [[ -z "$IMAGE_PATH" ]] && { error "No valid images found in -> $RANDOM_FOLDER"; exit 1; }
+    info "Random wallpaper selected: $IMAGE_PATH"
+fi
 
 # ============================================================
 # Validation

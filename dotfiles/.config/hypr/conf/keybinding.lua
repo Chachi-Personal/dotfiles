@@ -47,6 +47,8 @@ bind(modShift("D"), exec(CALC), { description = "Open calculator" })
 bind(modShift("RETURN"), exec(TERMINAL .. " -e yazi"), { description = "Open filemanager" })
 bind(modShift("KP_ENTER"), exec(TERMINAL .. " -e yazi"), { description = "Open filemanager" })
 bind(altShift("W"), exec(TOR_BROWSER), { description = "Open browser in tor mode" })
+bind(mod("A"), hl.dsp.workspace.toggle_special("ai"), { description = "Toggle AI workspace" })
+bind(modShift("A"), hl.dsp.window.move({ workspace = "special:ai" }))
 --
 -- # Display
 --
@@ -90,41 +92,46 @@ for i = 1, 10, 1 do
 		move_to_workspace(i)
 	end, { description = "Move active window to workspace " .. tostring(i) })
 end
+bind(mod("TAB"), hl.dsp.window.cycle_next())
 
 -- # Windows
 bind(mod("Q"), hl.dsp.window.close(), { description = "Quit window" })
 
 bind(modShift("Q"), hl.dsp.window.kill(), { description = "Quit active window and all open instances" })
-bind(mod("F"), hl.dsp.window.fullscreen({ mode = "fullscreen" }), { description = "Toggle fullscreen window" })
-bind(mod("M"), hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Toggle maximized window" })
+
+bind(mod("F"), function()
+	require("lib.fullscreen").fullscreen_workspace("fullscreen")
+end, { description = "Toggle fullscreen window" })
+bind(mod("M"), function()
+	require("lib.fullscreen").fullscreen_workspace("maximized")
+end)
+-- bind(mod("F"), hl.dsp.window.fullscreen({ mode = "fullscreen" }, { description = "Toggle fullscreen window" }))
+-- bind(mod("M"), hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Toggle maximized window" })
 
 bind(mod("T"), hl.dsp.window.float(), { description = "Toggle active window floating" })
-local move_or_cycle = function(direction)
-	local layout = hl.get_config("general.layout")
-	if layout == "monocle" then
-		hl.dispatch(hl.dsp.layout("cyclenext"))
-	elseif layout == "scrolling" then
-		hl.dispatch(hl.dsp.focus({ direction = direction }))
-		-- hl.dispatch(hl.dsp.layout("focus " .. direction))
-	else
-		hl.notification.create({
-			text = "Unconfigured action for this layout",
-			duration = 2000,
-		})
-	end
+
+local directions = {
+	H = "l",
+	J = "d",
+	K = "u",
+	L = "r",
+}
+
+for key, direction in pairs(directions) do
+	bind(mod(tostring(key)), hl.dsp.focus({ direction = direction }))
 end
-bind(mod("H"), function()
-	move_or_cycle("l")
-end, { description = "Focus left window" })
-bind(mod("J"), function()
-	move_or_cycle("d")
-end, { description = "Focus down window" })
-bind(mod("K"), function()
-	move_or_cycle("u")
-end, { description = "Focus up window" })
-bind(mod("L"), function()
-	move_or_cycle("r")
-end, { description = "Focus right window" })
+-- bind(mod("H"), function()
+-- 	move_or_cycle("l")
+-- end, { description = "Focus left window" })
+-- bind(mod("J"), function()
+-- 	move_or_cycle("d")
+-- end, { description = "Focus down window" })
+-- bind(mod("K"), function()
+-- 	move_or_cycle("u")
+-- end, { description = "Focus up window" })
+-- bind(mod("L"), function()
+-- 	move_or_cycle("r")
+-- end, { description = "Focus right window" })
 bind(modShift("H"), hl.dsp.window.swap({ direction = "l" }), { description = "Swap with left window" })
 bind(modShift("J"), hl.dsp.window.swap({ direction = "d" }), { description = "Swap with down window" })
 bind(modShift("K"), hl.dsp.window.swap({ direction = "u" }), { description = "Swap with up window" })
@@ -199,7 +206,7 @@ bind(
 )
 
 -- bind = SUPER, mouse:277, exec, notify-send "MX forward button pressed"
-bind("mouse:277", hl.dsp.window.kill())
+bind("mouse:277", hl.dsp.window.close())
 
 bind(mod("G"), require("lib.game_mode").toggle)
 

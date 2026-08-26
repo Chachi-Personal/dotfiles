@@ -49,10 +49,12 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("swaync")
 
 	-- Start hypridle
-	hl.exec_cmd("hypridle")
+	-- hl.exec_cmd("hypridle")
 
 	-- Load cliphist history
 	hl.exec_cmd("wl-paste --watch cliphist store")
+
+	hl.exec_cmd("udiskie --tray")
 
 	-- Start autostart cleanup
 	require("lib.game_mode").cleanup()

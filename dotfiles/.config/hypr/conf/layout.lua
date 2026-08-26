@@ -4,6 +4,7 @@ hl.config({
 		-- follow_focus = true,
 		direction = "left",
 		explicit_column_widths = "0.5,1",
+		wrap_focus = false,
 	},
 })
 
