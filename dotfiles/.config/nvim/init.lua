@@ -4,11 +4,10 @@ vim.loader.enable()
 require("vim._core.ui2").enable({
 	enable = true,
 	msg = {
-		target = "cmd",
-		pager = { height = 0.5 },
+		targets = { "cmd", "msg", "pager" }, -- "cmd" removed: cmdline is owned by noice.nvim
 		dialog = { height = 0.5 },
-		cmd = { height = 0.5 },
-		msg = { height = 0.5, timeout = 4500 },
+		msg = { height = 0.5 },
+		pager = { height = 0.9 },
 	},
 })
 
@@ -29,6 +28,7 @@ require("lsp.mason")
 require("lsp")
 require("lsp.completion")
 require("lsp.dap")
+require("lsp.autoformat")
 
 -- Plugins
 require("plugins")

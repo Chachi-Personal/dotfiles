@@ -108,73 +108,75 @@ au({ "BufReadPre", "BufNewFile" }, {
 	once = true,
 	callback = function()
 		vim.pack.add({ "https://github.com/windwp/nvim-autopairs" })
-		local npairs = require("nvim-autopairs")
-		local Rule = require("nvim-autopairs.rule")
-		local cond = require("nvim-autopairs.conds")
-		local ts_conds = require("nvim-autopairs.ts-conds")
+		defer(function()
+			local npairs = require("nvim-autopairs")
+			local Rule = require("nvim-autopairs.rule")
+			local cond = require("nvim-autopairs.conds")
+			local ts_conds = require("nvim-autopairs.ts-conds")
 
-		npairs.setup({
-			map_cr = true,
-			check_ts = true,
-			ignored_next_char = [=[[%w%%%'%[%\"%.%`]]=], -- removed %$ from default
-		})
+			npairs.setup({
+				map_cr = true,
+				check_ts = true,
+				ignored_next_char = [=[[%w%%%'%[%\"%.%`]]=], -- removed %$ from default
+			})
 
-		npairs.add_rules({
-			Rule("$", "$", { "typst", "markdown" }):with_move(function(opts)
-				return opts.char == "$"
-			end),
-			Rule("*", "*", { "typst" }):with_pair(function()
-				local node = vim.treesitter.get_node({ ignore_injections = false })
-				local blocked = { math = true, math_group = true, formula = true, group = true, attach = true }
-
-				while node do
-					if blocked[node:type()] then
-						return false
-					end
-					node = node:parent()
-				end
-				return true
-			end),
-		})
-
-		npairs.add_rules({
-			Rule(" ", " ", "typst"):with_pair(function(opts)
-				local pair = opts.line:sub(opts.col - 1, opts.col)
-				return pair == "$$"
-			end):with_del(cond.none()),
-			Rule("$ ", " $", "typst")
-				:with_pair(cond.none())
-				:with_move(function(opts)
-					return opts.char == "$"
-				end)
-				:with_del(function(opts)
-					local col = vim.api.nvim_win_get_cursor(0)[2]
-					local context = opts.line:sub(col - 1, col + 2)
-					return context == "$  $"
-				end)
-				:use_key("$"),
-		})
-
-		local brackets = { { "(", ")" }, { "[", "]" }, { "{", "}" } }
-		for _, bracket in ipairs(brackets) do
 			npairs.add_rules({
-				Rule(" ", " ", "-markdown"):with_pair(function(opts)
+				Rule("$", "$", { "typst", "markdown" }):with_move(function(opts)
+					return opts.char == "$"
+				end),
+				Rule("*", "*", { "typst" }):with_pair(function()
+					local node = vim.treesitter.get_node({ ignore_injections = false })
+					local blocked = { math = true, math_group = true, formula = true, group = true, attach = true }
+
+					while node do
+						if blocked[node:type()] then
+							return false
+						end
+						node = node:parent()
+					end
+					return true
+				end),
+			})
+
+			npairs.add_rules({
+				Rule(" ", " ", "typst"):with_pair(function(opts)
 					local pair = opts.line:sub(opts.col - 1, opts.col)
-					return vim.tbl_contains({ bracket[1] .. bracket[2] }, pair)
+					return pair == "$$"
 				end):with_del(cond.none()),
-				Rule(bracket[1] .. " ", " " .. bracket[2])
+				Rule("$ ", " $", "typst")
 					:with_pair(cond.none())
 					:with_move(function(opts)
-						return opts.char == bracket[2]
+						return opts.char == "$"
 					end)
 					:with_del(function(opts)
 						local col = vim.api.nvim_win_get_cursor(0)[2]
 						local context = opts.line:sub(col - 1, col + 2)
-						return vim.tbl_contains({ bracket[1] .. "  " .. bracket[2] }, context)
+						return context == "$  $"
 					end)
-					:use_key(bracket[2]),
+					:use_key("$"),
 			})
-		end
+
+			local brackets = { { "(", ")" }, { "[", "]" }, { "{", "}" } }
+			for _, bracket in ipairs(brackets) do
+				npairs.add_rules({
+					Rule(" ", " ", "-markdown"):with_pair(function(opts)
+						local pair = opts.line:sub(opts.col - 1, opts.col)
+						return vim.tbl_contains({ bracket[1] .. bracket[2] }, pair)
+					end):with_del(cond.none()),
+					Rule(bracket[1] .. " ", " " .. bracket[2])
+						:with_pair(cond.none())
+						:with_move(function(opts)
+							return opts.char == bracket[2]
+						end)
+						:with_del(function(opts)
+							local col = vim.api.nvim_win_get_cursor(0)[2]
+							local context = opts.line:sub(col - 1, col + 2)
+							return vim.tbl_contains({ bracket[1] .. "  " .. bracket[2] }, context)
+						end)
+						:use_key(bracket[2]),
+				})
+			end
+		end)
 	end,
 })
 
@@ -199,7 +201,12 @@ au({ "BufReadPre", "BufNewFile" }, {
 	once = true,
 	callback = function()
 		vim.pack.add({ "https://github.com/nmac427/guess-indent.nvim" })
-		require("guess-indent").setup({})
+		defer(function()
+			require("guess-indent").setup({})
+			-- setup() lands after the triggering buffer's BufReadPost, so its
+			-- autocmd missed it — detect once for the first buffer of the session.
+			require("guess-indent").set_from_buffer(0, true, true)
+		end)
 	end,
 })
 
@@ -213,5 +220,9 @@ defer(function()
 	vim.pack.add({
 		"https://github.com/aserowy/tmux.nvim",
 	})
-	require("tmux").setup()
+	require("tmux").setup({
+		resize = {
+			enable_default_keybindgs = false,
+		},
+	})
 end)

@@ -7,16 +7,18 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 	once = true,
 	callback = function()
 		vim.pack.add({ "https://github.com/theRealCarneiro/hyprland-vim-syntax" })
-		local ok, reg = pcall(require, "mason-registry")
-		if ok then
-			reg.refresh(function()
-				local okp, pkg = pcall(reg.get_package, "hyprls")
-				if okp and not pkg:is_installed() then
-					pkg:install()
-				end
-			end)
-		end
-		vim.bo.filetype = "hyprlang"
-		vim.lsp.enable("hyprls")
+		vim.schedule(function()
+			local ok, reg = pcall(require, "mason-registry")
+			if ok then
+				reg.refresh(function()
+					local okp, pkg = pcall(reg.get_package, "hyprls")
+					if okp and not pkg:is_installed() then
+						pkg:install()
+					end
+				end)
+			end
+			vim.bo.filetype = "hyprlang"
+			vim.lsp.enable("hyprls")
+		end)
 	end,
 })

@@ -278,6 +278,8 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
 	once = true,
 	callback = function()
 		vim.pack.add({ "https://github.com/brenoprata10/nvim-highlight-colors" })
-		require("nvim-highlight-colors").setup({ render = "background" })
+		vim.schedule(function()
+			require("nvim-highlight-colors").setup({ render = "background" })
+		end)
 	end,
 })

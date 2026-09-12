@@ -44,7 +44,7 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
 
 -- Unmaps Q in normal mode
-vim.keymap.set("n", "Q", "<nop>")
+-- vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<leader>U", function()
 	vim.cmd.packadd("nvim.undotree") -- loads the builtin plugin on first use
@@ -133,10 +133,6 @@ map("n", "]t", "<Cmd>tabnext<CR>", { desc = "Next tab" })
 map("n", "[t", "<Cmd>tabprevious<CR>", { desc = "Previous tab" })
 
 -- ─── Window navigation (plain — use smart-splits if you add that plugin) ──────
-map("n", "<C-H>", "<C-w>h", { desc = "Move to left split" })
-map("n", "<C-J>", "<C-w>j", { desc = "Move to below split" })
-map("n", "<C-K>", "<C-w>k", { desc = "Move to above split" })
-map("n", "<C-L>", "<C-w>l", { desc = "Move to right split" })
 map("n", "<C-Up>", "<Cmd>resize +2<CR>", { desc = "Resize split up" })
 map("n", "<C-Down>", "<Cmd>resize -2<CR>", { desc = "Resize split down" })
 map("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Resize split left" })
@@ -161,3 +157,9 @@ map("n", "<leader>sx", "zw", { desc = "Spell: mark word as bad" })
 map("n", "<leader>s?", "z=", { desc = "Spell: show suggestions" })
 map("n", "]s", "]s", { desc = "Spell: next misspelled word" })
 map("n", "[s", "[s", { desc = "Spell: prev misspelled word" })
+
+-- ─── Multicursor ──────────────────────────────────────────────────────────────
+map("n", "<leader>ml", function()
+	local mc_ns = vim.api.nvim_create_namespace("nvim.multicursor")
+	vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
+end)

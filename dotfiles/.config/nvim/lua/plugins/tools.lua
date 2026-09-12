@@ -11,7 +11,9 @@ au({ "BufReadPre", "BufNewFile" }, {
 	once = true,
 	callback = function()
 		vim.pack.add({ "https://github.com/folke/todo-comments.nvim" })
-		require("todo-comments").setup({})
+		defer(function()
+			require("todo-comments").setup({})
+		end)
 	end,
 })
 

@@ -41,5 +41,9 @@ opt.foldlevelstart = 99
 vim.o.cmdheight = 0
 
 -- Native autocomplete (new in 0.12, replaces nvim-cmp for basic use)
-opt.completeopt = { "menuone", "popup", "noinsert" }
+-- opt.completeopt = { "menuone", "popup", "noinsert" }
+opt.completeopt:append("popup")
 -- opt.autocomplete = true  -- enable if you want fully native completion
+
+-- ui2
+opt.messagesopt:append("maxheight:50,pager:<CR>,timeout:4500")
