@@ -237,9 +237,10 @@ hl.window_rule({
 
 hl.window_rule({
 	name = "Local Send",
-	match = { class = "localsend", title = "LocalSend" },
+	match = { initial_class = "org.localsend.localsend_app" },
 	float = true,
-	size = { 500, 680 },
+	size = { 850, 500 },
+	center = true,
 })
 
 hl.window_rule({
@@ -277,4 +278,10 @@ hl.window_rule({
 	float = true,
 	center = true,
 	-- size = "1100 800",
+})
+
+hl.window_rule({
+	name = "quercus-simulation",
+	match = { class = [[^simulation$]] },
+	float = true,
 })

@@ -11,7 +11,8 @@ env("TERMINAL", "kitty")
 -- Environment Variables
 -- name: "Default Apps"
 -- -----------------------------------------------------
-env("ML4W_PERSONAL_DIR", "/home/chachi/Documents/personal")
+-- env("ML4W_PERSONAL_DIR", "/home/chachi/Documents/personal")
+env("ML4W_DOCUMENTS_DIR", "/home/chachi/Documents")
 env("ML4W_PROJECTS_DIR", "/home/chachi/Documents/projects")
 env("ML4W_UNIVERSITY_DIR", "/home/chachi/Documents/uni")
 env("ML4W_WALLPAPERS_DIR", "/home/chachi/.config/ml4w/wallpapers")
