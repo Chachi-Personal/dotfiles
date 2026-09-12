@@ -22,3 +22,17 @@ preview_command = "eza --all --git --icons --color=always {}"
 # windows = [ "editor", "other" ]
 
 # [[windows]]
+
+[[session]]
+name = "2irr70"
+path = "~/Documents/code/uni/2irr70-system-integration"
+startup_command = "exit"
+windows = ["simulator", "router app"]
+
+[[window]]
+name = "simulator"
+path = "~/Documents/code/uni/2irr70-system-integration/q_simulator"
+
+[[window]]
+name = "router app"
+path = "~/Documents/code/uni/2irr70-system-integration/q_router_app"
