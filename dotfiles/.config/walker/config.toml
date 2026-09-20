@@ -1,4 +1,4 @@
-force_keyboard_focus = false    # forces keyboard forcus to stay in Walker
+force_keyboard_focus = true     # forces keyboard forcus to stay in Walker
 close_when_open = true          # close walker when invoking while already opened
 click_to_close = true           # closes walker if clicking outside of the main content area
 selection_wrap = false          # wrap list if at bottom or top
@@ -18,8 +18,8 @@ anchor_right = true
 
 [keybinds]
 close = ["Escape"]
-next = ["Down"]
-previous = ["Up"]
+next = ["ctrl j"]
+previous = ["ctrl k"]
 toggle_exact = ["ctrl e"]
 resume_last_query = ["ctrl r"]
 quick_activate = ["F1", "F2", "F3", "F4"]
@@ -30,7 +30,7 @@ default = [
   "calc",
   "runner",
   "menus",
-  "websearch",
+  "symbols",
 ] # providers to be queried by default
 empty = ["desktopapplications"] # providers to be queried when query is empty
 
