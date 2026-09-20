@@ -109,6 +109,7 @@ end)
 -- bind(mod("M"), hl.dsp.window.fullscreen({ mode = "maximized" }), { description = "Toggle maximized window" })
 
 bind(mod("T"), hl.dsp.window.float(), { description = "Toggle active window floating" })
+bind(mod("P"), hl.dsp.window.pin())
 
 local directions = {
 	H = "l",

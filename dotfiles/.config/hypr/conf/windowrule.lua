@@ -272,7 +272,7 @@ hl.window_rule({
 hl.window_rule({
 	name = "obsidian-popouts",
 	match = {
-		class = [[^md\.Obsidian$]],
+		class = [[^md\.obsidian.Obsidian$]],
 		initial_title = [[negative:Vault - Obsidian.*]],
 	},
 	float = true,
@@ -284,4 +284,13 @@ hl.window_rule({
 	name = "quercus-simulation",
 	match = { class = [[^simulation$]] },
 	float = true,
+})
+
+hl.window_rule({
+	name = "Kew music player",
+	match = {
+		initial_title = "kew-music",
+	},
+	float = true,
+	size = "950 500",
 })

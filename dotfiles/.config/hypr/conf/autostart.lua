@@ -61,4 +61,7 @@ hl.on("hyprland.start", function()
 
 	-- Start fcitx5
 	hl.exec_cmd("fcitx5")
+
+	-- OpenLogi (logitech)
+	hl.exec_cmd("openlogi-agent")
 end)
