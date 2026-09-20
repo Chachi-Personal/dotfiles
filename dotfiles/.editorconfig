@@ -1,0 +1,37 @@
+# Single source of truth for indentation: read by Neovim (built-in editorconfig
+# support), prettier and stylua. Keep in sync with conform's formatters_by_ft in
+# ~/.config/nvim/lua/lsp/autoformat.lua.
+#
+# Note: no indent_style/indent_size/tab_width in [*] on purpose — guess-indent.nvim
+# skips any buffer whose editorconfig sets one of those three keys, so a catch-all
+# section would disable content-based detection for every unlisted filetype.
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+
+# prettier defaults (tabWidth 2, useTabs false)
+[*.{json,jsonc,js,jsx,mjs,cjs,ts,tsx,mts,cts,css,scss,less,html}]
+indent_style = space
+indent_size = 2
+
+# stylua defaults (indent_type Tabs, indent_width 4)
+[*.lua]
+indent_style = tab
+indent_size = 4
+
+# ruff_format
+[*.py]
+indent_style = space
+indent_size = 4
+
+# clang-format reads ~/.clang-format (IndentWidth: 4), not this file — keep the two in sync
+[*.{c,h,cpp,cc,cxx,hpp,hh}]
+indent_style = space
+indent_size = 4
+
+# not formatted by conform; 2 spaces is the conventional/required width
+[*.{yaml,yml,md}]
+indent_style = space
+indent_size = 2
