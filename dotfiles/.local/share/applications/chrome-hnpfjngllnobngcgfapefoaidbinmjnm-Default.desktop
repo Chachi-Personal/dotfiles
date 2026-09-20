@@ -1,8 +1,20 @@
 [Desktop Entry]
 Version=1.0
 Terminal=false
+Comment=Messenger application
 Type=Application
-Name=WhatsApp Web
+Name=WhatsApp
 Exec=/opt/helium-browser-bin/helium-wrapper --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
+# Exec=brave --app=https://web.whatsapp.com %F
 Icon=chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default
 StartupWMClass=crx_hnpfjngllnobngcgfapefoaidbinmjnm
+
+# [Desktop Entry]
+# Name=Whatsapp (Brave)
+# GenericName=Whatsapp
+# TryExec=brave
+# Terminal=false
+# Keywords=Messenger;Chat;Social;
+# Icon=whatsapp
+# Categories=Network;InstantMessaging;
+# StartupNotify=true
