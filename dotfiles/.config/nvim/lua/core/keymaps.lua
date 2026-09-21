@@ -159,7 +159,7 @@ map("n", "]s", "]s", { desc = "Spell: next misspelled word" })
 map("n", "[s", "[s", { desc = "Spell: prev misspelled word" })
 
 -- ─── Multicursor ──────────────────────────────────────────────────────────────
-map("n", "<leader>ml", function()
+map("n", "<leader>ql", function()
 	local mc_ns = vim.api.nvim_create_namespace("nvim.multicursor")
 	vim.api.nvim_buf_clear_namespace(0, mc_ns, 0, -1)
 end)

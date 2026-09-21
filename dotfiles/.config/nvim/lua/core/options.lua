@@ -1,6 +1,9 @@
 local opt = vim.opt
 
-opt.termguicolors = true
+opt.termguicolors = true -- enable 24-bit colors
+opt.updatetime = 200 -- save swap file with 200ms debouncing
+opt.autoread = true -- auto update file if changed outside of nvim
+opt.undofile = true -- persistant undo history
 
 -- Line numbers
 opt.number = true
@@ -27,8 +30,6 @@ opt.wrap = false
 opt.scrolloff = 8
 opt.sidescrolloff = 10
 opt.winborder = "rounded" -- new in 0.12: rounded window borders
-
-opt.undofile = true
 
 -- misc
 -- vim.opt.guicursor = ""
