@@ -25,9 +25,9 @@ map("n", "<leader>fr", function()
 end, { desc = "Recent files" })
 
 -- ─── Snacks picker (replaces Telescope/fzf-lua in your setup) ─────────────────
-map("n", "<C-P>", function()
-	Snacks.picker.smart()
-end, { desc = "Smart find files" })
+-- map("n", "<C-S-P>", function()
+-- 	Snacks.picker.smart()
+-- end, { desc = "Smart find files" })
 
 map("n", "<leader><Space>", function()
 	Snacks.picker.smart()
