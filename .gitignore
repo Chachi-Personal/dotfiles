@@ -134,3 +134,4 @@ docs/.vitepress/devicon
 /dotfiles/.config/swaync/colors.css
 /dotfiles/.config/walker/colors.css
 /dotfiles/.config/waybar/colors.css
+/dotfiles/.config/yazi/theme.toml
