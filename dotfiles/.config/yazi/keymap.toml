@@ -28,8 +28,8 @@ run = "cd $ML4W_WALLPAPERS_DIR"
 desc = "Go to wallpapers directory"
 
 [[mgr.prepend_keymap]]
-on = ["g", "p"]
-run = "cd $ML4W_PERSONAL_DIR"
+on = ["g", "D"]
+run = "cd $ML4W_DOCUMENTS_DIR"
 desc = "Go to personal directory"
 
 [[mgr.prepend_keymap]]

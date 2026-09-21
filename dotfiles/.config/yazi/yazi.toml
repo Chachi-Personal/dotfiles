@@ -13,67 +13,29 @@ sort_by = "natural" #"alphabetical", "none", "mtime", "btime", "extension", "nat
 show_hidden = false
 show_symlink = false
 # scrolloff = 5
+# mouse_events = ["click", "scroll", "touch", "move", "drag"]
 #
 # [preview]
+# wrap = "no" # "yes"
 # tab_size = 2
 # max_width = 600
 # max_height = 900
 # cache_dir = ""
+# image_delay = 0
 # image_filter = "triangle"
 # image_quality = 75
 # sixel_fraction = 15
 # ueberzug_scale = 1
 # ueberzug_offset = [0, 0, 0, 0]
-#
-[[opener.edit]]
-run = '${EDITOR:=nvim} "$@"'
-desc = "$EDITOR"
-block = true
-for = "unix"
 
-[[opener.open]]
-run = "xdg-open \"$@\""
-orphan = true
-desc = "Open"
-for = "linux"
-
-[[opener.play]]
-run = 'mpv "$@"'
-orphan = true
-desc = "Play"
-for = "linux"
-
-[[opener.play]]
-run = 'celluloid "$@"'
-orphan = true
-for = "linux"
-
-[[opener.play]]
-run = '''mediainfo "$1"; echo "Press enter to exit"; read _'''
-block = true
-desc = "Show media info"
-for = "unix"
-
-# [[opener.set-wallpaper]]
-# run = 'hyprctl hyprpaper reload ,"$0"'
-# for = 'linux'
-# desc = 'set as wallpaper'
-#
-# [[open.prepend_rules]]
-# mime = 'image/*'
-# use = ['set-wallpaper', 'open']
-
-# [opener]
-# edit = [
-# 	{ run = '${EDITOR:=nvim} "$@"', desc = "$EDITOR", block = true, for = "unix" },
-# 	{ run = 'code "%*"', orphan = true, desc = "code", for = "windows" },
-# 	{ run = 'code -w "%*"', block = true, desc = "code (block)", for = "windows" },
-# ]
-# open = [
-# 	{ run = 'xdg-open "$@"', orphan = true, desc = "Open", for = "linux" },
-# 	{ run = 'open "$@"', desc = "Open", for = "macos" },
-# 	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" },
-# ]
+[opener]
+play = [
+    { run = "mpv %s", orphan = true, for = "unix" },
+    { run = "celluloid %s", orphan = true, for = "unix", desc = "celluloid" },
+    { run = '''mediainfo %s1; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = 'unix' },
+]
+edit = [{ run = "$EDITOR %s", block = true, for = "unix" }]
+open = [{ run = "xdg-open %s1", orphan = true, desc = "Open" }]
 # reveal = [
 # 	{ run = 'xdg-open "$(dirname "$0")"', desc = "Reveal", for = "linux" },
 # 	{ run = 'open -R "$1"', desc = "Reveal", for = "macos" },
@@ -84,14 +46,16 @@ for = "unix"
 # 	{ run = 'unar "$1"', desc = "Extract here", for = "unix" },
 # 	{ run = 'extract "%1"', desc = "Extract here", for = "windows" },
 # ]
-# play = [
-#   { run = 'celluloid "$@"', orphan = true, for = "unix" },
-#   { run = 'mpv "%1"', orphan = true, for = "windows" },
-#   { run = '''mediainfo "$1"; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
-# ]
-#
-# [open]
-# prepend_rules = [{ name = "*.mp4", use = "play" }]
+set-wallpaper = [
+    { run = "/home/chachi/.config/ml4w/scripts/ml4w-wallpaper %s1", orphan = true, for = "linux", desc = "set as wallpaper" },
+]
+
+[open]
+prepend_rules = [
+    { mime = "image/*", use = ["open", "set-wallpaper"] },
+    # { url = "*.mp4", use = "play" },
+]
+
 # rules = [
 # 	{ name = "*/", use = [
 # 		"edit",
