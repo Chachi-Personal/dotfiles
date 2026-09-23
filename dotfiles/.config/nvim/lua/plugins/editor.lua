@@ -225,4 +225,31 @@ defer(function()
 			enable_default_keybindgs = false,
 		},
 	})
+
+	-- Upstream pipes the yanked text into `tmux load-buffer` through
+	-- io.popen, so the whole payload ends up inside the single `sh -c`
+	-- argument. Linux caps that at MAX_ARG_STRLEN (128 KiB), which makes
+	-- every large yank fail with "unable to M.execute". Feed tmux on stdin
+	-- instead — no shell, no limit, no quoting.
+	local wrapper = require("tmux.wrapper.tmux")
+	function wrapper.set_buffer(content, sync_clipboard)
+		local socket = vim.split(vim.env.TMUX or "", ",")[1]
+		if socket == "" then
+			return
+		end
+
+		local cmd = { "tmux", "-S", socket, "load-buffer" }
+		if sync_clipboard then
+			table.insert(cmd, "-w")
+		end
+		table.insert(cmd, "-")
+
+		vim.system(cmd, { stdin = content }, function(out)
+			if out.code ~= 0 then
+				vim.schedule(function()
+					vim.notify("tmux load-buffer failed: " .. (out.stderr or ""), vim.log.levels.WARN)
+				end)
+			end
+		end)
+	end
 end)
