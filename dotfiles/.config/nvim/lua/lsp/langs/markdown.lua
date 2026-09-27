@@ -1,4 +1,4 @@
-local lazy_packages = require("plugins.lazy_packages")
+local lazy_packages = require("plugins._lazy_packages")
 
 lazy_packages.register("render-markdown.nvim")
 vim.api.nvim_create_autocmd("FileType", {

@@ -4,6 +4,12 @@ for _, file in ipairs(vim.fn.glob(langs_dir .. "/*.lua", false, true)) do
 	require("lsp.langs." .. modname)
 end
 
+vim.pack.add({
+	"https://github.com/mason-org/mason.nvim",
+})
+
+require("mason").setup({})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
 	callback = function(args)

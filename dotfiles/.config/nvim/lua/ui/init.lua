@@ -21,13 +21,9 @@ vim.pack.add({
 	"https://github.com/akinsho/bufferline.nvim",
 	"https://github.com/stevearc/aerial.nvim",
 
-	{
-		src = "https://github.com/rachartier/tiny-cmdline.nvim",
-		-- config = function()
-		-- 	vim.o.cmdheight = 0
-		-- 	require("tiny-cmdline").setup()
-		-- end,
-	},
+	"https://github.com/rachartier/tiny-cmdline.nvim",
+
+	"https://github.com/lewis6991/gitsigns.nvim",
 })
 
 vim.cmd.colorscheme("tokyonight-night")
@@ -36,8 +32,36 @@ require("transparent").setup({ extra_groups = { "NormalFloat" } })
 require("mini.icons").setup({})
 require("mini.icons").mock_nvim_web_devicons()
 
+require("tiny-cmdline").setup({
+	width = {
+		value = "60%",
+		min = 40,
+		max = 80,
+	},
+	position = {
+		x = "50%",
+		y = "50%",
+	},
+	border = nil,
+	menu_col_offset = 3,
+	native_types = { "/", "?" },
+	title = {
+		enabled = true,
+		pos = "center",
+		formats = {
+			{ type = ":", pattern = { "^%s*lua%s+", "^%s*lua%s*=", "^%s*=" }, title = " Lua " },
+			{ type = ":", pattern = "^%s*!", title = " Shell " },
+			{ type = ":", pattern = "^%s*he?l?p?%s+", title = " Help " },
+			{ title = " CmdLine " },
+		},
+	},
+	on_reposition = require("tiny-cmdline").adapters.blink,
+})
+
 require("ui.statusline")
 require("ui.bufferline")
+
+require("ui.gitsigns")
 
 -- ——— Lazy Loaded pluggins
 -- Highlight colors (#0ff, rgb(), etc.) — on file open

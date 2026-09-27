@@ -1,7 +1,6 @@
 local map = vim.keymap.set
 
 -- Snacks — eager (dashboard, notifs, etc.)
-vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 require("snacks").setup({
 	bigfile = { enabled = true },
 	image = { enabled = true },
@@ -23,11 +22,6 @@ end, { desc = "Find files" })
 map("n", "<leader>fr", function()
 	Snacks.picker.recent()
 end, { desc = "Recent files" })
-
--- ─── Snacks picker (replaces Telescope/fzf-lua in your setup) ─────────────────
--- map("n", "<C-S-P>", function()
--- 	Snacks.picker.smart()
--- end, { desc = "Smart find files" })
 
 map("n", "<leader><Space>", function()
 	Snacks.picker.smart()

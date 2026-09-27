@@ -20,32 +20,6 @@ autocmd("BufWritePre", {
 	end,
 })
 
--- Format on save via LSP
--- autocmd("LspAttach", {
--- 	group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = true }),
--- 	callback = function(args)
--- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
--- 		if not client then
--- 			return
--- 		end
---
--- 		-- Only attach BufWritePre if the server actually supports formatting
--- 		-- and doesn't already handle it via willSaveWaitUntil
--- 		if
--- 			not client:supports_method("textDocument/willSaveWaitUntil")
--- 			and client:supports_method("textDocument/formatting")
--- 		then
--- 			vim.api.nvim_create_autocmd("BufWritePre", {
--- 				group = vim.api.nvim_create_augroup("lsp_format_on_save_" .. args.buf, { clear = true }),
--- 				buffer = args.buf,
--- 				callback = function()
--- 					vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
--- 				end,
--- 			})
--- 		end
--- 	end,
--- })
-
 autocmd("FileType", {
 	pattern = {
 		"help",
@@ -64,6 +38,17 @@ autocmd("FileType", {
 			desc = "Close window",
 		})
 		vim.bo[event.buf].buflisted = false
+	end,
+})
+
+autocmd("FileType", {
+	pattern = { "tex", "markdown", "typst" },
+	once = true,
+	callback = function()
+		require("luasnip-latex-snippets").setup({
+			use_treesitter = true,
+			allow_on_markdown = true,
+		})
 	end,
 })
 
@@ -129,56 +114,6 @@ command("PackCheck", function()
 		vim.notify("Cancelled. No plugins were deleted!", vim.log.levels.INFO)
 	end
 end, { desc = "List non active plugins and select to delete" })
-
--- lua/pack_update.lua
-
--- local function check_and_update()
--- 	-- offline = true: checks current state without downloading
--- 	-- force = true: skips the confirmation buffer
--- 	-- Combine both to do a dry "what's outdated" check:
--- 	vim.pack.update(nil, { offline = true, force = true })
---
--- 	-- Read the log to report what happened
--- 	local log_path = vim.fn.stdpath("log") .. "/nvim-pack.log"
--- 	local ok, lines = pcall(vim.fn.readfile, log_path)
--- 	if not ok then
--- 		return
--- 	end
---
--- 	-- Count lines that indicate an actual update (start with ">")
--- 	local count = 0
--- 	for _, line in ipairs(lines) do
--- 		if line:match("^>") then
--- 			count = count + 1
--- 		end
--- 	end
---
--- 	if count > 0 then
--- 		vim.notify(
--- 			count .. " plugin update(s) available. Run :lua vim.pack.update() to apply.",
--- 			vim.log.levels.INFO,
--- 			{ title = "vim.pack" }
--- 		)
--- 	end
--- end
---
--- vim.api.nvim_create_autocmd("VimEnter", {
--- 	once = true,
--- 	callback = function()
--- 		vim.defer_fn(check_and_update, 1500)
--- 	end,
--- })
-
-autocmd("FileType", {
-	pattern = { "tex", "markdown", "typst" },
-	once = true,
-	callback = function()
-		require("luasnip-latex-snippets").setup({
-			use_treesitter = true,
-			allow_on_markdown = true,
-		})
-	end,
-})
 
 autocmd("BufWritePost", {
 	group = augroup("SpellRecompile", { clear = true }),

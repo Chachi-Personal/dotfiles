@@ -1,11 +1,3 @@
-vim.pack.add({
-	"https://github.com/mfussenegger/nvim-dap",
-
-	"https://github.com/nvim-neotest/nvim-nio",
-	"https://github.com/rcarriga/nvim-dap-ui",
-	"https://github.com/theHamsta/nvim-dap-virtual-text",
-})
-
 local dap = require("dap")
 local ui = require("dapui")
 local dap_virtual_text = require("nvim-dap-virtual-text")

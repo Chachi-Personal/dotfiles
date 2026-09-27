@@ -1,11 +1,3 @@
-local lazy_packages = require("plugins.lazy_packages")
-lazy_packages.register("claudecode.nvim")
-
-vim.pack.add({
-	{ src = "https://github.com/coder/claudecode.nvim" },
-	{ src = "https://github.com/folke/snacks.nvim" },
-})
-
 require("claudecode").setup({
 	log_level = "warn", -- quieter than the default "info"
 	focus_after_send = true, -- jump into the terminal right after sending

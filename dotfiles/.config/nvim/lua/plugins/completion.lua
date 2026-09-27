@@ -1,0 +1,96 @@
+vim.schedule(function()
+	require("lazydev").setup({
+		library = {
+			{ path = "snacks.nvim", words = { "Snacks" } },
+		},
+	})
+	-- require("lsp_signature").setup({
+	-- 	hint_enable = false,
+	-- 	handler_opts = { border = "rounded" },
+	-- })
+	require("copilot").setup({
+		suggestion = { enabled = false }, -- blink handles UI
+		panel = { enabled = false },
+	})
+	require("blink.cmp").setup({
+		cmdline = { enabled = false },
+		keymap = {
+			preset = "none",
+			["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+			["<C-e>"] = { "hide", "fallback" },
+
+			-- Tab: cycle forward through list (text auto-inserts as you go)
+			-- Also jumps to next snippet placeholder AFTER acceptance
+			["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+
+			-- Enter: accept selected item (expands snippet if it is one)
+			["<CR>"] = { "accept", "fallback" },
+
+			-- Arrow keys as alternative navigation
+			["<Up>"] = { "select_prev", "fallback" },
+			["<Down>"] = { "select_next", "fallback" },
+
+			-- Documentation scrolling
+			["<C-b>"] = { "scroll_documentation_up", "fallback" },
+			["<C-f>"] = { "scroll_documentation_down", "fallback" },
+
+			-- Signature help
+			["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+		},
+		completion = {
+			list = {
+				selection = {
+					preselect = false, -- first item pre-selected when menu opens
+					auto_insert = true, -- text changes as you Tab through the list
+				},
+				cycle = {
+					from_bottom = true, -- Tab at bottom wraps to top
+					from_top = true, -- S-Tab at top wraps to bottom
+				},
+			},
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 200,
+			},
+			menu = {
+				-- border = nil,
+			},
+			-- Don't re-trigger completions while inside a snippet
+			trigger = {
+				show_in_snippet = false,
+			},
+		},
+		appearance = { use_nvim_cmp_as_default = false },
+		snippets = { preset = "luasnip" },
+		sources = {
+			default = { "lsp", "path", "snippets", "buffer", "copilot" },
+			providers = {
+				copilot = {
+					name = "copilot",
+					module = "blink-copilot",
+					score_offset = 8,
+					async = true,
+				},
+			},
+		},
+		signature = {
+			enabled = true,
+		},
+	})
+	require("luasnip").config.setup({
+		enable_autosnippets = true,
+	})
+	require("luasnip.loaders.from_vscode").lazy_load({
+		paths = { vim.fn.stdpath("config") .. "/snippets" },
+	})
+	local ft = vim.bo.filetype
+	if ft ~= "" then
+		require("luasnip.loaders.from_vscode").load_standalone({
+			path = vim.fn.stdpath("config") .. "/snippets/" .. ft .. ".json",
+			lazy = false,
+		})
+	end
+	require("luasnip.loaders.from_snipmate").lazy_load()
+	require("luasnip.loaders.from_lua").lazy_load()
+end)
