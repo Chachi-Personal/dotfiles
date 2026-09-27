@@ -158,11 +158,20 @@ map("n", "<C-Down>", "<Cmd>resize -2<CR>", { desc = "Resize split down" })
 map("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Resize split left" })
 map("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Resize split right" })
 
--- Terminal window nav
-map("t", "<C-H>", "<Cmd>wincmd h<CR>", { desc = "Terminal left" })
-map("t", "<C-J>", "<Cmd>wincmd j<CR>", { desc = "Terminal down" })
-map("t", "<C-K>", "<Cmd>wincmd k<CR>", { desc = "Terminal up" })
-map("t", "<C-L>", "<Cmd>wincmd l<CR>", { desc = "Terminal right" })
+-- Terminal window nav. Inside a floating terminal (Snacks.terminal, yazi, …) the key is
+-- passed through to the program instead, so focus can't escape the float.
+local function term_nav(key, dir)
+	return function()
+		if vim.api.nvim_win_get_config(0).relative ~= "" then
+			return key
+		end
+		return "<Cmd>wincmd " .. dir .. "<CR>"
+	end
+end
+map("t", "<C-H>", term_nav("<C-H>", "h"), { expr = true, desc = "Terminal left" })
+map("t", "<C-J>", term_nav("<C-J>", "j"), { expr = true, desc = "Terminal down" })
+map("t", "<C-K>", term_nav("<C-K>", "k"), { expr = true, desc = "Terminal up" })
+map("t", "<C-L>", term_nav("<C-L>", "l"), { expr = true, desc = "Terminal right" })
 
 -- Yank as text/html
 -- In normal/visual mode: <leader>ch = "copy as html-mime for Perplexity"

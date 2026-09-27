@@ -188,7 +188,9 @@ end)
 
 -- -- Smart splits — deferred
 defer(function()
-	require("smart-splits").setup({
+	local map = vim.keymap.set
+	local ss = require("smart-splits")
+	ss.setup({
 		ignored_buftypes = { "nofile", "quickfix", "prompt" },
 		ignored_filetypes = { "NvimTree" },
 		default_amount = 3,
@@ -205,16 +207,25 @@ defer(function()
 		setup = function() end,
 		set_default_multiplexer = function() end,
 	})
-	local map = vim.keymap.set
-	map("n", "<leader><A-h>", require("smart-splits").resize_left, { desc = "Resize pane left" })
-	map("n", "<leader><A-j>", require("smart-splits").resize_down, { desc = "Resize pane down" })
-	map("n", "<leader><A-k>", require("smart-splits").resize_up, { desc = "Resize pane up" })
-	map("n", "<leader><A-l>", require("smart-splits").resize_right, { desc = "Resize pane right" })
+	map("n", "<leader><A-h>", ss.resize_left, { desc = "Resize pane left" })
+	map("n", "<leader><A-j>", ss.resize_down, { desc = "Resize pane down" })
+	map("n", "<leader><A-k>", ss.resize_up, { desc = "Resize pane up" })
+	map("n", "<leader><A-l>", ss.resize_right, { desc = "Resize pane right" })
 
-	map("n", "<C-h>", require("smart-splits").move_cursor_left, { desc = "Move to left pane" })
-	map("n", "<C-j>", require("smart-splits").move_cursor_down, { desc = "Move to below pane" })
-	map("n", "<C-k>", require("smart-splits").move_cursor_up, { desc = "Move to above pane" })
-	map("n", "<C-l>", require("smart-splits").move_cursor_right, { desc = "Move to right pane" })
+	-- In a floating window keep the key's native behaviour instead of leaving the float
+	local function nav(key, fn)
+		return function()
+			if vim.api.nvim_win_get_config(0).relative ~= "" then
+				vim.api.nvim_feedkeys(vim.keycode(key), "n", false)
+				return
+			end
+			fn()
+		end
+	end
+	map("n", "<C-h>", nav("<C-h>", ss.move_cursor_left), { desc = "Move to left pane" })
+	map("n", "<C-j>", nav("<C-j>", ss.move_cursor_down), { desc = "Move to below pane" })
+	map("n", "<C-k>", nav("<C-k>", ss.move_cursor_up), { desc = "Move to above pane" })
+	map("n", "<C-l>", nav("<C-l>", ss.move_cursor_right), { desc = "Move to right pane" })
 
 	map("n", "<leader><leader>h", require("smart-splits").swap_buf_left, { desc = "Swap buf left" })
 	map("n", "<leader><leader>j", require("smart-splits").swap_buf_down, { desc = "Swap buf down" })
