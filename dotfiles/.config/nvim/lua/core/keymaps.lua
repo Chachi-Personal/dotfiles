@@ -174,7 +174,9 @@ end, { desc = "Copy clipboard as text/html MIME" })
 -- ─── Spell ────────────────────────────────────────────────────────────────────
 map("n", "<leader>sa", "zg", { desc = "Spell: add word to dictionary" })
 map("n", "<leader>sx", "zw", { desc = "Spell: mark word as bad" })
-map("n", "<leader>s?", "z=", { desc = "Spell: show suggestions" })
+map("n", "<leader>s?", function()
+	Snacks.picker.spelling()
+end, { desc = "Spell: show suggestions" })
 map("n", "]s", "]s", { desc = "Spell: next misspelled word" })
 map("n", "[s", "[s", { desc = "Spell: prev misspelled word" })
 

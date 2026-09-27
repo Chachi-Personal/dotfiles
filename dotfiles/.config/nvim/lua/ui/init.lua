@@ -24,6 +24,8 @@ vim.pack.add({
 	"https://github.com/rachartier/tiny-cmdline.nvim",
 
 	"https://github.com/lewis6991/gitsigns.nvim",
+
+	"https://github.com/folke/todo-comments.nvim",
 })
 
 vim.cmd.colorscheme("tokyonight-night")
@@ -62,6 +64,10 @@ require("ui.statusline")
 require("ui.bufferline")
 
 require("ui.gitsigns")
+
+defer(function()
+	require("todo-comments").setup({})
+end)
 
 -- ——— Lazy Loaded pluggins
 -- Highlight colors (#0ff, rgb(), etc.) — on file open

@@ -7,10 +7,6 @@ local function run_c_file()
 		return
 	end
 
-	-- Ensure toggleterm is loaded and set up
-	vim.pack.add({ "https://github.com/akinsho/toggleterm.nvim" })
-	require("toggleterm").setup({ direction = "float", float_opts = { border = "rounded" } })
-
 	local dir = vim.fn.fnamemodify(filepath, ":p:h")
 	local stem = vim.fn.fnamemodify(filepath, ":t:r")
 	local outfile = dir .. "/" .. stem
@@ -18,28 +14,23 @@ local function run_c_file()
 	-- Save the file first
 	vim.cmd("silent! write")
 
-	local ok, Terminal = pcall(function()
-		return require("toggleterm.terminal").Terminal
-	end)
-	if not ok then
-		vim.notify("toggleterm not loaded", vim.log.levels.ERROR)
-		return
-	end
-
 	local cmd = string.format(
-		"cd %s && g++ %s -o %s -lm && echo '\\n--- Running ---\\n' && ./%s; echo '\\n[Exit: '$?']'",
-		vim.fn.shellescape(dir),
+		"g++ %s -o %s -lm && echo '\\n--- Running ---\\n' && ./%s; echo '\\n[Exit: '$?']'",
 		vim.fn.shellescape(filepath),
 		vim.fn.shellescape(stem),
 		vim.fn.shellescape(stem)
 	)
 
-	Terminal:new({
-		cmd = cmd,
-		direction = "float",
-		float_opts = { border = "rounded" },
-		close_on_exit = false, -- keep open so you can read output
-		on_exit = function(t, job, code)
+	local term = Snacks.terminal.open(cmd, {
+		cwd = dir,
+		auto_close = false, -- keep open so you can read output
+		win = { position = "float", border = "rounded", width = 0.8, height = 0.8 },
+	})
+	vim.api.nvim_create_autocmd("TermClose", {
+		buffer = term.buf,
+		once = true,
+		callback = function()
+			local code = vim.v.event.status
 			if code == 0 then
 				return
 			end
@@ -47,7 +38,7 @@ local function run_c_file()
 				vim.notify("Compilation/run failed (exit " .. code .. ")", vim.log.levels.ERROR)
 			end)
 		end,
-	}):toggle()
+	})
 end
 
 vim.keymap.set("n", "<F5>", run_c_file, { buffer = buf, silent = true, desc = "Compile & run C file" })

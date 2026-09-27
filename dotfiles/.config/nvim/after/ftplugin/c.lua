@@ -7,48 +7,29 @@ local function run_c_file()
 		return
 	end
 
-	-- Ensure toggleterm is loaded and set up
-	vim.pack.add({ "https://github.com/akinsho/toggleterm.nvim" })
-	require("toggleterm").setup({
-		size = function(term)
-			if term.direction == "horizontal" then
-				return 15
-			elseif term.direction == "vertical" then
-				return math.min(vim.o.columns * 0.3, 80)
-			end
-		end,
-		direction = "float",
-		float_opts = { border = "rounded" },
-	})
-
 	local dir = vim.fn.fnamemodify(filepath, ":p:h")
 	local stem = vim.fn.fnamemodify(filepath, ":t:r")
 
 	-- Save the file first
 	vim.cmd("silent! write")
 
-	local ok, Terminal = pcall(function()
-		return require("toggleterm.terminal").Terminal
-	end)
-	if not ok then
-		vim.notify("toggleterm not loaded", vim.log.levels.ERROR)
-		return
-	end
-
 	local inner_cmd = string.format(
-		"cd %s && gcc %s -o %s -lm && echo '\n--- Running ---\n' && ./%s; echo '\n[Exit: '$?']'",
-		vim.fn.shellescape(dir),
+		"gcc %s -o %s -lm && echo '\n--- Running ---\n' && ./%s; echo '\n[Exit: '$?']'",
 		vim.fn.shellescape(filepath),
 		vim.fn.shellescape(stem),
 		vim.fn.shellescape(stem)
 	)
 
-	Terminal:new({
-		cmd = "bash -c " .. vim.fn.shellescape(inner_cmd),
-		direction = "vertical",
-		-- float_opts = { border = "rounded" },
-		close_on_exit = false, -- keep open so you can read output
-		on_exit = function(t, job, code)
+	local term = Snacks.terminal.open({ "bash", "-c", inner_cmd }, {
+		cwd = dir,
+		auto_close = false, -- keep open so you can read output
+		win = { position = "right", width = math.min(math.floor(vim.o.columns * 0.3), 80) },
+	})
+	vim.api.nvim_create_autocmd("TermClose", {
+		buffer = term.buf,
+		once = true,
+		callback = function()
+			local code = vim.v.event.status
 			if code == 0 then
 				return
 			end
@@ -56,7 +37,7 @@ local function run_c_file()
 				vim.notify("Compilation/run failed (exit " .. code .. ")", vim.log.levels.ERROR)
 			end)
 		end,
-	}):toggle()
+	})
 end
 
 vim.keymap.set("n", "<F5>", run_c_file, { buffer = buf, silent = true, desc = "Compile & run C file" })

@@ -13,6 +13,7 @@ require("snacks").setup({
 	scratch = { enabled = true },
 	gitbrowse = { enabled = true },
 	word = { enabled = true },
+	terminal = {},
 })
 
 -- Pickers
@@ -191,3 +192,34 @@ end, { desc = "Toggle Zen Mode" })
 map("n", "<leader>Z", function()
 	Snacks.zen.zoom()
 end, { desc = "Toggle Zen Zoom" })
+
+-- Terminal
+
+local term_size = {
+	height = 0.2,
+	width = 0.3,
+}
+
+map("n", "<leader>th", function()
+	Snacks.terminal.toggle(nil, { win = term_size })
+end, { desc = "Terminal (horizontal)" })
+
+map("n", "<leader>thn", function()
+	Snacks.terminal.open(nil, { count = 1, win = term_size })
+end, { desc = "New" })
+
+map("n", "<leader>thh", function()
+	Snacks.terminal.toggle(nil, { count = 1, win = term_size })
+end, { desc = "Toggle" })
+
+map("n", "<leader>tv", function()
+	Snacks.terminal.open(nil, { count = 2, win = term_size })
+end, { desc = "Toggle horizontal terminal" })
+
+map("n", "<leader>tf", function()
+	Snacks.terminal.open(nil, { count = 3, win = { position = "float", border = "rounded" } })
+end, { desc = "Toggle horizontal terminal" })
+
+map({ "n", "t" }, "<f3>", function()
+	Snacks.terminal(nil, { count = 1 })
+end, { desc = "Toggle horizontal terminal" })

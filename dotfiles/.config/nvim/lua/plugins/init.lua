@@ -26,10 +26,8 @@ vim.pack.add({
 	"https://github.com/smart-splits-nvim/smart-splits.nvim",
 
 	"https://github.com/obsidian-nvim/obsidian.nvim",
-	"https://github.com/folke/todo-comments.nvim",
 	"https://github.com/mikavilpas/yazi.nvim",
 	"https://github.com/nvim-lua/plenary.nvim",
-	"https://github.com/akinsho/toggleterm.nvim",
 
 	"https://github.com/h-hg/fcitx.nvim",
 
